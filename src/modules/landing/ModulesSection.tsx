@@ -17,7 +17,7 @@ const ModuleCard = ({ logoUrl, title, shortDescription, description, features, c
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-100px' }}
       transition={{ duration: 0.5 }}
-      className="glass-panel glass-panel-hover flex flex-col justify-between p-6 md:p-8 rounded-2xl relative overflow-hidden group min-h-[460px]"
+      className="glass-panel glass-panel-hover flex flex-col justify-between p-6 md:p-8 rounded-2xl relative overflow-hidden group min-h-[480px]"
     >
       {/* Light gradient highlight on group hover */}
       <div className={`absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r ${color}`} />
@@ -25,8 +25,8 @@ const ModuleCard = ({ logoUrl, title, shortDescription, description, features, c
 
       <div>
         <div className="flex justify-between items-start mb-6">
-          {/* Logo container wrapper for uniform alignment */}
-          <div className="flex items-center justify-center p-2 rounded-2xl bg-slate-950/80 border border-slate-800/60 w-[64px] h-[64px] md:w-[76px] md:h-[76px] lg:w-[88px] lg:h-[88px] overflow-hidden shadow-inner group-hover:border-cyan-500/30 transition-colors">
+          {/* Logo container wrapper for uniform alignment - Increased size */}
+          <div className="flex items-center justify-center p-3 rounded-2xl bg-slate-950/80 border border-slate-800/60 w-[72px] h-[72px] md:w-[88px] md:h-[88px] lg:w-[100px] lg:h-[100px] overflow-hidden shadow-inner group-hover:border-cyan-500/30 transition-colors">
             <img 
               src={logoUrl} 
               alt={`${title} Logo`} 
@@ -101,7 +101,7 @@ const ModulesSection = () => {
       title: 'Aura Intelligence',
       shortDescription: 'Asistente empresarial impulsado por IA.',
       description: 'IA corporativa para análisis financiero predictivo, automatización de procesos operativos y soporte inteligente basado en datos del negocio.',
-      features: ['Predicción de Flujo de Caja', 'Asistentes de IA de Contexto', 'Automatización de Tareas'],
+      features: ['Soporte inteligente', 'Búsqueda contextual', 'Automatización operativa'],
       color: 'from-violet-500 to-blue-500',
     },
     {
@@ -137,12 +137,21 @@ const ModulesSection = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {modules.map((mod, index) => (
-            <div key={index} className={index === 4 ? 'md:col-span-2 lg:col-span-1' : ''}>
-              <ModuleCard {...mod} />
-            </div>
-          ))}
+        {/* Responsive Grid with xl:grid-cols-6 and lg:grid-cols-3 */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-6">
+          {modules.map((mod, index) => {
+            let gridClasses = "col-span-1 md:col-span-1 lg:col-span-1 xl:col-span-2";
+            if (index === 3) {
+              gridClasses = "col-span-1 md:col-span-1 lg:col-span-1 xl:col-span-2 xl:col-start-2";
+            } else if (index === 4) {
+              gridClasses = "col-span-1 md:col-span-2 md:max-w-md md:mx-auto md:w-full lg:col-span-1 lg:max-w-none xl:col-span-2 xl:col-start-auto";
+            }
+            return (
+              <div key={index} className={gridClasses}>
+                <ModuleCard {...mod} />
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>
