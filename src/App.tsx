@@ -1,5 +1,6 @@
 import HeroSection from './modules/landing/HeroSection';
 import ModulesSection from './modules/landing/ModulesSection';
+import EcosystemArchitectureDiagram from './modules/landing/EcosystemArchitectureDiagram';
 import BenefitsSection from './modules/landing/BenefitsSection';
 import AudienceSection from './modules/landing/AudienceSection';
 import EnterpriseArchitectureSection from './modules/landing/EnterpriseArchitectureSection';
@@ -42,6 +43,7 @@ const App = () => {
       <main className="flex-grow">
         <HeroSection />
         <ModulesSection />
+        <EcosystemArchitectureDiagram />
         <BenefitsSection />
         <AudienceSection />
         <EnterpriseArchitectureSection />
