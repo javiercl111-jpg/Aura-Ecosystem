@@ -10,7 +10,7 @@ const AuraIntelligencePage = () => {
       
       <div className="max-w-4xl mx-auto w-full relative z-10 space-y-12">
         {/* Back Link */}
-        <Link to="/" className="inline-flex items-center gap-2 text-xs font-semibold text-slate-500 hover:text-cyan-400 transition-colors uppercase tracking-wider">
+        <Link to="/#modulos" className="inline-flex items-center gap-2 text-xs font-semibold text-slate-500 hover:text-cyan-400 transition-colors uppercase tracking-wider">
           <ArrowLeft size={14} />
           Volver al Ecosistema
         </Link>
