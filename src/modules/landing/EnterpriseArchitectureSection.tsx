@@ -80,9 +80,9 @@ const EnterpriseArchitectureSection = () => {
                 <div className="p-3 rounded-lg bg-slate-950 border border-slate-800 flex items-center justify-between">
                   <div className="flex items-center gap-3">
                     <div className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
-                    <span className="text-xs font-mono text-slate-300">SECURE_GATEWAY_V1</span>
+                    <span className="text-xs font-semibold text-slate-200">Acceso Seguro y Encriptado (SSL/TLS)</span>
                   </div>
-                  <span className="text-[10px] font-mono text-slate-500">ACTIVE</span>
+                  <span className="text-[10px] font-mono text-emerald-400">ACTIVO</span>
                 </div>
 
                 {/* Arrow connector */}
@@ -91,31 +91,31 @@ const EnterpriseArchitectureSection = () => {
                 {/* Layer 2 */}
                 <div className="p-4 rounded-lg bg-slate-950 border border-slate-800/80 space-y-2.5">
                   <div className="flex justify-between items-center text-xs">
-                    <span className="font-mono text-slate-400">ORGANIZATION_TENANTS</span>
-                    <span className="text-[10px] font-mono text-cyan-400">ISOLATED</span>
+                    <span className="font-semibold text-slate-300">Aislamiento Multicompañía Estricto</span>
+                    <span className="text-[10px] font-mono text-cyan-400">AISLADO</span>
                   </div>
                   <div className="grid grid-cols-3 gap-2">
-                    <div className="p-2 rounded bg-slate-900 border border-slate-800 text-[10px] font-mono text-center text-slate-400">Tenant A</div>
-                    <div className="p-2 rounded bg-slate-900 border border-slate-800 text-[10px] font-mono text-center text-slate-400">Tenant B</div>
-                    <div className="p-2 rounded bg-slate-900 border border-slate-800 text-[10px] font-mono text-center text-slate-400">Tenant C</div>
+                    <div className="p-2 rounded bg-slate-900 border border-slate-800 text-[10px] text-center text-slate-400">Razón Social A</div>
+                    <div className="p-2 rounded bg-slate-900 border border-slate-800 text-[10px] text-center text-slate-400">Razón Social B</div>
+                    <div className="p-2 rounded bg-slate-900 border border-slate-800 text-[10px] text-center text-slate-400">Razón Social C</div>
                   </div>
                 </div>
 
                 {/* Arrow connector */}
                 <div className="h-4 w-[1px] bg-slate-800 mx-auto" />
 
-                {/* Layer 3 - Firebase integration preparation */}
+                {/* Layer 3 - Real-time active architecture */}
                 <motion.div 
                   whileHover={{ scale: 1.01 }}
-                  className="p-4 rounded-lg bg-gradient-to-r from-orange-500/10 to-amber-500/10 border border-orange-500/30 flex items-center justify-between"
+                  className="p-4 rounded-lg bg-gradient-to-r from-cyan-500/10 to-blue-500/10 border border-cyan-500/30 flex items-center justify-between"
                 >
                   <div className="flex items-center gap-3">
-                    <div className="p-2 rounded bg-orange-950/40 text-orange-400 border border-orange-500/20">
+                    <div className="p-2 rounded bg-cyan-950/40 text-cyan-400 border border-cyan-500/20">
                       <Flame size={16} />
                     </div>
                     <div>
-                      <span className="block text-xs font-semibold text-slate-200">Firebase Ready Architecture</span>
-                      <span className="text-[10px] text-slate-400 font-light">Estructura preparada para sincronización real-time.</span>
+                      <span className="block text-xs font-semibold text-slate-200">Infraestructura en la Nube de Alta Disponibilidad</span>
+                      <span className="text-[10px] text-slate-400 font-light">Diseñado para el intercambio instantáneo y seguro de información.</span>
                     </div>
                   </div>
                 </motion.div>
@@ -134,7 +134,7 @@ const EnterpriseArchitectureSection = () => {
                 Diseñado para la escala enterprise
               </h3>
               <p className="text-base text-slate-400 font-light leading-relaxed">
-                Nuestra arquitectura modular separa rigurosamente las responsabilidades, garantizando un rendimiento óptimo, alta disponibilidad y una integración sencilla con bases de datos como Firebase/Firestore para flujos en tiempo real futuros.
+                Nuestra arquitectura modular separa rigurosamente las responsabilidades, garantizando un rendimiento óptimo, alta disponibilidad y una integración sencilla con sistemas en tiempo real para flujos de trabajo eficientes.
               </p>
             </div>
 
