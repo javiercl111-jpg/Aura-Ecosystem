@@ -77,3 +77,13 @@ body {
   mask-composite: exclude;
   pointer-events: none;
 }
+
+/* Internal smooth navigation adjustments */
+html {
+  scroll-behavior: smooth;
+}
+
+section[id] {
+  scroll-margin-top: 5rem; /* ~80px matching navbar height */
+}
+

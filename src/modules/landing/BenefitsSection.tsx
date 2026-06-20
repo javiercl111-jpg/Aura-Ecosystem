@@ -64,7 +64,7 @@ const BenefitsSection = () => {
   ];
 
   return (
-    <section className="py-24 px-4 md:px-8 bg-slate-950 relative border-t border-slate-900 overflow-hidden">
+    <section id="beneficios" className="py-24 px-4 md:px-8 bg-slate-950 relative border-t border-slate-900 overflow-hidden">
       {/* Soft gradient spot */}
       <div className="absolute right-0 top-1/3 w-[300px] h-[300px] bg-blue-500/5 rounded-full blur-[100px] pointer-events-none" />
 

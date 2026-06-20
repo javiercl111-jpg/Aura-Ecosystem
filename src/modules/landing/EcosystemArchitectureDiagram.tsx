@@ -54,7 +54,7 @@ const EcosystemArchitectureDiagram = () => {
   ];
 
   return (
-    <section className="py-24 px-4 md:px-8 bg-slate-950 relative border-t border-slate-900 overflow-hidden">
+    <section id="arquitectura" className="py-24 px-4 md:px-8 bg-slate-950 relative border-t border-slate-900 overflow-hidden">
       {/* Background radial glow */}
       <div className="absolute right-0 top-1/4 w-[500px] h-[500px] bg-blue-500/5 rounded-full blur-[140px] pointer-events-none" />
       <div className="absolute left-0 bottom-1/4 w-[400px] h-[400px] bg-cyan-500/5 rounded-full blur-[120px] pointer-events-none" />

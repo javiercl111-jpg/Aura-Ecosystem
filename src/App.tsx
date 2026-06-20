@@ -4,6 +4,8 @@ import EcosystemArchitectureDiagram from './modules/landing/EcosystemArchitectur
 import BenefitsSection from './modules/landing/BenefitsSection';
 import AudienceSection from './modules/landing/AudienceSection';
 import EnterpriseArchitectureSection from './modules/landing/EnterpriseArchitectureSection';
+import UpcomingSection from './modules/landing/UpcomingSection';
+import DemoRequestSection from './modules/landing/DemoRequestSection';
 import FinalCTASection from './modules/landing/FinalCTASection';
 import Footer from './modules/landing/Footer';
 
@@ -13,7 +15,7 @@ const App = () => {
       {/* Navigation Header */}
       <header className="fixed top-0 left-0 right-0 z-50 bg-slate-950/80 backdrop-blur-md border-b border-slate-900 px-4 md:px-8 py-4">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <a href="#" className="flex items-center gap-3 hover:opacity-90 transition-opacity">
+          <a href="#inicio" className="flex items-center gap-3 hover:opacity-90 transition-opacity">
             <img 
               src="/aura-logo-oficial.png" 
               alt="Aura Ecosystem" 
@@ -22,15 +24,16 @@ const App = () => {
           </a>
           
           <nav className="hidden md:flex items-center gap-8 text-sm text-slate-400">
-            <a href="#modules-section" className="hover:text-cyan-400 transition-colors">Módulos</a>
-            <a href="#contact" className="hover:text-cyan-400 transition-colors">Beneficios</a>
-            <a href="#contact" className="hover:text-cyan-400 transition-colors">Arquitectura</a>
-            <a href="#contact" className="hover:text-cyan-400 transition-colors">Contacto</a>
+            <a href="#inicio" className="hover:text-cyan-400 transition-colors">Inicio</a>
+            <a href="#modulos" className="hover:text-cyan-400 transition-colors">Módulos</a>
+            <a href="#beneficios" className="hover:text-cyan-400 transition-colors">Beneficios</a>
+            <a href="#arquitectura" className="hover:text-cyan-400 transition-colors">Arquitectura</a>
+            <a href="#contacto" className="hover:text-cyan-400 transition-colors">Contacto</a>
           </nav>
 
           <div>
             <a
-              href="#contact"
+              href="#contacto"
               className="px-4 py-2 rounded-lg text-xs font-semibold bg-slate-900 border border-slate-800 text-slate-200 hover:bg-slate-900/60 hover:text-white transition-all"
             >
               Solicitar Demo
@@ -47,6 +50,8 @@ const App = () => {
         <BenefitsSection />
         <AudienceSection />
         <EnterpriseArchitectureSection />
+        <UpcomingSection />
+        <DemoRequestSection />
         <FinalCTASection />
       </main>
 

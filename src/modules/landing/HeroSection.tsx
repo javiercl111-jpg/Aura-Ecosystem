@@ -34,15 +34,9 @@ const HeroSection = () => {
     },
   };
 
-  const scrollToModules = () => {
-    const modulesSection = document.getElementById('modules-section');
-    if (modulesSection) {
-      modulesSection.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
 
   return (
-    <section className="relative min-h-[90vh] flex items-center justify-center pt-24 pb-16 px-4 md:px-8 overflow-hidden bg-slate-950">
+    <section id="inicio" className="relative min-h-[90vh] flex items-center justify-center pt-24 pb-16 px-4 md:px-8 overflow-hidden bg-slate-950">
       {/* Background Decorative Gradients & Grid */}
       <div className="absolute inset-0 z-0 bg-[linear-gradient(to_right,#0f172a_1px,transparent_1px),linear-gradient(to_bottom,#0f172a_1px,transparent_1px)] bg-[size:4rem_4rem] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_40%,#000_70%,transparent_100%)] opacity-70" />
       
@@ -106,20 +100,20 @@ const HeroSection = () => {
             className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4"
           >
             <a
-              href="#contact"
+              href="#contacto"
               className="w-full sm:w-auto px-8 py-4 rounded-xl font-semibold text-slate-950 bg-gradient-to-r from-cyan-400 to-blue-500 hover:from-cyan-300 hover:to-blue-400 active:scale-95 transition-all shadow-[0_4px_20px_rgba(6,182,212,0.25)] flex items-center justify-center gap-2"
             >
               Solicitar demo
               <ArrowRight size={18} />
             </a>
             
-            <button
-              onClick={scrollToModules}
+            <a
+              href="#modulos"
               className="w-full sm:w-auto px-8 py-4 rounded-xl font-semibold text-slate-300 border border-slate-800 bg-slate-900/40 hover:bg-slate-900/80 hover:text-white active:scale-95 transition-all flex items-center justify-center gap-2 backdrop-blur-md"
             >
               <Database size={18} className="text-cyan-400" />
               Explorar módulos
-            </button>
+            </a>
           </motion.div>
 
           {/* Dashboard Preview / Floating elements decoration */}

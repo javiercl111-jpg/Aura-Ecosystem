@@ -123,7 +123,7 @@ const ModulesSection = () => {
   ];
 
   return (
-    <section id="modules-section" className="py-24 px-4 md:px-8 bg-slate-950 relative border-t border-slate-900">
+    <section id="modulos" className="py-24 px-4 md:px-8 bg-slate-950 relative border-t border-slate-900">
       <div className="max-w-7xl mx-auto">
         <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
           <h2 className="text-sm font-semibold text-cyan-400 uppercase tracking-widest">
