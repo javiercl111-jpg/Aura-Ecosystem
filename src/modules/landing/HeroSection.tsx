@@ -72,6 +72,18 @@ const HeroSection = () => {
             <span>El Ecosistema Corporativo del Futuro</span>
           </motion.div>
 
+          {/* Logo in Hero */}
+          <motion.div 
+            variants={itemVariants} 
+            className="flex justify-center pt-2"
+          >
+            <img 
+              src="/aura-logo-oficial.png" 
+              alt="Aura Logo" 
+              className="h-12 md:h-16 w-auto object-contain drop-shadow-[0_0_20px_rgba(6,182,212,0.25)]"
+            />
+          </motion.div>
+
           {/* Title */}
           <motion.h1 
             variants={itemVariants} 

@@ -9,13 +9,25 @@ const Footer = () => {
         
         {/* Brand column */}
         <div className="space-y-4 col-span-1 md:col-span-2">
-          <div className="flex items-center gap-2 text-white font-extrabold text-lg">
-            <span className="text-cyan-400">✨</span>
-            <span>Aura Ecosystem</span>
+          <div className="flex items-center gap-3">
+            <img 
+              src="/aura-logo-oficial.png" 
+              alt="Aura Ecosystem" 
+              className="h-[32px] md:h-[36px] w-auto object-contain" 
+            />
           </div>
-          <p className="max-w-xs text-slate-500 font-light leading-relaxed">
-            Plataforma corporativa unificada de software modular para medianas y grandes empresas.
-          </p>
+          <div className="space-y-1">
+            <h4 className="text-sm font-bold text-slate-200">Aura Ecosystem</h4>
+            <p className="text-xs text-slate-400 font-light leading-relaxed">
+              Personas. Operaciones. Documentos. Inteligencia.
+            </p>
+          </div>
+          <div className="pt-2 text-xs">
+            <span className="text-slate-500">Contacto: </span>
+            <a href="mailto:admin@auranexus.io" className="text-cyan-400 hover:text-cyan-300 transition-colors font-medium">
+              admin@auranexus.io
+            </a>
+          </div>
         </div>
 
         {/* Modules column */}
