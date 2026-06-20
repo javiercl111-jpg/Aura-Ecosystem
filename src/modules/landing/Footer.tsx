@@ -49,9 +49,9 @@ const Footer = () => {
             <li><a href="#" className="hover:text-cyan-400 transition-colors">Política de Privacidad</a></li>
             <li><a href="#" className="hover:text-cyan-400 transition-colors">Términos del Servicio</a></li>
             <li><a href="#" className="hover:text-cyan-400 transition-colors">Seguridad de Datos</a></li>
-            <li className="flex items-center gap-1.5 pt-1 text-cyan-500/80">
-              <Shield size={12} />
-              <span>ISO 27001 Compliant</span>
+            <li className="flex items-start gap-1.5 pt-1 text-cyan-500/80 max-w-[200px]">
+              <Shield size={12} className="mt-0.5 flex-shrink-0" />
+              <span>Diseñado con prácticas empresariales de seguridad y control.</span>
             </li>
           </ul>
         </div>

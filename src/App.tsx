@@ -1,62 +1,26 @@
-import HeroSection from './modules/landing/HeroSection';
-import ModulesSection from './modules/landing/ModulesSection';
-import EcosystemArchitectureDiagram from './modules/landing/EcosystemArchitectureDiagram';
-import BenefitsSection from './modules/landing/BenefitsSection';
-import AudienceSection from './modules/landing/AudienceSection';
-import EnterpriseArchitectureSection from './modules/landing/EnterpriseArchitectureSection';
-import UpcomingSection from './modules/landing/UpcomingSection';
-import DemoRequestSection from './modules/landing/DemoRequestSection';
-import FinalCTASection from './modules/landing/FinalCTASection';
-import Footer from './modules/landing/Footer';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Layout from './modules/layout/Layout';
+import Home from './modules/landing/Home';
+import AuraHCMPage from './modules/products/AuraHCMPage';
+import AuraSignaturePage from './modules/products/AuraSignaturePage';
+import AuraIntelligencePage from './modules/products/AuraIntelligencePage';
+import AuraMaintenancePage from './modules/products/AuraMaintenancePage';
+import AuraControlCenterPage from './modules/products/AuraControlCenterPage';
 
 const App = () => {
   return (
-    <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col selection:bg-cyan-500 selection:text-slate-950">
-      {/* Navigation Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-slate-950/80 backdrop-blur-md border-b border-slate-900 px-4 md:px-8 py-4">
-        <div className="max-w-7xl mx-auto flex items-center justify-between">
-          <a href="#inicio" className="flex items-center gap-3 hover:opacity-90 transition-opacity">
-            <img 
-              src="/aura-logo-oficial.png" 
-              alt="Aura Ecosystem" 
-              className="h-[32px] md:h-[38px] lg:h-[44px] w-auto object-contain"
-            />
-          </a>
-          
-          <nav className="hidden md:flex items-center gap-8 text-sm text-slate-400">
-            <a href="#inicio" className="hover:text-cyan-400 transition-colors">Inicio</a>
-            <a href="#modulos" className="hover:text-cyan-400 transition-colors">Módulos</a>
-            <a href="#beneficios" className="hover:text-cyan-400 transition-colors">Beneficios</a>
-            <a href="#arquitectura" className="hover:text-cyan-400 transition-colors">Arquitectura</a>
-            <a href="#contacto" className="hover:text-cyan-400 transition-colors">Contacto</a>
-          </nav>
-
-          <div>
-            <a
-              href="#contacto"
-              className="px-4 py-2 rounded-lg text-xs font-semibold bg-slate-900 border border-slate-800 text-slate-200 hover:bg-slate-900/60 hover:text-white transition-all"
-            >
-              Solicitar Demo
-            </a>
-          </div>
-        </div>
-      </header>
-
-      {/* Main Sections */}
-      <main className="flex-grow">
-        <HeroSection />
-        <ModulesSection />
-        <EcosystemArchitectureDiagram />
-        <BenefitsSection />
-        <AudienceSection />
-        <EnterpriseArchitectureSection />
-        <UpcomingSection />
-        <DemoRequestSection />
-        <FinalCTASection />
-      </main>
-
-      <Footer />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="aura-hcm" element={<AuraHCMPage />} />
+          <Route path="aura-signature" element={<AuraSignaturePage />} />
+          <Route path="aura-intelligence" element={<AuraIntelligencePage />} />
+          <Route path="aura-maintenance-os" element={<AuraMaintenancePage />} />
+          <Route path="aura-control-center" element={<AuraControlCenterPage />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 };
 

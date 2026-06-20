@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 interface ModuleCardProps {
   logoUrl: string;
@@ -8,9 +9,10 @@ interface ModuleCardProps {
   description: string;
   features: string[];
   color: string;
+  path: string;
 }
 
-const ModuleCard = ({ logoUrl, title, shortDescription, description, features, color }: ModuleCardProps) => {
+const ModuleCard = ({ logoUrl, title, shortDescription, description, features, color, path }: ModuleCardProps) => {
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -26,16 +28,16 @@ const ModuleCard = ({ logoUrl, title, shortDescription, description, features, c
       <div>
         <div className="flex justify-between items-start mb-6">
           {/* Logo container wrapper for uniform alignment - Increased size */}
-          <div className="flex items-center justify-center p-3 rounded-2xl bg-slate-950/80 border border-slate-800/60 w-[72px] h-[72px] md:w-[88px] md:h-[88px] lg:w-[100px] lg:h-[100px] overflow-hidden shadow-inner group-hover:border-cyan-500/30 transition-colors">
+          <Link to={path} className="flex items-center justify-center p-3 rounded-2xl bg-slate-950/80 border border-slate-800/60 w-[72px] h-[72px] md:w-[88px] md:h-[88px] lg:w-[100px] lg:h-[100px] overflow-hidden shadow-inner group-hover:border-cyan-500/30 transition-colors">
             <img 
               src={logoUrl} 
               alt={`${title} Logo`} 
               className="max-h-full max-w-full object-contain transition-transform duration-500 group-hover:scale-105"
             />
-          </div>
-          <span className="text-slate-500 group-hover:text-slate-300 transition-colors pt-2">
+          </Link>
+          <Link to={path} className="text-slate-500 group-hover:text-slate-300 transition-colors pt-2">
             <ArrowUpRight size={18} />
-          </span>
+          </Link>
         </div>
 
         <h3 className="text-xl md:text-2xl font-bold text-slate-100 mb-1 group-hover:text-white transition-colors">
@@ -68,10 +70,10 @@ const ModuleCard = ({ logoUrl, title, shortDescription, description, features, c
           <span className="px-2.5 py-1 text-[10px] font-mono tracking-wider uppercase rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 font-semibold shadow-[0_0_10px_rgba(16,185,129,0.05)]">
             Disponible
           </span>
-          <span className="flex items-center gap-1.5 text-xs font-semibold text-cyan-400 group-hover:text-cyan-300 transition-colors cursor-pointer">
+          <Link to={path} className="flex items-center gap-1.5 text-xs font-semibold text-cyan-400 group-hover:text-cyan-300 transition-colors">
             Conocer más
             <ArrowUpRight size={14} className="group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
-          </span>
+          </Link>
         </div>
       </div>
     </motion.div>
@@ -87,6 +89,7 @@ const ModulesSection = () => {
       description: 'Gestión integral del capital humano. Centraliza nóminas, control de asistencia, evaluación del desempeño y beneficios financieros en un entorno seguro.',
       features: ['Gestión de Nóminas y Beneficios', 'Control Horario Integrado', 'Desempeño y Clima Laboral'],
       color: 'from-blue-500 to-cyan-500',
+      path: '/aura-hcm',
     },
     {
       logoUrl: '/aura-signature.png',
@@ -95,6 +98,7 @@ const ModulesSection = () => {
       description: 'Solución de firma electrónica avanzada y gestión de contratos con validez legal. Optimiza el ciclo de vida de los documentos sin salir de tu flujo de trabajo.',
       features: ['Firma Avanzada y Biométrica', 'Flujos de Firma Multi-rol', 'Auditoría Criptográfica Completa'],
       color: 'from-cyan-500 to-teal-500',
+      path: '/aura-signature',
     },
     {
       logoUrl: '/aura-intelligence.png',
@@ -103,6 +107,7 @@ const ModulesSection = () => {
       description: 'IA corporativa para análisis financiero predictivo, automatización de procesos operativos y soporte inteligente basado en datos del negocio.',
       features: ['Soporte inteligente', 'Búsqueda contextual', 'Automatización operativa'],
       color: 'from-violet-500 to-blue-500',
+      path: '/aura-intelligence',
     },
     {
       logoUrl: '/aura-maintenance.png',
@@ -111,6 +116,7 @@ const ModulesSection = () => {
       description: 'Plataforma para el mantenimiento preventivo y correctivo de activos y facilidades físicas. Asegura la continuidad operativa de tus instalaciones.',
       features: ['Órdenes de Trabajo Inteligentes', 'Inventario de Activos y SLAs', 'Mantenimiento Preventivo Planificado'],
       color: 'from-amber-500 to-orange-500',
+      path: '/aura-maintenance-os',
     },
     {
       logoUrl: '/aura-control-center.png',
@@ -119,6 +125,7 @@ const ModulesSection = () => {
       description: 'La consola de administración global para supervisar métricas de rendimiento, controlar el tenant corporativo y auditar accesos en tiempo real.',
       features: ['Monitoreo Multi-tenant y Finanzas', 'Gestión de Permisos y Roles', 'Logs de Auditoría Corporativos'],
       color: 'from-emerald-500 to-teal-500',
+      path: '/aura-control-center',
     },
   ];
 
@@ -159,3 +166,4 @@ const ModulesSection = () => {
 };
 
 export default ModulesSection;
+
