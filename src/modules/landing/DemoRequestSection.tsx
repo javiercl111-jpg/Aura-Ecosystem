@@ -5,8 +5,6 @@ import { AlertCircle, Check } from "lucide-react";
 import { createWebsiteOrganization } from "../../services/leadService";
 import type { ConsultingPriority } from "../../types/lead";
 
-const REQUEST_TIMEOUT_MS = 15000;
-
 const modulesList = [
   { id: "Personas", name: "Personas / Aura HCM" },
   { id: "Operaciones", name: "Operaciones / Aura Maintenance OS" },
@@ -45,26 +43,6 @@ const getRecommendedNextStep = (
 
   return "Iniciar con video institucional y llamada de descubrimiento.";
 };
-
-async function withTimeout<T>(promise: Promise<T>, timeoutMs: number): Promise<T> {
-  let timeoutId: ReturnType<typeof setTimeout>;
-
-  const timeoutPromise = new Promise<never>((_, reject) => {
-    timeoutId = setTimeout(() => {
-      reject(
-        new Error(
-          "La solicitud tardó demasiado. Revisa conexión, configuración Firebase o reglas de Firestore.",
-        ),
-      );
-    }, timeoutMs);
-  });
-
-  try {
-    return await Promise.race([promise, timeoutPromise]);
-  } finally {
-    clearTimeout(timeoutId!);
-  }
-}
 
 const DemoRequestSection = () => {
   const [formData, setFormData] = useState({
@@ -139,27 +117,24 @@ const DemoRequestSection = () => {
     setSuccess(false);
 
     try {
-      await withTimeout(
-        createWebsiteOrganization({
-          companyName: formData.companyName.trim(),
-          contactName: formData.contactName.trim(),
-          email: formData.email.trim(),
-          phone: formData.phone.trim(),
-          industry: formData.industry.trim(),
-          companySize: formData.companySize,
-          mainChallenge: formData.mainChallenge.trim(),
-          interestAreas: selectedAreas,
-          notes: formData.notes.trim(),
-          source: "auranexus.io",
-          stage: "DISCOVERY",
-          priority: getPriority(formData.companySize, formData.phone),
-          recommendedNextStep: getRecommendedNextStep(
-            formData.mainChallenge,
-            selectedAreas,
-          ),
-        }),
-        REQUEST_TIMEOUT_MS,
-      );
+      await createWebsiteOrganization({
+        companyName: formData.companyName.trim(),
+        contactName: formData.contactName.trim(),
+        email: formData.email.trim(),
+        phone: formData.phone.trim(),
+        industry: formData.industry.trim(),
+        companySize: formData.companySize,
+        mainChallenge: formData.mainChallenge.trim(),
+        interestAreas: selectedAreas,
+        notes: formData.notes.trim(),
+        source: "auranexus.io",
+        stage: "DISCOVERY",
+        priority: getPriority(formData.companySize, formData.phone),
+        recommendedNextStep: getRecommendedNextStep(
+          formData.mainChallenge,
+          selectedAreas,
+        ),
+      });
 
       setFormData({
         contactName: "",
