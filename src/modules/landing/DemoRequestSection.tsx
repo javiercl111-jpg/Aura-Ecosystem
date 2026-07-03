@@ -1,41 +1,18 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  AlertCircle,
-  Briefcase,
-  Check,
-  Mail,
-  MessageSquare,
-  Phone,
-  User,
-  Users,
-} from "lucide-react";
+import { AlertCircle, Check } from "lucide-react";
 
 import { createWebsiteOrganization } from "../../services/leadService";
 import type { ConsultingPriority } from "../../types/lead";
 
+const REQUEST_TIMEOUT_MS = 15000;
+
 const modulesList = [
-  { id: "Personas", name: "Personas / Aura HCM", logoUrl: "/aura-hcm.png" },
-  {
-    id: "Operaciones",
-    name: "Operaciones / Aura Maintenance OS",
-    logoUrl: "/aura-maintenance.png",
-  },
-  {
-    id: "Documentos",
-    name: "Documentos / Aura Signature",
-    logoUrl: "/aura-signature.png",
-  },
-  {
-    id: "Dirección",
-    name: "Dirección / Aura Intelligence",
-    logoUrl: "/aura-intelligence.png",
-  },
-  {
-    id: "Ecosistema completo",
-    name: "Ecosistema completo",
-    logoUrl: "/aura-logo-oficial.png",
-  },
+  { id: "Personas", name: "Personas / Aura HCM" },
+  { id: "Operaciones", name: "Operaciones / Aura Maintenance OS" },
+  { id: "Documentos", name: "Documentos / Aura Signature" },
+  { id: "Dirección", name: "Dirección / Aura Intelligence" },
+  { id: "Ecosistema completo", name: "Ecosistema completo" },
 ];
 
 const getPriority = (companySize: string, phone: string): ConsultingPriority => {
@@ -69,6 +46,26 @@ const getRecommendedNextStep = (
   return "Iniciar con video institucional y llamada de descubrimiento.";
 };
 
+async function withTimeout<T>(promise: Promise<T>, timeoutMs: number): Promise<T> {
+  let timeoutId: ReturnType<typeof setTimeout>;
+
+  const timeoutPromise = new Promise<never>((_, reject) => {
+    timeoutId = setTimeout(() => {
+      reject(
+        new Error(
+          "La solicitud tardó demasiado. Revisa conexión, configuración Firebase o reglas de Firestore.",
+        ),
+      );
+    }, timeoutMs);
+  });
+
+  try {
+    return await Promise.race([promise, timeoutPromise]);
+  } finally {
+    clearTimeout(timeoutId!);
+  }
+}
+
 const DemoRequestSection = () => {
   const [formData, setFormData] = useState({
     contactName: "",
@@ -87,7 +84,9 @@ const DemoRequestSection = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleInputChange = (
-    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
+    event: React.ChangeEvent<
+      HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement
+    >,
   ) => {
     const { name, value } = event.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -95,15 +94,23 @@ const DemoRequestSection = () => {
 
   const toggleArea = (area: string) => {
     setSelectedAreas((prev) =>
-      prev.includes(area) ? prev.filter((item) => item !== area) : [...prev, area],
+      prev.includes(area)
+        ? prev.filter((item) => item !== area)
+        : [...prev, area],
     );
   };
 
   const validateForm = () => {
     const tempErrors: string[] = [];
 
-    if (!formData.contactName.trim()) tempErrors.push("El nombre completo es requerido.");
-    if (!formData.companyName.trim()) tempErrors.push("La empresa es requerida.");
+    if (!formData.contactName.trim()) {
+      tempErrors.push("El nombre completo es requerido.");
+    }
+
+    if (!formData.companyName.trim()) {
+      tempErrors.push("La empresa es requerida.");
+    }
+
     if (!formData.email.trim()) {
       tempErrors.push("El correo electrónico es requerido.");
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email.trim())) {
@@ -125,31 +132,34 @@ const DemoRequestSection = () => {
   const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
 
-    if (!validateForm()) return;
+    if (!validateForm() || isSubmitting) return;
 
     setIsSubmitting(true);
     setErrors([]);
     setSuccess(false);
 
     try {
-      await createWebsiteOrganization({
-        companyName: formData.companyName.trim(),
-        contactName: formData.contactName.trim(),
-        email: formData.email.trim(),
-        phone: formData.phone.trim(),
-        industry: formData.industry.trim(),
-        companySize: formData.companySize,
-        mainChallenge: formData.mainChallenge.trim(),
-        interestAreas: selectedAreas,
-        notes: formData.notes.trim(),
-        source: "auranexus.io",
-        stage: "DISCOVERY",
-        priority: getPriority(formData.companySize, formData.phone),
-        recommendedNextStep: getRecommendedNextStep(
-          formData.mainChallenge,
-          selectedAreas,
-        ),
-      });
+      await withTimeout(
+        createWebsiteOrganization({
+          companyName: formData.companyName.trim(),
+          contactName: formData.contactName.trim(),
+          email: formData.email.trim(),
+          phone: formData.phone.trim(),
+          industry: formData.industry.trim(),
+          companySize: formData.companySize,
+          mainChallenge: formData.mainChallenge.trim(),
+          interestAreas: selectedAreas,
+          notes: formData.notes.trim(),
+          source: "auranexus.io",
+          stage: "DISCOVERY",
+          priority: getPriority(formData.companySize, formData.phone),
+          recommendedNextStep: getRecommendedNextStep(
+            formData.mainChallenge,
+            selectedAreas,
+          ),
+        }),
+        REQUEST_TIMEOUT_MS,
+      );
 
       setFormData({
         contactName: "",
@@ -161,13 +171,18 @@ const DemoRequestSection = () => {
         mainChallenge: "",
         notes: "",
       });
+
       setSelectedAreas([]);
       setSuccess(true);
     } catch (error) {
-      console.error(error);
-      setErrors([
-        "No pudimos registrar tu solicitud en este momento. Inténtalo nuevamente.",
-      ]);
+      console.error("AURA WEBSITE ERROR", error);
+
+      const message =
+        error instanceof Error
+          ? error.message
+          : "No pudimos registrar tu solicitud en este momento. Inténtalo nuevamente.";
+
+      setErrors([message]);
     } finally {
       setIsSubmitting(false);
     }
@@ -196,205 +211,127 @@ const DemoRequestSection = () => {
             solicitud y preparará una conversación enfocada en tus retos reales,
             no en una demostración genérica.
           </p>
-
-          <div className="space-y-4 border-t border-slate-900 pt-4 text-sm text-slate-400">
-            {[
-              "Diagnóstico inicial sin compromiso.",
-              "Recomendación consultiva del ecosistema Aura.",
-              "Sin acceso automático a precios, demos internas o información sensible.",
-            ].map((item) => (
-              <div key={item} className="flex items-center gap-3">
-                <div className="flex h-5 w-5 items-center justify-center rounded-full border border-cyan-500/20 bg-cyan-500/10 text-xs font-bold text-cyan-400">
-                  ✓
-                </div>
-                <span>{item}</span>
-              </div>
-            ))}
-          </div>
         </div>
 
         <div className="lg:col-span-7">
           <div className="relative overflow-hidden rounded-2xl border border-slate-800/80 bg-slate-900/15 p-6 shadow-2xl backdrop-blur-md md:p-8">
-            <div className="absolute left-0 right-0 top-0 h-[1px] bg-gradient-to-r from-transparent via-cyan-500/30 to-transparent" />
-
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                <div className="space-y-1.5">
-                  <label className="flex items-center gap-1.5 text-xs font-semibold text-slate-300">
-                    <User size={13} className="text-slate-500" />
-                    Nombre completo <span className="text-cyan-500">*</span>
-                  </label>
-                  <input
-                    type="text"
-                    name="contactName"
-                    value={formData.contactName}
-                    onChange={handleInputChange}
-                    placeholder="Juan Pérez"
-                    className="w-full rounded-lg border border-slate-800 bg-slate-950/60 p-2.5 text-sm text-slate-200 outline-none transition-all placeholder:text-slate-600 focus:border-cyan-500/60 focus:ring-1 focus:ring-cyan-500/30"
-                  />
-                </div>
+                <input
+                  type="text"
+                  name="contactName"
+                  value={formData.contactName}
+                  onChange={handleInputChange}
+                  placeholder="Nombre completo"
+                  className="w-full rounded-lg border border-slate-800 bg-slate-950/60 p-2.5 text-sm text-slate-200 outline-none"
+                />
 
-                <div className="space-y-1.5">
-                  <label className="flex items-center gap-1.5 text-xs font-semibold text-slate-300">
-                    <Briefcase size={13} className="text-slate-500" />
-                    Empresa <span className="text-cyan-500">*</span>
-                  </label>
-                  <input
-                    type="text"
-                    name="companyName"
-                    value={formData.companyName}
-                    onChange={handleInputChange}
-                    placeholder="Empresa S.A."
-                    className="w-full rounded-lg border border-slate-800 bg-slate-950/60 p-2.5 text-sm text-slate-200 outline-none transition-all placeholder:text-slate-600 focus:border-cyan-500/60 focus:ring-1 focus:ring-cyan-500/30"
-                  />
-                </div>
+                <input
+                  type="text"
+                  name="companyName"
+                  value={formData.companyName}
+                  onChange={handleInputChange}
+                  placeholder="Empresa"
+                  className="w-full rounded-lg border border-slate-800 bg-slate-950/60 p-2.5 text-sm text-slate-200 outline-none"
+                />
               </div>
 
               <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                <div className="space-y-1.5">
-                  <label className="flex items-center gap-1.5 text-xs font-semibold text-slate-300">
-                    <Mail size={13} className="text-slate-500" />
-                    Correo electrónico <span className="text-cyan-500">*</span>
-                  </label>
-                  <input
-                    type="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    placeholder="juan@empresa.com"
-                    className="w-full rounded-lg border border-slate-800 bg-slate-950/60 p-2.5 text-sm text-slate-200 outline-none transition-all placeholder:text-slate-600 focus:border-cyan-500/60 focus:ring-1 focus:ring-cyan-500/30"
-                  />
-                </div>
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  placeholder="Correo electrónico"
+                  className="w-full rounded-lg border border-slate-800 bg-slate-950/60 p-2.5 text-sm text-slate-200 outline-none"
+                />
 
-                <div className="space-y-1.5">
-                  <label className="flex items-center gap-1.5 text-xs font-semibold text-slate-300">
-                    <Phone size={13} className="text-slate-500" />
-                    WhatsApp / teléfono
-                  </label>
-                  <input
-                    type="tel"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleInputChange}
-                    placeholder="+52 442 000 0000"
-                    className="w-full rounded-lg border border-slate-800 bg-slate-950/60 p-2.5 text-sm text-slate-200 outline-none transition-all placeholder:text-slate-600 focus:border-cyan-500/60 focus:ring-1 focus:ring-cyan-500/30"
-                  />
-                </div>
+                <input
+                  type="tel"
+                  name="phone"
+                  value={formData.phone}
+                  onChange={handleInputChange}
+                  placeholder="WhatsApp / teléfono"
+                  className="w-full rounded-lg border border-slate-800 bg-slate-950/60 p-2.5 text-sm text-slate-200 outline-none"
+                />
               </div>
 
               <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-                <div className="space-y-1.5">
-                  <label className="flex items-center gap-1.5 text-xs font-semibold text-slate-300">
-                    <Briefcase size={13} className="text-slate-500" />
-                    Sector / industria
-                  </label>
-                  <input
-                    type="text"
-                    name="industry"
-                    value={formData.industry}
-                    onChange={handleInputChange}
-                    placeholder="Hotel, manufactura, servicios..."
-                    className="w-full rounded-lg border border-slate-800 bg-slate-950/60 p-2.5 text-sm text-slate-200 outline-none transition-all placeholder:text-slate-600 focus:border-cyan-500/60 focus:ring-1 focus:ring-cyan-500/30"
-                  />
-                </div>
+                <input
+                  type="text"
+                  name="industry"
+                  value={formData.industry}
+                  onChange={handleInputChange}
+                  placeholder="Sector / industria"
+                  className="w-full rounded-lg border border-slate-800 bg-slate-950/60 p-2.5 text-sm text-slate-200 outline-none"
+                />
 
-                <div className="space-y-1.5">
-                  <label className="flex items-center gap-1.5 text-xs font-semibold text-slate-300">
-                    <Users size={13} className="text-slate-500" />
-                    Tamaño aproximado
-                  </label>
-                  <select
-                    name="companySize"
-                    value={formData.companySize}
-                    onChange={handleInputChange}
-                    className="w-full cursor-pointer appearance-none rounded-lg border border-slate-800 bg-slate-950/60 p-2.5 text-sm text-slate-200 outline-none transition-all focus:border-cyan-500/60 focus:ring-1 focus:ring-cyan-500/30"
-                  >
-                    <option value="1-10">1 - 10 colaboradores</option>
-                    <option value="11-50">11 - 50 colaboradores</option>
-                    <option value="51-200">51 - 200 colaboradores</option>
-                    <option value="201-500">201 - 500 colaboradores</option>
-                    <option value="500+">Más de 500 colaboradores</option>
-                  </select>
-                </div>
+                <select
+                  name="companySize"
+                  value={formData.companySize}
+                  onChange={handleInputChange}
+                  className="w-full rounded-lg border border-slate-800 bg-slate-950/60 p-2.5 text-sm text-slate-200 outline-none"
+                >
+                  <option value="1-10">1 - 10 colaboradores</option>
+                  <option value="11-50">11 - 50 colaboradores</option>
+                  <option value="51-200">51 - 200 colaboradores</option>
+                  <option value="201-500">201 - 500 colaboradores</option>
+                  <option value="500+">Más de 500 colaboradores</option>
+                </select>
               </div>
 
-              <div className="space-y-2">
-                <label className="block text-xs font-semibold text-slate-300">
-                  Área donde buscas mejorar <span className="text-cyan-500">*</span>
-                </label>
+              <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-3">
+                {modulesList.map((item) => {
+                  const isSelected = selectedAreas.includes(item.id);
 
-                <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-3">
-                  {modulesList.map((item) => {
-                    const isSelected = selectedAreas.includes(item.id);
-
-                    return (
-                      <button
-                        key={item.id}
-                        type="button"
-                        onClick={() => toggleArea(item.id)}
+                  return (
+                    <button
+                      key={item.id}
+                      type="button"
+                      onClick={() => toggleArea(item.id)}
+                      className={[
+                        "flex items-center gap-2 rounded-xl border p-2.5 text-left transition-all",
+                        isSelected
+                          ? "border-cyan-500/40 bg-cyan-500/5 text-white"
+                          : "border-slate-800/80 bg-slate-950/40 text-slate-400 hover:border-slate-700",
+                      ].join(" ")}
+                    >
+                      <div
                         className={[
-                          "flex items-center gap-2 rounded-xl border p-2.5 text-left transition-all",
+                          "flex h-4 w-4 shrink-0 items-center justify-center rounded border",
                           isSelected
-                            ? "border-cyan-500/40 bg-cyan-500/5 text-white"
-                            : "border-slate-800/80 bg-slate-950/40 text-slate-400 hover:border-slate-700",
+                            ? "border-cyan-500 bg-cyan-500 text-slate-950"
+                            : "border-slate-700 bg-slate-950",
                         ].join(" ")}
                       >
-                        <div
-                          className={[
-                            "flex h-4 w-4 shrink-0 items-center justify-center rounded border",
-                            isSelected
-                              ? "border-cyan-500 bg-cyan-500 text-slate-950"
-                              : "border-slate-700 bg-slate-950",
-                          ].join(" ")}
-                        >
-                          {isSelected && <Check size={10} strokeWidth={4} />}
-                        </div>
+                        {isSelected && <Check size={10} strokeWidth={4} />}
+                      </div>
 
-                        <div className="h-5 w-5 shrink-0 overflow-hidden rounded">
-                          <img
-                            src={item.logoUrl}
-                            alt={item.name}
-                            className="h-full w-full object-contain"
-                          />
-                        </div>
-
-                        <span className="text-[10px] font-semibold md:text-xs">
-                          {item.name}
-                        </span>
-                      </button>
-                    );
-                  })}
-                </div>
+                      <span className="text-[10px] font-semibold md:text-xs">
+                        {item.name}
+                      </span>
+                    </button>
+                  );
+                })}
               </div>
 
-              <div className="space-y-1.5">
-                <label className="flex items-center gap-1.5 text-xs font-semibold text-slate-300">
-                  <MessageSquare size={13} className="text-slate-500" />
-                  Principal reto <span className="text-cyan-500">*</span>
-                </label>
-                <textarea
-                  name="mainChallenge"
-                  value={formData.mainChallenge}
-                  onChange={handleInputChange}
-                  rows={3}
-                  placeholder="Ej: necesitamos mejorar la asistencia, controlar mantenimiento o digitalizar firmas..."
-                  className="w-full resize-none rounded-lg border border-slate-800 bg-slate-950/60 p-2.5 text-sm text-slate-200 outline-none transition-all placeholder:text-slate-600 focus:border-cyan-500/60 focus:ring-1 focus:ring-cyan-500/30"
-                />
-              </div>
+              <textarea
+                name="mainChallenge"
+                value={formData.mainChallenge}
+                onChange={handleInputChange}
+                rows={3}
+                placeholder="Principal reto"
+                className="w-full resize-none rounded-lg border border-slate-800 bg-slate-950/60 p-2.5 text-sm text-slate-200 outline-none"
+              />
 
-              <div className="space-y-1.5">
-                <label className="text-xs font-semibold text-slate-300">
-                  Objetivo a 12 meses
-                </label>
-                <textarea
-                  name="notes"
-                  value={formData.notes}
-                  onChange={handleInputChange}
-                  rows={2}
-                  placeholder="¿Qué te gustaría mejorar en tu organización durante el próximo año?"
-                  className="w-full resize-none rounded-lg border border-slate-800 bg-slate-950/60 p-2.5 text-sm text-slate-200 outline-none transition-all placeholder:text-slate-600 focus:border-cyan-500/60 focus:ring-1 focus:ring-cyan-500/30"
-                />
-              </div>
+              <textarea
+                name="notes"
+                value={formData.notes}
+                onChange={handleInputChange}
+                rows={2}
+                placeholder="Objetivo a 12 meses"
+                className="w-full resize-none rounded-lg border border-slate-800 bg-slate-950/60 p-2.5 text-sm text-slate-200 outline-none"
+              />
 
               <AnimatePresence>
                 {errors.length > 0 && (
@@ -406,8 +343,9 @@ const DemoRequestSection = () => {
                   >
                     <div className="mb-1 flex items-center gap-1.5 font-bold">
                       <AlertCircle size={14} />
-                      <span>Por favor corrige lo siguiente:</span>
+                      <span>Por favor revisa lo siguiente:</span>
                     </div>
+
                     <ul className="list-disc space-y-0.5 pl-4 font-light">
                       {errors.map((error) => (
                         <li key={error}>{error}</li>
@@ -438,7 +376,7 @@ const DemoRequestSection = () => {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="flex w-full cursor-pointer items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-cyan-400 to-blue-500 px-6 py-3.5 text-sm font-semibold text-slate-950 shadow-[0_4px_20px_rgba(6,182,212,0.15)] transition-all hover:from-cyan-300 hover:to-blue-400 active:scale-[0.98] disabled:cursor-not-allowed disabled:opacity-60"
+                className="flex w-full cursor-pointer items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-cyan-400 to-blue-500 px-6 py-3.5 text-sm font-semibold text-slate-950 transition-all disabled:cursor-not-allowed disabled:opacity-60"
               >
                 {isSubmitting ? "Enviando..." : "Solicitar diagnóstico"}
               </button>
