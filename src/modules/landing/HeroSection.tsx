@@ -100,10 +100,10 @@ const HeroSection = () => {
             className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4"
           >
             <a
-              href="#contacto"
+              href="/diagnostico"
               className="w-full sm:w-auto px-8 py-4 rounded-xl font-semibold text-slate-950 bg-gradient-to-r from-cyan-400 to-blue-500 hover:from-cyan-300 hover:to-blue-400 active:scale-95 transition-all shadow-[0_4px_20px_rgba(6,182,212,0.25)] flex items-center justify-center gap-2"
             >
-              Solicitar demo
+              Realiza tu Diagnóstico Ejecutivo
               <ArrowRight size={18} />
             </a>
             

@@ -38,15 +38,15 @@ const Layout = () => {
             <a href="/#modulos" className="hover:text-cyan-400 transition-colors">Módulos</a>
             <a href="/#beneficios" className="hover:text-cyan-400 transition-colors">Beneficios</a>
             <a href="/#arquitectura" className="hover:text-cyan-400 transition-colors">Arquitectura</a>
-            <a href="/#contacto" className="hover:text-cyan-400 transition-colors">Contacto</a>
+            <a href="/diagnostico" className="hover:text-cyan-400 transition-colors">Diagnóstico</a>
           </nav>
 
           <div>
             <a
-              href="/#contacto"
-              className="px-4 py-2 rounded-lg text-xs font-semibold bg-slate-900 border border-slate-800 text-slate-200 hover:bg-slate-900/60 hover:text-white transition-all"
+              href="/diagnostico"
+              className="px-5 py-2 rounded-xl font-medium text-slate-900 bg-cyan-400 hover:bg-cyan-300 transition-colors"
             >
-              Solicitar Demo
+              Realiza tu Diagnóstico
             </a>
           </div>
         </div>

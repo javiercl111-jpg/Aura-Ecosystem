@@ -29,17 +29,16 @@ const FinalCTASection = () => {
           </h3>
 
           <p className="mx-auto max-w-2xl text-base font-light leading-relaxed text-slate-400 md:text-lg">
-            Aura Ecosystem integra las áreas críticas de tu empresa en una
-            experiencia moderna, segura y medible.
+            Conoce el nivel de madurez de tu empresa y recibe una Radiografía Empresarial preparada por Aura Intelligence.
           </p>
 
           <div className="flex flex-col items-center justify-center gap-4 pt-4 sm:flex-row">
             <a
-              href="/#contacto"
+              href="/diagnostico"
               className="flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-cyan-400 to-blue-500 px-8 py-4 font-semibold text-slate-950 shadow-[0_4px_20px_rgba(6,182,212,0.25)] transition-all hover:from-cyan-300 hover:to-blue-400 active:scale-95 sm:w-auto"
             >
               <Compass size={18} />
-              Solicitar diagnóstico
+              Realiza tu Diagnóstico Ejecutivo
               <ArrowRight size={16} />
             </a>
           </div>
