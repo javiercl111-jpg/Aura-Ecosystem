@@ -41,14 +41,14 @@ export class FirebaseExecutiveIntakeGateway implements ExecutiveIntakeGateway {
       if (error?.code === 'functions/resource-exhausted') {
         return {
           status: 'ERROR',
-          nextAction: 'SHOW_REVIEW_PENDING',
+          nextAction: 'SHOW_ERROR',
           publicMessage: 'TEMPORARILY_UNAVAILABLE',
         };
       }
       
       return {
         status: 'ERROR',
-        nextAction: 'SHOW_REVIEW_PENDING',
+        nextAction: 'SHOW_ERROR',
         publicMessage: 'INVALID_INPUT',
       };
     }

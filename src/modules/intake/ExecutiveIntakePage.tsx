@@ -29,11 +29,13 @@ const IntakeFlow = () => {
     case 'CORPORATE_HANDOFF':
       return <ExecutiveCorporateWelcome />;
     case 'REVIEW_PENDING':
-    case 'ERROR':
       return <ExecutiveReviewPending />;
     case 'DISCOVERY_READY':
     case 'REDIRECTING':
       return <ExecutiveWelcome />;
+    case 'ERROR':
+      // The user will see they need to fix input or try again, handled by a top-level error component if existed, but for now we fallback to the form.
+      return <IntakeExperience />;
     default:
       return <IntakeExperience />;
   }

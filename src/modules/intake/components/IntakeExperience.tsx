@@ -3,6 +3,24 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, ArrowLeft, ShieldCheck, Building2, User, Mail, MapPin } from 'lucide-react';
 import { useIntake } from '../context/IntakeContext';
 
+const InputField = ({ label, icon: Icon, field, type = 'text', optional = false, input, updateInput, errors }: any) => (
+  <div className="space-y-1">
+    <label className="text-sm text-slate-400 pl-1">{label} {optional && <span className="text-slate-600">(Opcional)</span>}</label>
+    <div className="relative">
+      <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+        <Icon size={18} className="text-slate-500" />
+      </div>
+      <input
+        type={type}
+        value={input[field] as string || ''}
+        onChange={(e) => updateInput({ [field]: e.target.value })}
+        className={`w-full pl-10 pr-4 py-3 bg-slate-900/50 border ${errors[field] ? 'border-red-500/50' : 'border-slate-800'} rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-cyan-500 transition-all`}
+      />
+    </div>
+    {errors[field] && <p className="text-xs text-red-400 pl-1">{errors[field]}</p>}
+  </div>
+);
+
 const IntakeExperience = () => {
   const { input, updateInput, submitIntake, advisorResolution } = useIntake();
   const [step, setStep] = useState(1);
@@ -48,23 +66,7 @@ const IntakeExperience = () => {
     }
   };
 
-  const InputField = ({ label, icon: Icon, field, type = 'text', optional = false }: any) => (
-    <div className="space-y-1">
-      <label className="text-sm text-slate-400 pl-1">{label} {optional && <span className="text-slate-600">(Opcional)</span>}</label>
-      <div className="relative">
-        <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-          <Icon size={18} className="text-slate-500" />
-        </div>
-        <input
-          type={type}
-          value={input[field as keyof typeof input] as string || ''}
-          onChange={(e) => updateInput({ [field]: e.target.value })}
-          className={`w-full pl-10 pr-4 py-3 bg-slate-900/50 border ${errors[field] ? 'border-red-500/50' : 'border-slate-800'} rounded-xl text-white placeholder-slate-500 focus:outline-none focus:ring-1 focus:ring-cyan-500 transition-all`}
-        />
-      </div>
-      {errors[field] && <p className="text-xs text-red-400 pl-1">{errors[field]}</p>}
-    </div>
-  );
+  // InputField was moved outside the component
 
   return (
     <motion.div 
@@ -105,10 +107,10 @@ const IntakeExperience = () => {
               exit={{ opacity: 0, x: 20 }}
               className="space-y-4"
             >
-              <InputField label="Nombre de la Empresa" icon={Building2} field="companyName" />
-              <InputField label="Tu Nombre" icon={User} field="contactName" />
-              <InputField label="Correo Corporativo" icon={Mail} field="email" type="email" />
-              <InputField label="Cargo" icon={User} field="jobTitle" />
+              <InputField label="Nombre de la Empresa" icon={Building2} field="companyName" input={input} updateInput={updateInput} errors={errors} />
+              <InputField label="Tu Nombre" icon={User} field="contactName" input={input} updateInput={updateInput} errors={errors} />
+              <InputField label="Correo Corporativo" icon={Mail} field="email" type="email" input={input} updateInput={updateInput} errors={errors} />
+              <InputField label="Cargo" icon={User} field="jobTitle" input={input} updateInput={updateInput} errors={errors} />
             </motion.div>
           )}
 
@@ -120,10 +122,10 @@ const IntakeExperience = () => {
               exit={{ opacity: 0, x: 20 }}
               className="space-y-4"
             >
-              <InputField label="Teléfono" icon={Mail} field="phone" optional />
+              <InputField label="Teléfono" icon={Mail} field="phone" optional input={input} updateInput={updateInput} errors={errors} />
               <div className="grid grid-cols-2 gap-4">
-                <InputField label="Estado" icon={MapPin} field="state" />
-                <InputField label="Municipio o Ciudad" icon={MapPin} field="city" />
+                <InputField label="Estado" icon={MapPin} field="state" input={input} updateInput={updateInput} errors={errors} />
+                <InputField label="Municipio o Ciudad" icon={MapPin} field="city" input={input} updateInput={updateInput} errors={errors} />
               </div>
               
               <div className="space-y-1">

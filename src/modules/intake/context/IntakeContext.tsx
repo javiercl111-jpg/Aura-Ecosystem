@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, type ReactNode } from 'react';
+import { createContext, useContext, useState, useMemo, type ReactNode } from 'react';
 import type { IntakeState } from '../orchestration/ExecutiveIntakeOrchestrator';
 import { ExecutiveIntakeOrchestrator } from '../orchestration/ExecutiveIntakeOrchestrator';
 import type { ExecutiveIntakeInput, ExecutiveIntakeResult, AdvisorResolutionResult } from '../types';
@@ -26,8 +26,8 @@ export const IntakeProvider = ({ children }: { children: ReactNode }) => {
   const [result, setResult] = useState<ExecutiveIntakeResult | null>(null);
   const [advisorResolution, setAdvisorResolution] = useState<AdvisorResolutionResult | null>(null);
 
-  const gateway = getExecutiveIntakeGateway();
-  const orchestrator = new ExecutiveIntakeOrchestrator(gateway);
+  const gateway = useMemo(() => getExecutiveIntakeGateway(), []);
+  const orchestrator = useMemo(() => new ExecutiveIntakeOrchestrator(gateway), [gateway]);
 
   const isMockEnvironment = import.meta.env.DEV && import.meta.env.VITE_INTAKE_GATEWAY_MODE === 'fixture';
 
@@ -59,11 +59,12 @@ export const IntakeProvider = ({ children }: { children: ReactNode }) => {
       setState('ANALYZING');
       const res = await orchestrator.submitIntake(input as ExecutiveIntakeInput);
       setResult(res);
-      setState(orchestrator.getNextStateFromResult(res));
+      const nextState = orchestrator.getNextStateFromResult(res);
+      setState(nextState);
     } catch (error) {
       setResult({
         status: 'ERROR',
-        nextAction: 'SHOW_REVIEW_PENDING',
+        nextAction: 'SHOW_ERROR',
         publicMessage: 'TEMPORARILY_UNAVAILABLE',
       });
       setState('ERROR');

@@ -26,7 +26,7 @@ export interface AdvisorResolutionResult {
 export interface ExecutiveIntakeResult {
   status: 'SUCCESS' | 'CORPORATE_HANDOFF' | 'REVIEW_PENDING' | 'ERROR';
   publicMessage?: string;
-  nextAction: 'REDIRECT_DISCOVERY' | 'SHOW_CORPORATE_WELCOME' | 'SHOW_REVIEW_PENDING';
+  nextAction: 'REDIRECT_DISCOVERY' | 'SHOW_CORPORATE_WELCOME' | 'SHOW_REVIEW_PENDING' | 'SHOW_ERROR';
   discoveryUrl?: string;
   advisorDisplayName?: string;
   organizationProfile?: 'LOCAL' | 'MULTISITE' | 'CORPORATE' | 'UNKNOWN';
