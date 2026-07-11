@@ -36,6 +36,9 @@ export class ExecutiveIntakeOrchestrator {
     if (result.status === 'CORPORATE_HANDOFF' || result.nextAction === 'SHOW_CORPORATE_WELCOME') {
       return 'CORPORATE_HANDOFF';
     }
+    if (result.status === 'PROCESSING') {
+      return 'ANALYZING';
+    }
     if (result.status === 'REVIEW_PENDING' || result.nextAction === 'SHOW_REVIEW_PENDING') {
       return 'REVIEW_PENDING';
     }

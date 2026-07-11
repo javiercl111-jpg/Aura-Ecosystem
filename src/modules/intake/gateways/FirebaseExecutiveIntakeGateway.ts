@@ -27,6 +27,15 @@ export class FirebaseExecutiveIntakeGateway implements ExecutiveIntakeGateway {
   }
 
   async prepareIntake(input: ExecutiveIntakeInput): Promise<ExecutiveIntakeResult> {
+    if (!import.meta.env.VITE_RECAPTCHA_SITE_KEY) {
+      console.error('App Check is not configured. Submit blocked.');
+      return {
+        status: 'ERROR',
+        nextAction: 'SHOW_ERROR',
+        publicMessage: 'APP_CHECK_REQUIRED',
+      };
+    }
+
     try {
       const createDiscoveryLeadFn = httpsCallable<ExecutiveIntakeInput, ExecutiveIntakeResult>(
         this.functions,
@@ -43,6 +52,14 @@ export class FirebaseExecutiveIntakeGateway implements ExecutiveIntakeGateway {
           status: 'ERROR',
           nextAction: 'SHOW_ERROR',
           publicMessage: 'TEMPORARILY_UNAVAILABLE',
+        };
+      }
+      
+      if (error?.code === 'functions/unauthenticated' || String(error?.message || '').toLowerCase().includes('app check')) {
+        return {
+          status: 'ERROR',
+          nextAction: 'SHOW_ERROR',
+          publicMessage: 'APP_CHECK_REQUIRED',
         };
       }
       

@@ -22,6 +22,9 @@ export const IntakeProvider = ({ children }: { children: ReactNode }) => {
   const [state, setState] = useState<IntakeState>('ENTRY');
   const [input, setInput] = useState<Partial<ExecutiveIntakeInput>>({
     acquisitionSource: 'AURA_NEXUS',
+    origin: 'WEBSITE',
+    entryMode: 'WEBSITE',
+    idempotencyKey: crypto.randomUUID(),
   });
   const [result, setResult] = useState<ExecutiveIntakeResult | null>(null);
   const [advisorResolution, setAdvisorResolution] = useState<AdvisorResolutionResult | null>(null);
@@ -39,10 +42,11 @@ export const IntakeProvider = ({ children }: { children: ReactNode }) => {
     setState('ANALYZING');
     const res = await orchestrator.resolveAdvisor(code);
     setAdvisorResolution(res);
-    updateInput({ commercialCode: code });
     if (res.status === 'OK') {
+      updateInput({ commercialCode: code, entryMode: 'ADVISOR_SHARE' });
       setState('DATA_CAPTURE');
     } else {
+      updateInput({ entryMode: 'WEBSITE' });
       // If invalid, fallback to normal entry
       setState('DATA_CAPTURE');
     }
@@ -57,7 +61,16 @@ export const IntakeProvider = ({ children }: { children: ReactNode }) => {
     try {
       // Analyzing state shown while network request is pending
       setState('ANALYZING');
-      const res = await orchestrator.submitIntake(input as ExecutiveIntakeInput);
+      let res = await orchestrator.submitIntake(input as ExecutiveIntakeInput);
+      
+      let attempts = 0;
+      while (res.status === 'PROCESSING' && attempts < 5) {
+        attempts++;
+        const delay = (res.retryAfterSeconds || 2) * 1000;
+        await new Promise(resolve => setTimeout(resolve, delay));
+        res = await orchestrator.submitIntake(input as ExecutiveIntakeInput);
+      }
+      
       setResult(res);
       const nextState = orchestrator.getNextStateFromResult(res);
       setState(nextState);

@@ -9,12 +9,14 @@ export interface ExecutiveIntakeInput {
   state: string;
   city: string;
   employeeRange: string;
+  origin: 'WEBSITE';
   acquisitionSource: 'AURA_NEXUS';
   privacyConsent: boolean;
   diagnosticDeliveryConsent: boolean;
   followUpConsent: boolean;
   marketingConsent: boolean;
   policyVersion: string;
+  idempotencyKey?: string;
 }
 
 export interface AdvisorResolutionResult {
@@ -24,11 +26,12 @@ export interface AdvisorResolutionResult {
 }
 
 export interface ExecutiveIntakeResult {
-  status: 'SUCCESS' | 'CORPORATE_HANDOFF' | 'REVIEW_PENDING' | 'ERROR';
+  status: 'SUCCESS' | 'CORPORATE_HANDOFF' | 'REVIEW_PENDING' | 'ERROR' | 'PROCESSING';
   publicMessage?: string;
   nextAction: 'REDIRECT_DISCOVERY' | 'SHOW_CORPORATE_WELCOME' | 'SHOW_REVIEW_PENDING' | 'SHOW_ERROR';
   discoveryUrl?: string;
   advisorDisplayName?: string;
   organizationProfile?: 'LOCAL' | 'MULTISITE' | 'CORPORATE' | 'UNKNOWN';
   requiresManualReview?: boolean;
+  retryAfterSeconds?: number;
 }

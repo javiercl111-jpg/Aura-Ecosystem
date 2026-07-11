@@ -22,9 +22,26 @@ const InputField = ({ label, icon: Icon, field, type = 'text', optional = false,
 );
 
 const IntakeExperience = () => {
-  const { input, updateInput, submitIntake, advisorResolution } = useIntake();
+  const { input, updateInput, submitIntake, advisorResolution, result } = useIntake();
   const [step, setStep] = useState(1);
   const [errors, setErrors] = useState<Record<string, string>>({});
+
+  // Parse global error messages based on secure publicMessage
+  const getErrorMessage = () => {
+    if (result?.status !== 'ERROR') return null;
+    switch (result?.publicMessage) {
+      case 'APP_CHECK_REQUIRED':
+        return 'No fue posible validar de forma segura esta solicitud. Recarga la página e inténtalo nuevamente.';
+      case 'TEMPORARILY_UNAVAILABLE':
+      case 'RATE_LIMITED':
+        return 'Temporalmente no podemos preparar tu diagnóstico. Tus datos permanecen en esta sesión para que puedas intentarlo nuevamente.';
+      case 'INVALID_INPUT':
+      case 'INVALID_ADVISOR_CONTEXT':
+      case 'CONTRACT_ERROR':
+      default:
+        return 'Ha ocurrido un error inesperado. Por favor verifica tus datos e inténtalo nuevamente.';
+    }
+  };
 
   const validateStep1 = () => {
     const newErrors: Record<string, string> = {};
@@ -93,6 +110,14 @@ const IntakeExperience = () => {
           <h2 className="text-2xl font-bold text-white tracking-tight">Antes de comenzar</h2>
           <p className="text-sm text-slate-400">
             Permítenos conocer algunos datos para personalizar tu diagnóstico. Nos tomará menos de un minuto.
+          </p>
+        </div>
+      )}
+
+      {result?.status === 'ERROR' && (
+        <div className="mb-8 p-4 bg-red-950/30 border border-red-900/50 rounded-2xl flex items-start gap-4">
+          <p className="text-sm text-red-300 leading-relaxed font-medium">
+            {getErrorMessage()}
           </p>
         </div>
       )}
