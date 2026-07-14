@@ -38,7 +38,7 @@ const getRecommendedNextStep = (
   }
 
   if (normalized.includes("dirección") || normalized.includes("decisiones")) {
-    return "Iniciar diagnóstico con Aura Intelligence.";
+    return "Solicitar demostración de Aura Intelligence.";
   }
 
   return "Iniciar con video institucional y llamada de descubrimiento.";
@@ -173,18 +173,16 @@ const DemoRequestSection = () => {
 
       <div className="relative z-10 mx-auto grid max-w-6xl grid-cols-1 items-center gap-12 lg:grid-cols-12">
         <div className="space-y-6 lg:col-span-5">
-          <span className="block text-sm font-semibold uppercase tracking-widest text-cyan-400">
-            Business Discovery
+          <span className="inline-flex items-center gap-2 rounded-full border border-cyan-500/20 bg-cyan-950/50 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-cyan-400">
+            Próximamente disponible
           </span>
 
-          <h3 className="text-3xl font-extrabold leading-tight tracking-tight text-slate-100 md:text-5xl">
-            Comienza con un diagnóstico Aura.
+          <h3 className="text-3xl font-extrabold leading-tight tracking-tight text-slate-100 md:text-5xl mt-4">
+            Diagnóstico Ejecutivo Aura™
           </h3>
 
-          <p className="text-base font-light leading-relaxed text-slate-400">
-            Cuéntanos qué necesita tu organización. Un consultor Aura revisará tu
-            solicitud y preparará una conversación enfocada en tus retos reales,
-            no en una demostración genérica.
+          <p className="text-base font-light leading-relaxed text-slate-400 mt-6">
+            Estamos preparando una nueva experiencia de diagnóstico empresarial impulsada por Aura Intelligence™. Mientras tanto, nuestro equipo puede conocer las necesidades de tu organización y presentarte las soluciones de Aura en una demostración personalizada.
           </p>
         </div>
 
@@ -353,7 +351,7 @@ const DemoRequestSection = () => {
                 disabled={isSubmitting}
                 className="flex w-full cursor-pointer items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-cyan-400 to-blue-500 px-6 py-3.5 text-sm font-semibold text-slate-950 transition-all disabled:cursor-not-allowed disabled:opacity-60"
               >
-                {isSubmitting ? "Enviando..." : "Solicitar diagnóstico"}
+                {isSubmitting ? "Enviando..." : "Solicitar una demostración"}
               </button>
             </form>
           </div>

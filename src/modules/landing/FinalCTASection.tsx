@@ -29,16 +29,16 @@ const FinalCTASection = () => {
           </h3>
 
           <p className="mx-auto max-w-2xl text-base font-light leading-relaxed text-slate-400 md:text-lg">
-            Conoce el nivel de madurez de tu empresa y recibe una Radiografía Empresarial preparada por Aura Intelligence.
+            Nuestro equipo puede conocer las necesidades de tu organización y presentarte las soluciones de Aura en una demostración personalizada.
           </p>
 
           <div className="flex flex-col items-center justify-center gap-4 pt-4 sm:flex-row">
             <a
-              href="/diagnostico"
+              href="#contacto"
               className="flex w-full items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-cyan-400 to-blue-500 px-8 py-4 font-semibold text-slate-950 shadow-[0_4px_20px_rgba(6,182,212,0.25)] transition-all hover:from-cyan-300 hover:to-blue-400 active:scale-95 sm:w-auto"
             >
               <Compass size={18} />
-              Realiza tu Diagnóstico Ejecutivo
+              Solicitar una demostración
               <ArrowRight size={16} />
             </a>
           </div>
