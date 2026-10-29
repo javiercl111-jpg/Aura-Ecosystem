@@ -55,10 +55,29 @@ const Layout = () => {
             <a key={label} href={href} className="shrink-0 rounded-full border border-slate-700/70 bg-slate-900/70 px-4 py-2.5 transition-colors hover:border-cyan-400/60 hover:text-cyan-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-cyan-400">{label}</a>
           ))}
         </nav>
+        <details className="group relative mt-2 md:hidden">
+          <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between rounded-xl border border-cyan-400/40 bg-cyan-400/10 px-4 py-2 text-sm font-semibold text-cyan-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-cyan-300 [&::-webkit-details-marker]:hidden">
+            <span>Ir a un módulo de Aura</span><span aria-hidden="true" className="transition-transform group-open:rotate-180">⌄</span>
+          </summary>
+          <nav aria-label="Seleccionar módulo Aura" className="absolute left-0 right-0 top-full z-50 mt-2 max-h-[65vh] overflow-y-auto rounded-2xl border border-cyan-400/25 bg-slate-950 p-2 shadow-2xl shadow-black/70">
+            {[
+              ['Aura HCM', '/aura-hcm'],
+              ['Aura Maintenance OS', '/aura-maintenance-os'],
+              ['Aura Signature', '/aura-signature'],
+              ['Aura Intelligence', '/aura-intelligence'],
+              ['Aura Control Center', '/aura-control-center'],
+              ['Aura Discovery · En desarrollo', '/#aura-discovery'],
+              ['Aura Growth · En desarrollo', '/#aura-growth'],
+              ['Aura Consultor · En desarrollo', '/#aura-consultor'],
+            ].map(([name, href]) => (
+              <a key={href} href={href} className="block min-h-11 rounded-lg px-4 py-3 text-sm text-slate-100 hover:bg-cyan-400/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-cyan-300">{name}</a>
+            ))}
+          </nav>
+        </details>
       </header>
 
       {/* Main Content Render */}
-      <main className="flex-grow pt-40 md:pt-32">
+      <main className="flex-grow pt-52 md:pt-32">
         <Outlet />
       </main>
 
