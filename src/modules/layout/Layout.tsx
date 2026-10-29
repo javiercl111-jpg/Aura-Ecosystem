@@ -43,11 +43,13 @@ const Layout = () => {
             />
           </Link>
           
-          <nav className="hidden md:flex items-center gap-8 text-sm text-slate-400">
+          <nav aria-label="Navegación principal" className="hidden md:flex items-center gap-3 lg:gap-5 xl:gap-7 text-xs lg:text-sm text-slate-400">
             <Link to="/#inicio" className="hover:text-cyan-400 transition-colors">Inicio</Link>
             <a href="/#modulos" className="hover:text-cyan-400 transition-colors">Módulos</a>
             <a href="/#beneficios" className="hover:text-cyan-400 transition-colors">Beneficios</a>
             <a href="/#arquitectura" className="hover:text-cyan-400 transition-colors">Arquitectura</a>
+            <a href="/#proximamente" className="whitespace-nowrap hover:text-cyan-400 transition-colors">Próximamente</a>
+            <a href="/#contacto" className="whitespace-nowrap hover:text-cyan-400 transition-colors">Contacto</a>
           </nav>
 
           <div>
