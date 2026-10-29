@@ -28,7 +28,7 @@ const Layout = () => {
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <Link to="/" className="flex items-center gap-3 hover:opacity-90 transition-opacity">
             <img 
-              src={isHCM ? "/aura-hcm.png" : "/aura-logo-oficial.png"} 
+              src={isHCM ? "/Logo%20Aura%20HCM%20oficial.png" : "/aura-logo-oficial.png"} 
               alt={isHCM ? "Aura HCM" : "Aura Nexus"} 
               className="h-[52px] md:h-[62px] lg:h-[72px] w-auto object-contain"
             />
