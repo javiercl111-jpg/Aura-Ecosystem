@@ -19,7 +19,7 @@ const AuraIntelligencePage = () => {
 
         <div className="relative isolate overflow-hidden rounded-[2rem] border border-violet-400/30 bg-[#0c1030] shadow-[0_30px_90px_rgba(0,0,0,.4)]">
           <div className="absolute inset-0" aria-hidden="true">
-            <motion.img src="/aura-intelligence-brain.png" onError={(event) => { event.currentTarget.src = "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=1600&q=78"; }} alt="" className="h-full w-full object-cover" animate={reducedMotion ? undefined : { scale: [1, 1.055, 1] }} transition={{ duration: 18, repeat: Infinity, ease: 'easeInOut' }} />
+            <img src="/aura-intelligence-brain.png" onError={(event) => { event.currentTarget.src = "https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=1600&q=78"; }} alt="" className="h-full w-full object-cover" loading="eager" decoding="async" />
             <div className="absolute inset-0 bg-gradient-to-r from-[#080b24]/95 via-[#080b24]/88 to-[#080b24]/40" />
           </div>
           <motion.div aria-hidden="true" className="pointer-events-none absolute -right-20 top-0 h-80 w-80 rounded-full bg-violet-500/20 blur-[90px]" animate={reducedMotion ? undefined : { x: [0,-35,0], opacity: [.3,.85,.3] }} transition={{ duration: 8, repeat: Infinity }} />
