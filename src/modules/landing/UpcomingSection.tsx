@@ -97,8 +97,8 @@ const UpcomingSection = () => (
       </div>
       <div className="space-y-10">
         {products.map((product, index) => (
-          <motion.article key={product.name} initial={{ opacity: 0, y: 26 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-80px' }} transition={{ duration: .55 }}
-            className={`grid grid-cols-1 lg:grid-cols-2 gap-7 lg:gap-12 items-center rounded-3xl border border-white/10 bg-white/[0.025] p-5 md:p-8 transition-colors ${palette[product.accent].border}`}>
+          <motion.article id={['aura-discovery', 'aura-growth', 'aura-consultor'][index]} key={product.name} initial={{ opacity: 0, y: 26 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-80px' }} transition={{ duration: .55 }}
+            className={`scroll-mt-56 grid grid-cols-1 lg:grid-cols-2 gap-7 lg:gap-12 items-center rounded-3xl border border-white/10 bg-white/[0.025] p-5 md:p-8 transition-colors ${palette[product.accent].border}`}>
             <div className={index % 2 ? 'lg:order-2' : ''}><ProductVisual product={product} index={index}/></div>
             <div className={index % 2 ? 'lg:order-1' : ''}>
               <div className="flex flex-wrap items-center gap-3 mb-5">
