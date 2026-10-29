@@ -17,38 +17,28 @@ const AuraSignaturePage = () => {
           Volver al Ecosistema
         </Link>
 
-        {/* Hero Section */}
-        <div className="flex flex-col md:flex-row items-center gap-8 border-b border-slate-900 pb-12">
-          <div className="space-y-3 text-center md:text-left">
-            <span className="px-3 py-1 rounded-full bg-teal-500/10 border border-teal-500/20 text-teal-400 text-xs font-semibold uppercase tracking-wider">
-              Legal & Documental
-            </span>
-            <h1 className="text-4xl md:text-6xl font-extrabold text-white tracking-tight">
-              Aura Signature
-            </h1>
-            <p className="text-lg md:text-xl text-cyan-400 font-light leading-relaxed">
-              Firma electrónica avanzada y gestión documental legal.
-            </p>
-          </div>
-        </div>
-
-        {/* Visual de identidad de producto; no es una captura de software. */}
-        <div className="relative isolate overflow-hidden rounded-3xl border border-cyan-500/20 bg-[#06122b] p-6 shadow-[0_26px_80px_rgba(0,0,0,.35)] md:p-10">
-          <div aria-hidden="true" className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,.04)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,.04)_1px,transparent_1px)] bg-[size:36px_36px]" />
-          <motion.div aria-hidden="true" className="absolute -right-24 -top-20 h-72 w-72 rounded-full bg-teal-500/20 blur-[75px]" animate={reducedMotion ? undefined : { opacity: [0.35, 0.85, 0.35], scale: [1, 1.18, 1], x: [0, -18, 0] }} transition={{ duration: 7, ease: "easeInOut", repeat: Infinity }} />
-          <div className="relative flex min-h-[270px] flex-col items-center justify-center gap-6 md:min-h-[360px] md:flex-row md:gap-14">
-            <motion.img src="/aura-signature.png" alt="Identidad visual de Aura Signature" className="h-40 w-40 object-contain drop-shadow-[0_20px_30px_rgba(0,0,0,.5)] md:h-56 md:w-56" animate={reducedMotion ? undefined : { y: [0, -9, 0], scale: [1, 1.035, 1] }} transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }} />
-            <div className="max-w-md text-center md:text-left">
-              <p className="text-xs font-semibold uppercase tracking-[.2em] text-teal-300">Flujos documentales</p>
-              <h2 className="mt-3 text-3xl font-semibold tracking-tight text-white md:text-4xl">Aura Signature</h2>
-              <p className="mt-4 text-sm leading-7 text-slate-300">Una experiencia documental diseñada para coordinar acuerdos, firmas y trazabilidad.</p>
-              <Link to="/#contacto" className="mt-6 inline-flex min-h-11 items-center justify-center rounded-xl border border-cyan-500/40 px-5 py-2 text-sm font-semibold text-cyan-200 hover:bg-cyan-500/10">Solicitar información</Link>
+        <div className="relative isolate overflow-hidden rounded-[2rem] border border-teal-400/30 bg-[#051b29] shadow-[0_30px_90px_rgba(0,0,0,.38)]">
+          <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(45,212,191,.07)_1px,transparent_1px),linear-gradient(to_bottom,rgba(45,212,191,.07)_1px,transparent_1px)] bg-[size:54px_54px]" />
+          <motion.div aria-hidden="true" className="pointer-events-none absolute -right-20 -top-28 h-96 w-96 rounded-full bg-teal-400/20 blur-[95px]" animate={reducedMotion ? undefined : { scale: [1, 1.18, 1], opacity: [.35, .8, .35] }} transition={{ duration: 7, repeat: Infinity }} />
+          <div className="relative grid min-h-[470px] items-center gap-10 p-8 md:grid-cols-[1.15fr_.85fr] md:p-14">
+            <motion.div initial={reducedMotion ? false : { opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .7 }}>
+              <span className="inline-flex rounded-full border border-teal-300/30 bg-teal-400/10 px-4 py-2 text-xs font-semibold uppercase tracking-[.2em] text-teal-200">Aura Signature · Documentos y acuerdos</span>
+              <h1 className="mt-6 text-4xl font-bold leading-[1.08] tracking-tight text-white sm:text-5xl lg:text-6xl">Acuerdos más claros. <span className="bg-gradient-to-r from-teal-200 via-cyan-300 to-blue-400 bg-clip-text text-transparent">Procesos conectados.</span></h1>
+              <p className="mt-6 max-w-xl text-lg leading-8 text-slate-200">Una visión de gestión documental y procesos de firma con trazabilidad y organización.</p>
+              <div className="mt-8 flex flex-wrap gap-3"><Link to="/#contacto" className="inline-flex min-h-12 items-center rounded-xl bg-teal-400 px-6 py-3 font-semibold text-slate-950 hover:bg-teal-300">Solicitar información</Link><a href="#signature-detalles" className="inline-flex min-h-12 items-center rounded-xl border border-teal-300/40 px-6 py-3 font-semibold text-white hover:bg-white/5">Conocer la solución</a></div>
+            </motion.div>
+            <div className="relative flex items-center justify-center">
+              <motion.div aria-hidden="true" className="absolute h-72 w-72 rounded-[2rem] border border-teal-300/30 bg-teal-300/5" animate={reducedMotion ? undefined : { rotate: [0, 3, 0], scale: [1, 1.05, 1] }} transition={{ duration: 7, repeat: Infinity }} />
+              <motion.img src="/aura-signature.png" alt="Aura Signature" className="relative z-10 max-h-56 w-full max-w-[280px] object-contain drop-shadow-[0_18px_36px_rgba(0,0,0,.5)]" animate={reducedMotion ? undefined : { y: [0, -9, 0] }} transition={{ duration: 4.5, repeat: Infinity }} />
             </div>
+          </div>
+          <div className="relative flex flex-wrap gap-2 border-t border-teal-300/20 bg-[#031521]/70 px-8 py-5 text-xs font-semibold text-teal-100 md:px-14">
+            {['Gestión documental', 'Procesos de firma', 'Trazabilidad'].map(x => <span key={x} className="rounded-full border border-teal-300/25 bg-teal-300/5 px-4 py-2">{x}</span>)}
           </div>
         </div>
 
         {/* Details & Highlights */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12">
+        <div id="signature-detalles" className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12">
           {/* Left Column: Description */}
           <div className="md:col-span-7 space-y-6 text-slate-300 leading-relaxed text-sm md:text-base">
             <p>Una experiencia documental diseñada para coordinar acuerdos, firmas y trazabilidad.</p>
