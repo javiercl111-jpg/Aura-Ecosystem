@@ -26,11 +26,11 @@ const HeroSection = () => {
             Tecnología empresarial · México
           </div>
           <img src="/aura-logo-oficial.png" alt="Aura Nexus" className="mb-8 h-20 w-auto object-contain sm:h-24 lg:h-28" />
-          <h1 id="hero-title" className="max-w-3xl text-5xl font-semibold leading-[1.05] tracking-tight text-white sm:text-6xl lg:text-7xl">
-            El siguiente nivel de <span className="bg-gradient-to-r from-cyan-300 via-sky-400 to-blue-500 bg-clip-text text-transparent">gestión empresarial.</span>
+          <h1 id="hero-title" className="max-w-3xl text-4xl font-semibold leading-[1.09] tracking-tight text-white sm:text-6xl lg:text-7xl">
+            Conecta tu empresa con una <span className="bg-gradient-to-r from-cyan-200 via-sky-400 to-blue-500 bg-clip-text text-transparent">nueva visión digital.</span>
           </h1>
           <p className="mt-7 max-w-xl text-base leading-8 text-slate-300 md:text-lg">
-            Conoce el ecosistema Aura Nexus: soluciones en desarrollo para conectar la gestión de personas, el mantenimiento, los documentos y la inteligencia empresarial.
+            Explora las soluciones Aura Nexus para personas, mantenimiento, documentos e inteligencia empresarial. Cada producto evoluciona a su propio ritmo y presenta su disponibilidad por separado.
           </p>
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
             <a href="#contacto" className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-cyan-400 px-6 py-3 font-semibold text-slate-950 transition-colors hover:bg-cyan-300 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-cyan-300">
@@ -48,7 +48,7 @@ const HeroSection = () => {
 
         <motion.div initial={reducedMotion ? false : { opacity: 0, x: 25 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.75, delay: 0.12 }} className="relative">
           <div aria-hidden="true" className="pointer-events-none absolute -inset-4 rounded-[2rem] bg-gradient-to-br from-cyan-500/15 via-blue-700/5 to-transparent blur-2xl" />
-          <div className="relative overflow-hidden rounded-[1.75rem] border border-slate-700/70 bg-slate-950/85 p-5 shadow-[0_35px_100px_rgba(0,0,0,.45)] sm:p-7">
+          <div className="relative overflow-hidden rounded-[1.75rem] border border-cyan-300/25 bg-gradient-to-b from-[#081a33] via-slate-950 to-[#030915] p-5 shadow-[0_35px_100px_rgba(0,0,0,.45),0_0_65px_rgba(34,211,238,.07)] sm:p-7">
             <div className="mb-7 flex items-center justify-between border-b border-slate-800 pb-5">
               <div>
                 <p className="text-[11px] font-semibold uppercase tracking-[.22em] text-cyan-400">Aura Nexus / Ecosystem</p>
