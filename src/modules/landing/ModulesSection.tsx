@@ -19,26 +19,23 @@ const ModuleCard = ({ logoUrl, title, shortDescription, description, features, c
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-100px' }}
       transition={{ duration: 0.5 }}
-      className="glass-panel glass-panel-hover flex flex-col justify-between p-6 md:p-8 rounded-2xl relative overflow-hidden group min-h-[480px]"
+      className="glass-panel glass-panel-hover flex flex-col justify-between p-6 md:p-8 rounded-2xl relative overflow-hidden group min-h-[540px]"
     >
       {/* Light gradient highlight on group hover */}
       <div className={`absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r ${color}`} />
       <div className={`absolute -right-8 -top-8 w-24 h-24 rounded-full bg-gradient-to-br ${color} opacity-0 group-hover:opacity-5 blur-xl transition-opacity duration-500`} />
 
       <div>
-        <div className="flex justify-between items-start mb-6">
-          {/* Logo container wrapper for uniform alignment - Increased size */}
-          <Link to={path} className="flex items-center justify-center p-3 rounded-2xl bg-slate-950/80 border border-slate-800/60 w-[72px] h-[72px] md:w-[88px] md:h-[88px] lg:w-[100px] lg:h-[100px] overflow-hidden shadow-inner group-hover:border-cyan-500/30 transition-colors">
-            <img 
-              src={logoUrl} 
-              alt={`${title} Logo`} 
-              className="max-h-full max-w-full object-contain transition-transform duration-500 group-hover:scale-105"
-            />
-          </Link>
-          <Link to={path} className="text-slate-500 group-hover:text-slate-300 transition-colors pt-2">
-            <ArrowUpRight size={18} />
-          </Link>
-        </div>
+        {/* Editorial product artwork: uses genuine brand assets, not fabricated screenshots. */}
+        <Link to={path} aria-label={`Conocer ${title}`} className="relative mb-7 block aspect-[16/10] overflow-hidden rounded-2xl border border-slate-700/60 bg-[#050e22] focus-visible:outline-2 focus-visible:outline-cyan-300">
+          <div aria-hidden="true" className={`absolute -right-12 -top-20 h-56 w-56 rounded-full bg-gradient-to-br ${color} opacity-20 blur-3xl`} />
+          <div aria-hidden="true" className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,.05)_1px,transparent_1px)] bg-[size:28px_28px] opacity-40" />
+          <div className="absolute inset-0 flex items-center justify-center p-8">
+            <img src={logoUrl} alt={`Identidad visual de ${title}`} loading="lazy" decoding="async" className="relative z-10 max-h-[78%] max-w-[78%] object-contain drop-shadow-[0_18px_30px_rgba(0,0,0,.5)] transition-transform duration-500 group-hover:scale-110" />
+          </div>
+          <div className="absolute bottom-3 left-3 rounded-full border border-white/10 bg-slate-950/75 px-3 py-1 text-[10px] font-medium text-slate-300 backdrop-blur">Solución Aura Nexus</div>
+          <ArrowUpRight size={18} aria-hidden="true" className="absolute right-4 top-4 text-cyan-300" />
+        </Link>
 
         <h3 className="text-xl md:text-2xl font-bold text-slate-100 mb-1 group-hover:text-white transition-colors">
           {title}
@@ -115,7 +112,7 @@ const ModulesSection = () => {
       shortDescription: 'Gestión inteligente de mantenimiento y operaciones.',
       description: 'Plataforma para el mantenimiento preventivo y correctivo de activos y facilidades físicas. Su alcance comercial está sujeto a validación.',
       features: ['Órdenes de Trabajo Inteligentes', 'Inventario de Activos y SLAs', 'Mantenimiento Preventivo Planificado'],
-      color: 'from-amber-500 to-orange-500',
+      color: 'from-blue-500 to-cyan-400',
       path: '/aura-maintenance-os',
     },
     {
