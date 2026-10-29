@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { AlertCircle, Check } from "lucide-react";
 
@@ -48,6 +49,7 @@ const getRecommendedNextStep = (
 };
 
 const DemoRequestSection = () => {
+  const { search } = useLocation();
   const [formData, setFormData] = useState({
     contactName: "",
     companyName: "",
@@ -60,6 +62,13 @@ const DemoRequestSection = () => {
   });
 
   const [selectedAreas, setSelectedAreas] = useState<string[]>([]);
+  useEffect(() => {
+    const interest = new URLSearchParams(search).get("interes");
+    if (interest && modulesList.some((item) => item.id === interest)) {
+      setSelectedAreas((previous) => previous.includes(interest) ? previous : [...previous, interest]);
+    }
+  }, [search]);
+
   const [errors, setErrors] = useState<string[]>([]);
   const [success, setSuccess] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -196,6 +205,7 @@ const DemoRequestSection = () => {
                 <input
                   type="text"
                   name="contactName"
+                  aria-label="Nombre completo"
                   value={formData.contactName}
                   onChange={handleInputChange}
                   placeholder="Nombre completo"
@@ -205,6 +215,7 @@ const DemoRequestSection = () => {
                 <input
                   type="text"
                   name="companyName"
+                  aria-label="Empresa"
                   value={formData.companyName}
                   onChange={handleInputChange}
                   placeholder="Empresa"
@@ -216,6 +227,7 @@ const DemoRequestSection = () => {
                 <input
                   type="email"
                   name="email"
+                  aria-label="Correo electrónico"
                   value={formData.email}
                   onChange={handleInputChange}
                   placeholder="Correo electrónico"
@@ -225,6 +237,7 @@ const DemoRequestSection = () => {
                 <input
                   type="tel"
                   name="phone"
+                  aria-label="WhatsApp o teléfono"
                   value={formData.phone}
                   onChange={handleInputChange}
                   placeholder="WhatsApp / teléfono"
@@ -236,6 +249,7 @@ const DemoRequestSection = () => {
                 <input
                   type="text"
                   name="industry"
+                  aria-label="Sector o industria"
                   value={formData.industry}
                   onChange={handleInputChange}
                   placeholder="Sector / industria"
@@ -244,6 +258,7 @@ const DemoRequestSection = () => {
 
                 <select
                   name="companySize"
+                  aria-label="Tamaño de la empresa"
                   value={formData.companySize}
                   onChange={handleInputChange}
                   className="w-full rounded-lg border border-slate-800 bg-slate-950/60 p-2.5 text-sm text-slate-200 outline-none"
@@ -256,7 +271,8 @@ const DemoRequestSection = () => {
                 </select>
               </div>
 
-              <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-3">
+              <p id="intereses-label" className="text-sm font-semibold text-slate-200">Soluciones de interés (selecciona al menos una)</p>
+              <div role="group" aria-labelledby="intereses-label" className="grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-3">
                 {modulesList.map((item) => {
                   const isSelected = selectedAreas.includes(item.id);
 
@@ -294,6 +310,7 @@ const DemoRequestSection = () => {
 
               <textarea
                 name="mainChallenge"
+                aria-label="Principal reto de la organización"
                 value={formData.mainChallenge}
                 onChange={handleInputChange}
                 rows={3}
@@ -303,6 +320,7 @@ const DemoRequestSection = () => {
 
               <textarea
                 name="notes"
+                aria-label="Objetivo a 12 meses"
                 value={formData.notes}
                 onChange={handleInputChange}
                 rows={2}
@@ -316,6 +334,7 @@ const DemoRequestSection = () => {
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: "auto" }}
                     exit={{ opacity: 0, height: 0 }}
+                    role="alert"
                     className="overflow-hidden rounded-lg border border-red-500/20 bg-red-500/10 p-3 text-xs text-red-400"
                   >
                     <div className="mb-1 flex items-center gap-1.5 font-bold">
@@ -337,6 +356,7 @@ const DemoRequestSection = () => {
                   <motion.div
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: "auto" }}
+                    role="status"
                     className="overflow-hidden rounded-lg border border-emerald-500/20 bg-emerald-500/10 p-3 text-xs text-emerald-400"
                   >
                     <div className="flex items-center gap-1.5 font-bold">
