@@ -19,7 +19,7 @@ const AuraSignaturePage = () => {
 
         <div className="relative isolate overflow-hidden rounded-[2rem] border border-teal-400/30 bg-[#051b29] shadow-[0_30px_90px_rgba(0,0,0,.38)]">
           <div className="absolute inset-0">
-            <motion.img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1600&q=78" alt="Mesa de trabajo con documentos profesionales" className="h-full w-full object-cover" decoding="async" animate={reducedMotion ? undefined : { scale: [1, 1.055, 1] }} transition={{ duration: 17, repeat: Infinity, ease: "easeInOut" }} />
+            <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1600&q=78" alt="Mesa de trabajo con documentos profesionales" className="h-full w-full object-cover" decoding="async" loading="eager" />
             <div className="absolute inset-0 bg-gradient-to-r from-[#041824]/95 via-[#041824]/88 to-[#041824]/40" />
             <div className="absolute inset-0 bg-gradient-to-t from-[#041824]/70 to-transparent" />
           </div>
