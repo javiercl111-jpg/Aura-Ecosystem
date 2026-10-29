@@ -1,5 +1,6 @@
 import HeroSection from './HeroSection';
 import ModulesSection from './ModulesSection';
+import InteractiveSolutionsSection from './InteractiveSolutionsSection';
 import EcosystemArchitectureDiagram from './EcosystemArchitectureDiagram';
 import BenefitsSection from './BenefitsSection';
 import AudienceSection from './AudienceSection';
@@ -13,6 +14,7 @@ const Home = () => {
     <>
       <HeroSection />
       <ModulesSection />
+      <InteractiveSolutionsSection />
       <EcosystemArchitectureDiagram />
       <BenefitsSection />
       <AudienceSection />
