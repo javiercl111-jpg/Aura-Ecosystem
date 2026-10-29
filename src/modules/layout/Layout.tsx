@@ -4,6 +4,7 @@ import Footer from '../landing/Footer';
 
 const Layout = () => {
   const { hash, pathname } = useLocation();
+  const isHCM = pathname === '/aura-hcm';
 
   useEffect(() => {
     if (hash) {
@@ -27,8 +28,8 @@ const Layout = () => {
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <Link to="/" className="flex items-center gap-3 hover:opacity-90 transition-opacity">
             <img 
-              src="/aura-logo-oficial.png" 
-              alt="Aura Ecosystem" 
+              src={isHCM ? "/aura-hcm.png" : "/aura-logo-oficial.png"} 
+              alt={isHCM ? "Aura HCM" : "Aura Nexus"} 
               className="h-[52px] md:h-[62px] lg:h-[72px] w-auto object-contain"
             />
           </Link>
