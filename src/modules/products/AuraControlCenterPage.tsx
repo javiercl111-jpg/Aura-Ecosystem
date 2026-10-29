@@ -25,7 +25,7 @@ const AuraControlCenterPage = () => {
               <span className="inline-flex rounded-full border border-emerald-300/30 bg-emerald-400/10 px-4 py-2 text-xs font-semibold uppercase tracking-[.18em] text-emerald-200">Aura Control Center · Gobierno del ecosistema</span>
               <h1 className="mt-6 text-4xl font-bold leading-[1.08] tracking-tight text-white sm:text-5xl lg:text-6xl">Una visión conectada. <span className="bg-gradient-to-r from-emerald-200 via-teal-300 to-cyan-300 bg-clip-text text-transparent">Un mejor control.</span></h1>
               <p className="mt-6 max-w-xl text-lg leading-8 text-slate-200">La plataforma interna de gobierno y supervisión que articula el ecosistema Aura Nexus.</p>
-              <div className="mt-8 flex flex-wrap gap-3"><Link to="/#contacto" className="inline-flex min-h-12 items-center rounded-xl bg-emerald-400 px-6 py-3 font-semibold text-slate-950 hover:bg-emerald-300">Solicitar información</Link><a href="#control-detalles" className="inline-flex min-h-12 items-center rounded-xl border border-emerald-300/40 px-6 py-3 font-semibold text-white hover:bg-white/5">Conocer la solución</a></div>
+              <div className="mt-8 flex flex-wrap gap-3"><Link to="/#contacto" className="inline-flex min-h-12 items-center rounded-xl bg-emerald-400 px-6 py-3 font-semibold text-slate-950 hover:bg-emerald-300">Explorar soluciones Aura</Link><a href="#control-detalles" className="inline-flex min-h-12 items-center rounded-xl border border-emerald-300/40 px-6 py-3 font-semibold text-white hover:bg-white/5">Conocer la solución</a></div>
             </motion.div>
             <div className="relative flex items-center justify-center">
               <motion.div aria-hidden="true" className="absolute h-72 w-72 rounded-full border border-emerald-300/30 bg-emerald-300/5" animate={reducedMotion ? undefined : {scale:[1,1.08,1],opacity:[.4,.85,.4]}} transition={{duration:5,repeat:Infinity}} />
@@ -39,7 +39,7 @@ const AuraControlCenterPage = () => {
 
         {/* Details & Highlights */}
         <div id="control-detalles" className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12">
-          <div className="md:col-span-7 space-y-6 text-slate-300 leading-relaxed text-sm md:text-base"><p>Aura Control Center es una herramienta interna de Aura Nexus orientada a gobernar organizaciones, accesos y operaciones del ecosistema.</p><p>No se ofrece como consola comercial independiente ni se exponen sus funciones administrativas privilegiadas.</p></div>
+          <div className="md:col-span-7 space-y-6 text-slate-300 leading-relaxed text-sm md:text-base"><p>Aura Control Center es la herramienta interna de Aura Nexus, diseñada para centralizar la administración, supervisión y coordinación de los módulos y servicios del ecosistema.</p></div>
           {/* Right Column: Highlights List */}
           <div className="md:col-span-5 space-y-4">
             <h3 className="text-sm font-bold text-slate-200 uppercase tracking-widest mb-3">
