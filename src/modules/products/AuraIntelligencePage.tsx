@@ -1,7 +1,9 @@
+import { motion, useReducedMotion } from 'framer-motion';
 import { ArrowLeft, Brain, Search, Cpu } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const AuraIntelligencePage = () => {
+  const reducedMotion = useReducedMotion();
   return (
     <section className="relative min-h-screen pt-12 pb-24 px-4 md:px-8 bg-slate-950 overflow-hidden flex flex-col justify-center">
       {/* Decorative radial glows */}
@@ -15,58 +17,29 @@ const AuraIntelligencePage = () => {
           Volver al Ecosistema
         </Link>
 
-        {/* Hero Section */}
-        <div className="flex flex-col md:flex-row items-center gap-8 border-b border-slate-900 pb-12">
-          {/* Logo container */}
-          <div className="flex items-center justify-center p-4 rounded-3xl bg-slate-900 border-2 border-slate-800 w-36 h-36 md:w-44 md:h-44 overflow-hidden shadow-2xl relative">
-            <div className="absolute inset-1 rounded-3xl border border-violet-500/10 animate-pulse" />
-            <img 
-              src="/aura-intelligence.png" 
-              alt="Aura Intelligence Logo" 
-              className="max-h-full max-w-full object-contain"
-            />
-          </div>
-          <div className="space-y-3 text-center md:text-left">
-            <span className="px-3 py-1 rounded-full bg-violet-500/10 border border-violet-500/20 text-violet-400 text-xs font-semibold uppercase tracking-wider">
-              Inteligencia Artificial
-            </span>
-            <h1 className="text-4xl md:text-6xl font-extrabold text-white tracking-tight">
-              Aura Intelligence
-            </h1>
-            <p className="text-lg md:text-xl text-cyan-400 font-light leading-relaxed">
-              Asistente empresarial y análisis cognitivo impulsado por IA.
-            </p>
-          </div>
-        </div>
-
-        {/* Visual de identidad de producto; no es una captura de software. */}
-        <div className="relative isolate overflow-hidden rounded-3xl border border-cyan-500/20 bg-[#06122b] p-6 shadow-[0_26px_80px_rgba(0,0,0,.35)] md:p-10">
-          <div aria-hidden="true" className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,.04)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,.04)_1px,transparent_1px)] bg-[size:36px_36px]" />
-          <div aria-hidden="true" className="absolute -right-24 -top-20 h-72 w-72 rounded-full bg-blue-500/20 blur-[75px]" />
-          <div className="relative flex min-h-[270px] flex-col items-center justify-center gap-6 md:min-h-[360px] md:flex-row md:gap-14">
-            <img src="/aura-intelligence.png" alt="Identidad visual de Aura Intelligence" loading="lazy" className="h-40 w-40 object-contain drop-shadow-[0_20px_30px_rgba(0,0,0,.5)] md:h-56 md:w-56" />
-            <div className="max-w-md text-center md:text-left">
-              <p className="text-xs font-semibold uppercase tracking-[.2em] text-cyan-300">Aura Nexus · Soluciones empresariales</p>
-              <h2 className="mt-3 text-3xl font-semibold tracking-tight text-white md:text-4xl">Aura Intelligence</h2>
-              <p className="mt-4 text-sm leading-7 text-slate-300">Conoce la visión del producto y solicita información sobre sus capacidades verificadas y su estado de desarrollo.</p>
-              <Link to="/#contacto" className="mt-6 inline-flex min-h-11 items-center justify-center rounded-xl border border-cyan-500/40 px-5 py-2 text-sm font-semibold text-cyan-200 hover:bg-cyan-500/10">Solicitar información</Link>
+        <div className="relative isolate overflow-hidden rounded-[2rem] border border-violet-400/30 bg-[#0c1030] shadow-[0_30px_90px_rgba(0,0,0,.4)]">
+          <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_75%_40%,rgba(139,92,246,.23),transparent_55%),linear-gradient(to_right,rgba(139,92,246,.08)_1px,transparent_1px),linear-gradient(to_bottom,rgba(139,92,246,.08)_1px,transparent_1px)] bg-[size:auto,54px_54px,54px_54px]" />
+          <motion.div aria-hidden="true" className="pointer-events-none absolute -right-20 top-0 h-80 w-80 rounded-full bg-violet-500/20 blur-[90px]" animate={reducedMotion ? undefined : { x: [0,-35,0], opacity: [.3,.85,.3] }} transition={{ duration: 8, repeat: Infinity }} />
+          <div className="relative grid min-h-[470px] items-center gap-8 p-8 md:grid-cols-[1.15fr_.85fr] md:p-14">
+            <motion.div initial={reducedMotion ? false : {opacity:0,y:16}} animate={{opacity:1,y:0}} transition={{duration:.7}}>
+              <span className="inline-flex rounded-full border border-violet-300/30 bg-violet-400/10 px-4 py-2 text-xs font-semibold uppercase tracking-[.18em] text-violet-200">Aura Intelligence · Visión de inteligencia empresarial</span>
+              <h1 className="mt-6 text-4xl font-bold leading-[1.08] tracking-tight text-white sm:text-5xl lg:text-6xl">Conocimiento conectado. <span className="bg-gradient-to-r from-violet-200 via-fuchsia-300 to-cyan-300 bg-clip-text text-transparent">Decisiones mejor informadas.</span></h1>
+              <p className="mt-6 max-w-xl text-lg leading-8 text-slate-200">Explora nuestra visión de herramientas de asistencia y análisis para procesos empresariales.</p>
+              <div className="mt-8 flex flex-wrap gap-3"><Link to="/#contacto" className="inline-flex min-h-12 items-center rounded-xl bg-violet-400 px-6 py-3 font-semibold text-slate-950 hover:bg-violet-300">Solicitar información</Link><a href="#intelligence-detalles" className="inline-flex min-h-12 items-center rounded-xl border border-violet-300/40 px-6 py-3 font-semibold text-white hover:bg-white/5">Conocer la visión</a></div>
+            </motion.div>
+            <div className="relative flex items-center justify-center">
+              <motion.div aria-hidden="true" className="absolute h-72 w-72 rounded-full border border-violet-300/30 bg-violet-300/5" animate={reducedMotion ? undefined : {scale:[1,1.09,1],opacity:[.4,.85,.4]}} transition={{duration:5,repeat:Infinity}} />
+              <motion.img src="/aura-intelligence.png" alt="Aura Intelligence" className="relative z-10 max-h-56 w-full max-w-[280px] object-contain drop-shadow-[0_18px_36px_rgba(0,0,0,.5)]" animate={reducedMotion ? undefined : {y:[0,-9,0]}} transition={{duration:4.5,repeat:Infinity}} />
             </div>
           </div>
-          <p className="relative mt-3 text-right text-[11px] text-slate-400">Imagen de identidad corporativa, no captura funcional.</p>
+          <div className="relative flex flex-wrap gap-2 border-t border-violet-300/20 bg-[#080e24]/70 px-8 py-5 text-xs font-semibold text-violet-100 md:px-14">
+            {['Conocimiento', 'Análisis', 'Asistencia'].map(x => <span key={x} className="rounded-full border border-violet-300/25 bg-violet-300/5 px-4 py-2">{x}</span>)}
+          </div>
         </div>
 
         {/* Details & Highlights */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12">
-          {/* Left Column: Description */}
-          <div className="md:col-span-7 space-y-6 text-slate-400 leading-relaxed font-light text-sm md:text-base">
-            <p>
-              Aura Intelligence es el cerebro cognitivo del Ecosistema Aura. Mediante el uso de modelos de lenguaje avanzados (LLMs) y procesamiento seguro de la información corporativa, asiste de forma interactiva a colaboradores, administradores y directivos.
-            </p>
-            <p>
-              Esta plataforma es capaz de estructurar consultas complejas en lenguaje natural, predecir necesidades financieras del negocio, y automatizar tareas operativas repetitivas, todo ello respetando las políticas más estrictas de privacidad y seguridad de la información corporativa.
-            </p>
-          </div>
-
+        <div id="intelligence-detalles" className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12">
+          <div className="md:col-span-7 space-y-6 text-slate-300 leading-relaxed text-sm md:text-base"><p>Aura Intelligence es una iniciativa en desarrollo enfocada en explorar asistencia, organización del conocimiento y análisis para entornos empresariales.</p><p>Las capacidades de inteligencia artificial, automatización e integraciones requieren validación y autorización antes de su oferta comercial o uso real.</p></div>
           {/* Right Column: Highlights List */}
           <div className="md:col-span-5 space-y-4">
             <h3 className="text-sm font-bold text-slate-200 uppercase tracking-widest mb-3">
