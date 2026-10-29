@@ -34,11 +34,11 @@ const Footer = () => {
         <div className="space-y-3">
           <h5 className="font-semibold text-slate-200 uppercase tracking-wider text-xs">Módulos</h5>
           <ul className="space-y-2 text-slate-500 text-xs">
-            <li><a href="#modules-section" className="hover:text-cyan-400 transition-colors">Aura HCM</a></li>
-            <li><a href="#modules-section" className="hover:text-cyan-400 transition-colors">Aura Signature</a></li>
-            <li><a href="#modules-section" className="hover:text-cyan-400 transition-colors">Aura Intelligence</a></li>
-            <li><a href="#modules-section" className="hover:text-cyan-400 transition-colors">Aura Maintenance OS</a></li>
-            <li><a href="#modules-section" className="hover:text-cyan-400 transition-colors">Aura Control Center</a></li>
+            <li><a href="#modulos" className="hover:text-cyan-400 transition-colors">Aura HCM</a></li>
+            <li><a href="#modulos" className="hover:text-cyan-400 transition-colors">Aura Signature</a></li>
+            <li><a href="#modulos" className="hover:text-cyan-400 transition-colors">Aura Intelligence</a></li>
+            <li><a href="#modulos" className="hover:text-cyan-400 transition-colors">Aura Maintenance OS</a></li>
+            <li><a href="#modulos" className="hover:text-cyan-400 transition-colors">Aura Control Center</a></li>
           </ul>
         </div>
 
@@ -46,9 +46,9 @@ const Footer = () => {
         <div className="space-y-3">
           <h5 className="font-semibold text-slate-200 uppercase tracking-wider text-xs">Cumplimiento</h5>
           <ul className="space-y-2 text-slate-500 text-xs">
-            <li><a href="#" className="hover:text-cyan-400 transition-colors">Política de Privacidad</a></li>
-            <li><a href="#" className="hover:text-cyan-400 transition-colors">Términos del Servicio</a></li>
-            <li><a href="#" className="hover:text-cyan-400 transition-colors">Seguridad de Datos</a></li>
+            <li><span>Aviso de privacidad (en publicación)</span></li>
+            <li><span>Términos del servicio (pendientes)</span></li>
+            <li><span>Información sobre seguridad</span></li>
             <li className="flex items-start gap-1.5 pt-1 text-cyan-500/80 max-w-[200px]">
               <Shield size={12} className="mt-0.5 flex-shrink-0" />
               <span>Diseñado con prácticas empresariales de seguridad y control.</span>
