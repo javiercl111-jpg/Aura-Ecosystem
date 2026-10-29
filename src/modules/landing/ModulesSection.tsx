@@ -102,7 +102,7 @@ const ModulesSection = () => {
     {
       logoUrl: '/aura-intelligence.png',
       title: 'Aura Intelligence',
-      shortDescription: 'Asistente empresarial impulsado por IA.',
+      shortDescription: 'Inteligencia transversal en desarrollo.',
       description: 'Iniciativa en desarrollo de asistencia, búsqueda contextual y automatización empresarial con controles de seguridad y consumo.',
       features: ['Soporte inteligente', 'Búsqueda contextual', 'Automatización operativa'],
       color: 'from-violet-500 to-blue-500',
@@ -120,8 +120,8 @@ const ModulesSection = () => {
     {
       logoUrl: '/aura-control-center.png',
       title: 'Aura Control Center',
-      shortDescription: 'Administración centralizada del ecosistema Aura.',
-      description: 'Consola en desarrollo para gestionar y supervisar componentes del ecosistema Aura.',
+      shortDescription: 'Gobierno interno del ecosistema Aura.',
+      description: 'Infraestructura de administración interna de Aura Nexus. No es una solución comercial independiente.',
       features: ['Monitoreo Multi-tenant y Finanzas', 'Gestión de Permisos y Roles', 'Logs de Auditoría Corporativos'],
       color: 'from-emerald-500 to-teal-500',
       path: '/aura-control-center',
@@ -139,7 +139,7 @@ const ModulesSection = () => {
             Una plataforma modular y conectada
           </h3>
           <p className="text-base md:text-lg text-slate-400 font-light leading-relaxed">
-            Elige los módulos que tu organización necesita e intégralos de forma nativa para lograr sinergia operativa, financiera y de gestión de personas.
+            Conoce las soluciones y capacidades del ecosistema Aura. La disponibilidad de cada producto e integración se confirma individualmente.
           </p>
         </div>
 
