@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Rocket, Zap, Brain, Link } from 'lucide-react';
+import { Compass, TrendingUp, MessagesSquare } from 'lucide-react';
 
 interface UpcomingCardProps {
   icon: React.ReactNode;
@@ -24,7 +24,7 @@ const UpcomingCard = ({ icon, title, description }: UpcomingCardProps) => {
             {icon}
           </div>
           <span className="px-2.5 py-0.5 text-[9px] font-mono tracking-widest uppercase rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 font-semibold shadow-[0_0_10px_rgba(6,182,212,0.05)]">
-            Próximamente
+            En desarrollo
           </span>
         </div>
 
@@ -42,24 +42,19 @@ const UpcomingCard = ({ icon, title, description }: UpcomingCardProps) => {
 const UpcomingSection = () => {
   const items = [
     {
-      icon: <Rocket size={20} />,
-      title: 'Nuevos Módulos Empresariales',
-      description: 'Herramientas de próxima generación diseñadas para coordinar flujos de trabajo específicos sin fricciones operativas.',
+      icon: <Compass size={20} />,
+      title: 'Aura Discovery',
+      description: 'Propuesta comercial en desarrollo para investigación de mercados, segmentación empresarial y seguimiento de prospectos mediante un CRM separado de la administración interna de Aura.',
     },
     {
-      icon: <Zap size={20} />,
-      title: 'Automatización Avanzada',
-      description: 'Procesamiento inteligente de tareas repetitivas y disparadores automáticos transversales en todo el ecosistema.',
+      icon: <TrendingUp size={20} />,
+      title: 'Aura Growth',
+      description: 'Iniciativa en desarrollo para apoyar la captación y seguimiento comercial. Alcance e integraciones sujetos a validación antes de su oferta.',
     },
     {
-      icon: <Brain size={20} />,
-      title: 'Inteligencia de Negocio Expandida',
-      description: 'Modelos analíticos avanzados de predicción de datos y asistencia en lenguaje natural con contexto corporativo.',
-    },
-    {
-      icon: <Link size={20} />,
-      title: 'Integraciones Estratégicas',
-      description: 'Conexión transparente con plataformas líderes de la industria para expandir la capacidad y sinergia de tu tenant.',
+      icon: <MessagesSquare size={20} />,
+      title: 'Aura Consultor',
+      description: 'Proyecto en desarrollo de asistencia consultiva con controles de privacidad, autorización y consumo. Todavía no disponible comercialmente.',
     },
   ];
 
@@ -82,12 +77,12 @@ const UpcomingSection = () => {
             Aura está diseñado como una plataforma empresarial modular lista para expandirse junto con las necesidades operativas y estratégicas de tu organización.
           </p>
           <p className="max-w-2xl mx-auto text-xs md:text-sm text-slate-500 font-light leading-relaxed">
-            Nuevas capacidades, automatizaciones, integraciones e inteligencia empresarial continúan desarrollándose constantemente para ampliar el alcance de nuestras soluciones de negocio.
+            Discovery, Growth y Consultor son iniciativas en desarrollo. Su disponibilidad, alcance y condiciones comerciales todavía requieren validación.
           </p>
         </div>
 
         {/* 4 Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {items.map((item, index) => (
             <UpcomingCard key={index} {...item} />
           ))}
