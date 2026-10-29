@@ -1,54 +1,52 @@
+import { motion, useReducedMotion } from 'framer-motion';
 import { ArrowLeft, PenTool, ShieldCheck, History } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const AuraSignaturePage = () => {
+  const reducedMotion = useReducedMotion();
   return (
     <section className="relative min-h-screen pt-12 pb-24 px-4 md:px-8 bg-slate-950 overflow-hidden flex flex-col justify-center">
       {/* Decorative radial glows */}
       <div className="absolute top-1/4 left-1/4 w-[400px] h-[400px] bg-teal-500/10 rounded-full blur-[120px] pointer-events-none" />
       <div className="absolute bottom-1/4 right-1/4 w-[350px] h-[350px] bg-cyan-500/5 rounded-full blur-[100px] pointer-events-none" />
       
-      <div className="max-w-4xl mx-auto w-full relative z-10 space-y-12">
+      <div className="max-w-6xl mx-auto w-full relative z-10 space-y-12">
         {/* Back Link */}
         <Link to="/#modulos" className="inline-flex items-center gap-2 text-xs font-semibold text-slate-500 hover:text-cyan-400 transition-colors uppercase tracking-wider">
           <ArrowLeft size={14} />
           Volver al Ecosistema
         </Link>
 
-        {/* Hero Section */}
-        <div className="flex flex-col md:flex-row items-center gap-8 border-b border-slate-900 pb-12">
-          {/* Logo container */}
-          <div className="flex items-center justify-center p-4 rounded-3xl bg-slate-900 border-2 border-slate-800 w-28 h-28 md:w-36 md:h-36 overflow-hidden shadow-2xl relative">
-            <div className="absolute inset-1 rounded-3xl border border-teal-500/10 animate-pulse" />
-            <img 
-              src="/aura-signature.png" 
-              alt="Aura Signature Logo" 
-              className="max-h-full max-w-full object-contain"
-            />
+        <div className="relative isolate overflow-hidden rounded-[2rem] border border-teal-400/30 bg-[#051b29] shadow-[0_30px_90px_rgba(0,0,0,.38)]">
+          <div className="absolute inset-0">
+            <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1600&q=78" alt="Mesa de trabajo con documentos profesionales" className="h-full w-full object-cover" decoding="async" loading="eager" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#041824]/95 via-[#041824]/88 to-[#041824]/40" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#041824]/70 to-transparent" />
           </div>
-          <div className="space-y-3 text-center md:text-left">
-            <span className="px-3 py-1 rounded-full bg-teal-500/10 border border-teal-500/20 text-teal-400 text-xs font-semibold uppercase tracking-wider">
-              Legal & Documental
-            </span>
-            <h1 className="text-4xl md:text-6xl font-extrabold text-white tracking-tight">
-              Aura Signature
-            </h1>
-            <p className="text-lg md:text-xl text-cyan-400 font-light leading-relaxed">
-              Firma electrónica avanzada y gestión documental legal.
-            </p>
+          <motion.div aria-hidden="true" className="pointer-events-none absolute -right-20 -top-28 h-96 w-96 rounded-full bg-teal-400/20 blur-[95px]" animate={reducedMotion ? undefined : { scale: [1, 1.18, 1], opacity: [.35, .8, .35] }} transition={{ duration: 7, repeat: Infinity }} />
+          <div className="relative grid min-h-[470px] items-center gap-10 p-8 md:grid-cols-[1.15fr_.85fr] md:p-14">
+            <motion.div initial={reducedMotion ? false : { opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .7 }}>
+              <span className="inline-flex rounded-full border border-teal-300/30 bg-teal-400/10 px-4 py-2 text-xs font-semibold uppercase tracking-[.2em] text-teal-200">Aura Signature · Documentos y acuerdos</span>
+              <h1 className="mt-6 text-4xl font-bold leading-[1.08] tracking-tight text-white sm:text-5xl lg:text-6xl">Acuerdos más claros. <span className="bg-gradient-to-r from-teal-200 via-cyan-300 to-blue-400 bg-clip-text text-transparent">Procesos conectados.</span></h1>
+              <p className="mt-6 max-w-xl text-lg leading-8 text-slate-200">Una visión de gestión documental y procesos de firma con trazabilidad y organización.</p>
+              <div className="mt-8 flex flex-wrap gap-3"><Link to="/#contacto" className="inline-flex min-h-12 items-center rounded-xl bg-teal-400 px-6 py-3 font-semibold text-slate-950 hover:bg-teal-300">Solicitar información</Link><a href="#signature-detalles" className="inline-flex min-h-12 items-center rounded-xl border border-teal-300/40 px-6 py-3 font-semibold text-white hover:bg-white/5">Conocer la solución</a></div>
+            </motion.div>
+            <div className="relative flex items-center justify-center">
+              <motion.div aria-hidden="true" className="absolute h-72 w-72 rounded-[2rem] border border-teal-300/30 bg-teal-300/5" animate={reducedMotion ? undefined : { rotate: [0, 3, 0], scale: [1, 1.05, 1] }} transition={{ duration: 7, repeat: Infinity }} />
+              <motion.img src="/aura-signature.png" alt="Aura Signature" className="relative z-10 max-h-56 w-full max-w-[280px] object-contain drop-shadow-[0_18px_36px_rgba(0,0,0,.5)]" animate={reducedMotion ? undefined : { y: [0, -9, 0] }} transition={{ duration: 4.5, repeat: Infinity }} />
+            </div>
+          </div>
+          <div className="relative flex flex-wrap gap-2 border-t border-teal-300/20 bg-[#031521]/70 px-8 py-5 text-xs font-semibold text-teal-100 md:px-14">
+            {['Gestión documental', 'Procesos de firma', 'Trazabilidad'].map(x => <span key={x} className="rounded-full border border-teal-300/25 bg-teal-300/5 px-4 py-2">{x}</span>)}
           </div>
         </div>
 
         {/* Details & Highlights */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12">
+        <div id="signature-detalles" className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12">
           {/* Left Column: Description */}
-          <div className="md:col-span-7 space-y-6 text-slate-400 leading-relaxed font-light text-sm md:text-base">
-            <p>
-              Aura Signature es la solución corporativa que revoluciona la gestión de acuerdos y la firma de documentos contractuales. A través de flujos automatizados y robustos estándares criptográficos, permite digitalizar de punta a punta los procesos de consentimiento con plena validez legal.
-            </p>
-            <p>
-              Integrado nativamente con Aura HCM y el resto del ecosistema, facilita el envío masivo de contratos de trabajo, addendas, políticas internas y acuerdos comerciales con un seguimiento detallado en tiempo real de cada interviniente.
-            </p>
+          <div className="md:col-span-7 space-y-6 text-slate-300 leading-relaxed text-sm md:text-base">
+            <p>Una experiencia documental diseñada para coordinar acuerdos, firmas y trazabilidad.</p>
+            <p>Las funcionalidades específicas y su disponibilidad se confirman individualmente conforme avance su validación.</p>
           </div>
 
           {/* Right Column: Highlights List */}
@@ -85,6 +83,30 @@ const AuraSignaturePage = () => {
           </div>
         </div>
 
+        {/* Alcance comercial informativo: no supone certificación jurídica o disponibilidad. */}
+        <section aria-labelledby="signature-valor" className="space-y-6">
+          <div className="max-w-3xl">
+            <p className="text-xs font-semibold uppercase tracking-[.2em] text-teal-300">Documentos y procesos empresariales</p>
+            <h2 id="signature-valor" className="mt-3 text-3xl font-semibold text-white md:text-4xl">¿Cómo puede ayudar Aura Signature?</h2>
+            <p className="mt-4 leading-7 text-slate-300">Una propuesta para organizar acuerdos y procesos documentales en equipos de distintos tamaños y sectores. Las funciones concretas, los tipos de firma y su alcance jurídico están sujetos a validación.</p>
+          </div>
+          <div className="grid gap-5 md:grid-cols-3">
+            <div className="rounded-2xl border border-teal-400/20 bg-slate-900/50 p-6">
+              <h3 className="mb-4 text-lg font-semibold text-white">Retos de las organizaciones</h3>
+              <p className="text-sm leading-7 text-slate-300">Documentos dispersos, múltiples participantes en revisiones y dificultades para dar seguimiento a acuerdos y versiones.</p>
+            </div>
+            <div className="rounded-2xl border border-teal-400/20 bg-slate-900/50 p-6">
+              <h3 className="mb-4 text-lg font-semibold text-white">Áreas de la solución</h3>
+              <p className="text-sm leading-7 text-slate-300">Organización documental, coordinación de aprobaciones, procesos de firma y consulta de trazabilidad, conforme a las capacidades que se verifiquen.</p>
+            </div>
+            <div className="rounded-2xl border border-teal-400/20 bg-slate-900/50 p-6">
+              <h3 className="mb-4 text-lg font-semibold text-white">¿A quién puede servir?</h3>
+              <p className="text-sm leading-7 text-slate-300">Equipos de RRHH, áreas legales, administración, compras y dirección; empresas de servicios, industria, hotelería, comercio y grupos con múltiples sedes.</p>
+            </div>
+          </div>
+          <p className="text-sm leading-6 text-slate-400">Aura Signature continúa en evolución. La disponibilidad, integraciones, mecanismos de firma y efectos legales se revisan caso por caso antes de ofrecerlos comercialmente.</p>
+        </section>
+
         {/* CTA Demo Banner */}
         <div className="p-8 rounded-2xl border border-slate-800 bg-gradient-to-r from-slate-950 to-slate-900/40 text-center space-y-6 shadow-xl relative overflow-hidden">
           <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-teal-500/20 to-transparent" />
@@ -92,14 +114,14 @@ const AuraSignaturePage = () => {
             ¿Listo para digitalizar tus contratos y firmas legales?
           </h2>
           <p className="max-w-md mx-auto text-xs md:text-sm text-slate-400 font-light leading-relaxed">
-            Solicita una presentación interactiva de Aura Signature y agiliza los acuerdos comerciales e internos de tu organización de forma segura.
+            Conoce las capacidades verificadas y el estado de desarrollo de Aura Signature.
           </p>
           <div>
             <a 
               href="/#contacto"
               className="inline-flex px-8 py-3.5 rounded-xl font-semibold text-slate-950 bg-gradient-to-r from-teal-400 to-cyan-500 hover:from-teal-300 hover:to-cyan-400 active:scale-95 transition-all shadow-[0_4px_20px_rgba(20,184,166,0.15)] text-sm"
             >
-              Solicitar Demo
+              Solicitar información
             </a>
           </div>
         </div>

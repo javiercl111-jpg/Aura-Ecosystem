@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { AlertCircle, Check } from "lucide-react";
 
@@ -9,7 +10,10 @@ const modulesList = [
   { id: "Personas", name: "Personas / Aura HCM" },
   { id: "Operaciones", name: "Operaciones / Aura Maintenance OS" },
   { id: "Documentos", name: "Documentos / Aura Signature" },
-  { id: "Dirección", name: "Dirección / Aura Intelligence" },
+  { id: "Dirección", name: "Aura Intelligence (en desarrollo)" },
+  { id: "Discovery", name: "Aura Discovery (en desarrollo)" },
+  { id: "Growth", name: "Aura Growth (en desarrollo)" },
+  { id: "Consultor", name: "Aura Consultor (en desarrollo)" },
   { id: "Ecosistema completo", name: "Ecosistema completo" },
 ];
 
@@ -26,25 +30,26 @@ const getRecommendedNextStep = (
   const normalized = `${mainChallenge} ${interestAreas.join(" ")}`.toLowerCase();
 
   if (normalized.includes("operaciones") || normalized.includes("mantenimiento")) {
-    return "Iniciar diagnóstico con Aura Maintenance OS.";
+    return "Contactar para conocer el alcance de Aura Maintenance OS.";
   }
 
   if (normalized.includes("documentos") || normalized.includes("firma")) {
-    return "Iniciar diagnóstico con Aura Signature.";
+    return "Contactar para conocer el alcance de Aura Signature.";
   }
 
   if (normalized.includes("personas") || normalized.includes("rh")) {
-    return "Iniciar diagnóstico con Aura HCM.";
+    return "Contactar para conocer el alcance de Aura HCM.";
   }
 
-  if (normalized.includes("dirección") || normalized.includes("decisiones")) {
-    return "Solicitar demostración de Aura Intelligence.";
+  if (normalized.includes("dirección") || normalized.includes("decisiones") || normalized.includes("discovery") || normalized.includes("growth") || normalized.includes("consultor")) {
+    return "Compartir información sobre la evolución de las soluciones de interés y confirmar su disponibilidad.";
   }
 
-  return "Iniciar con video institucional y llamada de descubrimiento.";
+  return "Contactar para conocer las necesidades de la organización.";
 };
 
 const DemoRequestSection = () => {
+  const { search } = useLocation();
   const [formData, setFormData] = useState({
     contactName: "",
     companyName: "",
@@ -57,6 +62,13 @@ const DemoRequestSection = () => {
   });
 
   const [selectedAreas, setSelectedAreas] = useState<string[]>([]);
+  useEffect(() => {
+    const interest = new URLSearchParams(search).get("interes");
+    if (interest && modulesList.some((item) => item.id === interest)) {
+      setSelectedAreas((previous) => previous.includes(interest) ? previous : [...previous, interest]);
+    }
+  }, [search]);
+
   const [errors, setErrors] = useState<string[]>([]);
   const [success, setSuccess] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -174,15 +186,15 @@ const DemoRequestSection = () => {
       <div className="relative z-10 mx-auto grid max-w-6xl grid-cols-1 items-center gap-12 lg:grid-cols-12">
         <div className="space-y-6 lg:col-span-5">
           <span className="inline-flex items-center gap-2 rounded-full border border-cyan-500/20 bg-cyan-950/50 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-cyan-400">
-            Próximamente disponible
+            Conoce las soluciones Aura
           </span>
 
           <h3 className="text-3xl font-extrabold leading-tight tracking-tight text-slate-100 md:text-5xl mt-4">
-            Diagnóstico Ejecutivo Aura™
+            Hablemos de tu empresa
           </h3>
 
           <p className="text-base font-light leading-relaxed text-slate-400 mt-6">
-            Estamos preparando una nueva experiencia de diagnóstico empresarial impulsada por Aura Intelligence™. Mientras tanto, nuestro equipo puede conocer las necesidades de tu organización y presentarte las soluciones de Aura en una demostración personalizada.
+            Cuéntanos qué necesita tu organización y qué soluciones de Aura Nexus te interesan. Te compartiremos información sobre su desarrollo, disponibilidad y posibilidades de presentación según las capacidades verificadas.
           </p>
         </div>
 
@@ -193,6 +205,7 @@ const DemoRequestSection = () => {
                 <input
                   type="text"
                   name="contactName"
+                  aria-label="Nombre completo"
                   value={formData.contactName}
                   onChange={handleInputChange}
                   placeholder="Nombre completo"
@@ -202,6 +215,7 @@ const DemoRequestSection = () => {
                 <input
                   type="text"
                   name="companyName"
+                  aria-label="Empresa"
                   value={formData.companyName}
                   onChange={handleInputChange}
                   placeholder="Empresa"
@@ -213,6 +227,7 @@ const DemoRequestSection = () => {
                 <input
                   type="email"
                   name="email"
+                  aria-label="Correo electrónico"
                   value={formData.email}
                   onChange={handleInputChange}
                   placeholder="Correo electrónico"
@@ -222,6 +237,7 @@ const DemoRequestSection = () => {
                 <input
                   type="tel"
                   name="phone"
+                  aria-label="WhatsApp o teléfono"
                   value={formData.phone}
                   onChange={handleInputChange}
                   placeholder="WhatsApp / teléfono"
@@ -233,6 +249,7 @@ const DemoRequestSection = () => {
                 <input
                   type="text"
                   name="industry"
+                  aria-label="Sector o industria"
                   value={formData.industry}
                   onChange={handleInputChange}
                   placeholder="Sector / industria"
@@ -241,6 +258,7 @@ const DemoRequestSection = () => {
 
                 <select
                   name="companySize"
+                  aria-label="Tamaño de la empresa"
                   value={formData.companySize}
                   onChange={handleInputChange}
                   className="w-full rounded-lg border border-slate-800 bg-slate-950/60 p-2.5 text-sm text-slate-200 outline-none"
@@ -253,7 +271,8 @@ const DemoRequestSection = () => {
                 </select>
               </div>
 
-              <div className="grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-3">
+              <p id="intereses-label" className="text-sm font-semibold text-slate-200">Soluciones de interés (selecciona al menos una)</p>
+              <div role="group" aria-labelledby="intereses-label" className="grid grid-cols-1 gap-2 sm:grid-cols-2 md:grid-cols-3">
                 {modulesList.map((item) => {
                   const isSelected = selectedAreas.includes(item.id);
 
@@ -262,6 +281,7 @@ const DemoRequestSection = () => {
                       key={item.id}
                       type="button"
                       onClick={() => toggleArea(item.id)}
+                      aria-pressed={isSelected}
                       className={[
                         "flex items-center gap-2 rounded-xl border p-2.5 text-left transition-all",
                         isSelected
@@ -290,6 +310,7 @@ const DemoRequestSection = () => {
 
               <textarea
                 name="mainChallenge"
+                aria-label="Principal reto de la organización"
                 value={formData.mainChallenge}
                 onChange={handleInputChange}
                 rows={3}
@@ -299,6 +320,7 @@ const DemoRequestSection = () => {
 
               <textarea
                 name="notes"
+                aria-label="Objetivo a 12 meses"
                 value={formData.notes}
                 onChange={handleInputChange}
                 rows={2}
@@ -312,6 +334,7 @@ const DemoRequestSection = () => {
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: "auto" }}
                     exit={{ opacity: 0, height: 0 }}
+                    role="alert"
                     className="overflow-hidden rounded-lg border border-red-500/20 bg-red-500/10 p-3 text-xs text-red-400"
                   >
                     <div className="mb-1 flex items-center gap-1.5 font-bold">
@@ -333,6 +356,7 @@ const DemoRequestSection = () => {
                   <motion.div
                     initial={{ opacity: 0, height: 0 }}
                     animate={{ opacity: 1, height: "auto" }}
+                    role="status"
                     className="overflow-hidden rounded-lg border border-emerald-500/20 bg-emerald-500/10 p-3 text-xs text-emerald-400"
                   >
                     <div className="flex items-center gap-1.5 font-bold">
@@ -340,7 +364,7 @@ const DemoRequestSection = () => {
                       <span>Solicitud recibida.</span>
                     </div>
                     <p className="mt-1 pl-5 font-light">
-                      Un consultor Aura revisará tu diagnóstico y te contactará.
+                      Nuestro equipo revisará tu solicitud y podrá ponerse en contacto contigo.
                     </p>
                   </motion.div>
                 )}
@@ -351,7 +375,7 @@ const DemoRequestSection = () => {
                 disabled={isSubmitting}
                 className="flex w-full cursor-pointer items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-cyan-400 to-blue-500 px-6 py-3.5 text-sm font-semibold text-slate-950 transition-all disabled:cursor-not-allowed disabled:opacity-60"
               >
-                {isSubmitting ? "Enviando..." : "Solicitar una demostración"}
+                {isSubmitting ? "Enviando..." : "Solicitar información"}
               </button>
             </form>
           </div>

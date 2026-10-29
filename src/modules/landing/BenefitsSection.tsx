@@ -1,111 +1,39 @@
-import { motion } from 'framer-motion';
-import { Unlink, Eye, Zap, ShieldCheck, Layers, Network } from 'lucide-react';
+import { motion, useReducedMotion } from 'framer-motion';
+import { ShieldCheck, Layers3, Compass, MessagesSquare, ArrowUpRight } from 'lucide-react';
 
-interface BenefitItemProps {
-  icon: React.ReactNode;
-  title: string;
-  description: string;
-}
-
-const BenefitItem = ({ icon, title, description }: BenefitItemProps) => {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 15 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-50px' }}
-      transition={{ duration: 0.4 }}
-      className="flex gap-4 p-4 rounded-xl hover:bg-slate-900/40 transition-colors duration-300"
-    >
-      <div className="flex-shrink-0 text-cyan-400 mt-1">
-        <div className="p-2.5 rounded-lg bg-cyan-950/50 border border-cyan-500/20">
-          {icon}
-        </div>
-      </div>
-      <div className="space-y-1">
-        <h4 className="text-lg font-semibold text-slate-100">{title}</h4>
-        <p className="text-sm text-slate-400 leading-relaxed font-light">{description}</p>
-      </div>
-    </motion.div>
-  );
-};
+const reasons = [
+  { icon: Layers3, title: 'Soluciones con identidad propia', description: 'Cada producto responde a un área empresarial concreta. Su alcance y disponibilidad se presentan por separado, sin dar por concluidas integraciones pendientes.' },
+  { icon: ShieldCheck, title: 'Seguridad desde el diseño', description: 'Promovemos controles de acceso, privacidad y auditoría como criterios de desarrollo. Las capacidades específicas requieren validación por producto.' },
+  { icon: Compass, title: 'Evolución modular', description: 'El ecosistema contempla recursos humanos, mantenimiento, documentos e inteligencia, con iniciativas en distintas etapas de desarrollo.' },
+  { icon: MessagesSquare, title: 'Atención a tus necesidades', description: 'Cuéntanos los retos de tu organización y te orientaremos sobre el alcance y el estado actual de las soluciones que te interesen.' },
+];
 
 const BenefitsSection = () => {
-  const benefits = [
-    {
-      icon: <Unlink size={20} />,
-      title: 'Menos sistemas aislados',
-      description: 'Consolida operaciones financieras, talento y firma de documentos en una sola plataforma integrada que elimina silos informativos.',
-    },
-    {
-      icon: <Eye size={20} />,
-      title: 'Más trazabilidad',
-      description: 'Auditorías criptográficas integradas y trazabilidad completa de cada acción y documento firmado dentro del ecosistema.',
-    },
-    {
-      icon: <Zap size={20} />,
-      title: 'Automatización operativa',
-      description: 'Optimiza la ejecución de procesos automatizando flujos de trabajo repetitivos y validaciones mediante inteligencia artificial.',
-    },
-    {
-      icon: <ShieldCheck size={20} />,
-      title: 'Seguridad y auditoría',
-      description: 'Seguridad de grado enterprise con logs inmutables, encriptación en tránsito y reposo, y estricto cumplimiento normativo.',
-    },
-    {
-      icon: <Layers size={20} />,
-      title: 'Visión centralizada por empresa',
-      description: 'Visualiza indicadores clave de rendimiento financiero y operativo consolidados en un panel único de control directivo.',
-    },
-    {
-      icon: <Network size={20} />,
-      title: 'Escalabilidad multi-tenant',
-      description: 'Arquitectura diseñada para soportar esquemas corporativos multi-empresa y divisiones, aislando datos de forma óptima.',
-    },
-  ];
-
+  const reducedMotion = useReducedMotion();
   return (
-    <section id="beneficios" className="py-24 px-4 md:px-8 bg-slate-950 relative border-t border-slate-900 overflow-hidden">
-      {/* Soft gradient spot */}
-      <div className="absolute right-0 top-1/3 w-[300px] h-[300px] bg-blue-500/5 rounded-full blur-[100px] pointer-events-none" />
-
-      <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          
-          {/* Text block */}
-          <div className="lg:col-span-5 space-y-6">
-            <span className="text-sm font-semibold text-cyan-400 uppercase tracking-widest block">
-              Beneficios Clave
-            </span>
-            <h3 className="text-3xl md:text-5xl font-extrabold text-slate-100 tracking-tight leading-tight">
-              ¿Por qué elegir Aura Ecosystem?
-            </h3>
-            <p className="text-base text-slate-400 font-light leading-relaxed">
-              Diseñado para resolver las ineficiencias de operar con sistemas desconectados. Proporcionamos una arquitectura integrada que impulsa el control de nóminas, recursos operativos y auditorías contractuales en un solo portal.
-            </p>
-            <div className="pt-4 border-t border-slate-900 flex items-center gap-4">
-              <div className="text-left">
-                <span className="block text-3xl font-bold text-cyan-400">99.9%</span>
-                <span className="text-xs text-slate-500 uppercase tracking-wider">Uptime Garantizado</span>
-              </div>
-              <div className="h-8 w-[1px] bg-slate-800" />
-              <div className="text-left">
-                <span className="block text-3xl font-bold text-cyan-400">40%</span>
-                <span className="text-xs text-slate-500 uppercase tracking-wider">Eficiencia Operativa</span>
-              </div>
-            </div>
+    <section id="beneficios" aria-labelledby="porque-aura" className="relative scroll-mt-64 overflow-hidden border-t border-slate-800 bg-gradient-to-b from-[#07152a] via-slate-950 to-slate-950 px-4 py-24 md:scroll-mt-32 md:px-8">
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_at_80%_15%,rgba(34,211,238,.10),transparent_55%)]" />
+      <div className="relative mx-auto max-w-7xl">
+        <div className="grid items-start gap-10 lg:grid-cols-[.85fr_1.15fr]">
+          <div className="max-w-xl">
+            <span className="text-sm font-semibold uppercase tracking-[.2em] text-cyan-300">Nuestra manera de construir tecnología</span>
+            <h2 id="porque-aura" className="mt-5 text-4xl font-extrabold tracking-tight text-white md:text-5xl">¿Por qué <span className="bg-gradient-to-r from-cyan-200 to-blue-400 bg-clip-text text-transparent">Aura Nexus?</span></h2>
+            <p className="mt-6 text-base leading-8 text-slate-300">Creamos soluciones empresariales con una visión modular, una identidad tecnológica consistente y una comunicación transparente sobre lo que está en desarrollo y lo que ya puede evaluarse.</p>
+            <p className="mt-4 text-sm leading-7 text-slate-400">Nuestro enfoque combina necesidades reales de las organizaciones con criterios de seguridad, privacidad y evolución responsable. Ninguna certificación ni funcionalidad se presume disponible sin validación.</p>
+            <a href="/#contacto" className="mt-8 inline-flex min-h-12 items-center gap-2 rounded-xl bg-cyan-400 px-5 py-3 font-semibold text-slate-950 transition-colors hover:bg-cyan-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-300">Cuéntanos qué necesita tu empresa <ArrowUpRight size={18} aria-hidden="true" /></a>
           </div>
-
-          {/* Grid layout of benefits */}
-          <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {benefits.map((benefit, index) => (
-              <BenefitItem key={index} {...benefit} />
+          <div className="grid gap-4 sm:grid-cols-2">
+            {reasons.map(({ icon: Icon, title, description }, index) => (
+              <motion.article key={title} initial={reducedMotion ? false : { opacity: 0, y: 15 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-40px' }} transition={{ duration: .4, delay: index * .06 }} className="relative min-h-[218px] overflow-hidden rounded-2xl border border-cyan-300/15 bg-white/[.035] p-6">
+                <div className="mb-6 inline-flex h-12 w-12 items-center justify-center rounded-xl border border-cyan-400/25 bg-cyan-400/10 text-cyan-300"><Icon size={23} aria-hidden="true" /></div>
+                <h3 className="text-lg font-bold text-white">{title}</h3>
+                <p className="mt-3 text-sm leading-6 text-slate-300">{description}</p>
+              </motion.article>
             ))}
           </div>
-
         </div>
       </div>
     </section>
   );
 };
-
 export default BenefitsSection;

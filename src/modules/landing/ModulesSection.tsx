@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -13,32 +13,33 @@ interface ModuleCardProps {
 }
 
 const ModuleCard = ({ logoUrl, title, shortDescription, description, features, color, path }: ModuleCardProps) => {
+  const reducedMotion = useReducedMotion();
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
+      whileHover={reducedMotion ? undefined : { y: -8, scale: 1.012 }}
       viewport={{ once: true, margin: '-100px' }}
       transition={{ duration: 0.5 }}
-      className="glass-panel glass-panel-hover flex flex-col justify-between p-6 md:p-8 rounded-2xl relative overflow-hidden group min-h-[480px]"
+      className="glass-panel glass-panel-hover flex flex-col justify-between p-6 md:p-8 rounded-3xl relative overflow-hidden group min-h-[540px] border border-white/10 transition-colors duration-300 hover:border-cyan-300/25"
     >
       {/* Light gradient highlight on group hover */}
       <div className={`absolute top-0 left-0 w-full h-[3px] bg-gradient-to-r ${color}`} />
       <div className={`absolute -right-8 -top-8 w-24 h-24 rounded-full bg-gradient-to-br ${color} opacity-0 group-hover:opacity-5 blur-xl transition-opacity duration-500`} />
 
       <div>
-        <div className="flex justify-between items-start mb-6">
-          {/* Logo container wrapper for uniform alignment - Increased size */}
-          <Link to={path} className="flex items-center justify-center p-3 rounded-2xl bg-slate-950/80 border border-slate-800/60 w-[72px] h-[72px] md:w-[88px] md:h-[88px] lg:w-[100px] lg:h-[100px] overflow-hidden shadow-inner group-hover:border-cyan-500/30 transition-colors">
-            <img 
-              src={logoUrl} 
-              alt={`${title} Logo`} 
-              className="max-h-full max-w-full object-contain transition-transform duration-500 group-hover:scale-105"
-            />
-          </Link>
-          <Link to={path} className="text-slate-500 group-hover:text-slate-300 transition-colors pt-2">
-            <ArrowUpRight size={18} />
-          </Link>
-        </div>
+        {/* Editorial product artwork: uses genuine brand assets, not fabricated screenshots. */}
+        <Link to={path} aria-label={`Conocer ${title}`} className="relative mb-7 block aspect-[16/10] overflow-hidden rounded-2xl border border-slate-700/60 bg-gradient-to-br from-[#0a1b33] via-[#050e22] to-[#020614] focus-visible:outline-2 focus-visible:outline-cyan-300">
+          <motion.div aria-hidden="true" className={`absolute -right-12 -top-20 h-56 w-56 rounded-full bg-gradient-to-br ${color} opacity-20 blur-3xl`}  />
+          <div aria-hidden="true" className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,.05)_1px,transparent_1px)] bg-[size:28px_28px] opacity-40" />
+          <div aria-hidden="true" className="pointer-events-none absolute inset-5 rounded-2xl border border-white/[.06]" />
+          <div aria-hidden="true" className="pointer-events-none absolute inset-x-10 top-1/2 h-px bg-gradient-to-r from-transparent via-cyan-200/25 to-transparent" />
+          <div className="absolute inset-0 flex items-center justify-center p-8">
+            <motion.img src={logoUrl} alt={`Identidad visual de ${title}`} loading="lazy" decoding="async" className="relative z-10 max-h-[78%] max-w-[78%] object-contain drop-shadow-[0_18px_30px_rgba(0,0,0,.5)]" whileHover={reducedMotion ? undefined : { scale: 1.04 }} transition={{ duration: 0.25 }} />
+          </div>
+          <div className="absolute bottom-3 left-3 rounded-full border border-white/10 bg-slate-950/75 px-3 py-1 text-[10px] font-medium text-slate-300 backdrop-blur">Solución Aura Nexus</div>
+          <ArrowUpRight size={18} aria-hidden="true" className="absolute right-4 top-4 text-cyan-300" />
+        </Link>
 
         <h3 className="text-xl md:text-2xl font-bold text-slate-100 mb-1 group-hover:text-white transition-colors">
           {title}
@@ -68,7 +69,7 @@ const ModuleCard = ({ logoUrl, title, shortDescription, description, features, c
         {/* Status and CTA */}
         <div className="flex items-center justify-between pt-4 border-t border-slate-900/50">
           <span className="px-2.5 py-1 text-[10px] font-mono tracking-wider uppercase rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 font-semibold shadow-[0_0_10px_rgba(16,185,129,0.05)]">
-            Disponible
+            En desarrollo
           </span>
           <Link to={path} className="flex items-center gap-1.5 text-xs font-semibold text-cyan-400 group-hover:text-cyan-300 transition-colors">
             Conocer más
@@ -83,10 +84,10 @@ const ModuleCard = ({ logoUrl, title, shortDescription, description, features, c
 const ModulesSection = () => {
   const modules = [
     {
-      logoUrl: '/aura-hcm.png',
+      logoUrl: '/Logo%20Aura%20HCM%20oficial.png',
       title: 'Aura HCM',
       shortDescription: 'Gestión integral de talento humano.',
-      description: 'Gestión integral del capital humano. Centraliza nóminas, control de asistencia, evaluación del desempeño y beneficios financieros en un entorno seguro.',
+      description: 'Gestión integral del capital humano. El desarrollo contempla RRHH y control de asistencia, con funcionalidades sujetas a validación antes de su comercialización.',
       features: ['Gestión de Nóminas y Beneficios', 'Control Horario Integrado', 'Desempeño y Clima Laboral'],
       color: 'from-blue-500 to-cyan-500',
       path: '/aura-hcm',
@@ -95,7 +96,7 @@ const ModulesSection = () => {
       logoUrl: '/aura-signature.png',
       title: 'Aura Signature',
       shortDescription: 'Firma electrónica y gestión documental.',
-      description: 'Solución de firma electrónica avanzada y gestión de contratos con validez legal. Optimiza el ciclo de vida de los documentos sin salir de tu flujo de trabajo.',
+      description: 'Solución en desarrollo para firma electrónica y gestión documental. Su alcance jurídico y funcional requiere validación.',
       features: ['Firma Avanzada y Biométrica', 'Flujos de Firma Multi-rol', 'Auditoría Criptográfica Completa'],
       color: 'from-cyan-500 to-teal-500',
       path: '/aura-signature',
@@ -103,8 +104,8 @@ const ModulesSection = () => {
     {
       logoUrl: '/aura-intelligence.png',
       title: 'Aura Intelligence',
-      shortDescription: 'Asistente empresarial impulsado por IA.',
-      description: 'IA corporativa para análisis financiero predictivo, automatización de procesos operativos y soporte inteligente basado en datos del negocio.',
+      shortDescription: 'Inteligencia transversal en desarrollo.',
+      description: 'Iniciativa en desarrollo de asistencia, búsqueda contextual y automatización empresarial con controles de seguridad y consumo.',
       features: ['Soporte inteligente', 'Búsqueda contextual', 'Automatización operativa'],
       color: 'from-violet-500 to-blue-500',
       path: '/aura-intelligence',
@@ -113,16 +114,16 @@ const ModulesSection = () => {
       logoUrl: '/aura-maintenance.png',
       title: 'Aura Maintenance OS',
       shortDescription: 'Gestión inteligente de mantenimiento y operaciones.',
-      description: 'Plataforma para el mantenimiento preventivo y correctivo de activos y facilidades físicas. Asegura la continuidad operativa de tus instalaciones.',
+      description: 'Plataforma para el mantenimiento preventivo y correctivo de activos y facilidades físicas. Su alcance comercial está sujeto a validación.',
       features: ['Órdenes de Trabajo Inteligentes', 'Inventario de Activos y SLAs', 'Mantenimiento Preventivo Planificado'],
-      color: 'from-amber-500 to-orange-500',
+      color: 'from-blue-500 to-cyan-400',
       path: '/aura-maintenance-os',
     },
     {
       logoUrl: '/aura-control-center.png',
       title: 'Aura Control Center',
-      shortDescription: 'Administración centralizada del ecosistema Aura.',
-      description: 'La consola de administración global para supervisar métricas de rendimiento, controlar el tenant corporativo y auditar accesos en tiempo real.',
+      shortDescription: 'Gobierno interno del ecosistema Aura.',
+      description: 'Infraestructura de administración interna de Aura Nexus. No es una solución comercial independiente.',
       features: ['Monitoreo Multi-tenant y Finanzas', 'Gestión de Permisos y Roles', 'Logs de Auditoría Corporativos'],
       color: 'from-emerald-500 to-teal-500',
       path: '/aura-control-center',
@@ -140,7 +141,7 @@ const ModulesSection = () => {
             Una plataforma modular y conectada
           </h3>
           <p className="text-base md:text-lg text-slate-400 font-light leading-relaxed">
-            Elige los módulos que tu organización necesita e intégralos de forma nativa para lograr sinergia operativa, financiera y de gestión de personas.
+            Conoce las soluciones y capacidades del ecosistema Aura. La disponibilidad de cada producto e integración se confirma individualmente.
           </p>
         </div>
 
