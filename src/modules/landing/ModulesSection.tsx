@@ -84,7 +84,7 @@ const ModuleCard = ({ logoUrl, title, shortDescription, description, features, c
 const ModulesSection = () => {
   const modules = [
     {
-      logoUrl: '/aura-hcm.png',
+      logoUrl: '/Logo%20Aura%20HCM%20oficial.png',
       title: 'Aura HCM',
       shortDescription: 'Gestión integral de talento humano.',
       description: 'Gestión integral del capital humano. El desarrollo contempla RRHH y control de asistencia, con funcionalidades sujetas a validación antes de su comercialización.',
