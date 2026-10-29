@@ -46,58 +46,44 @@ const HeroSection = () => {
           </div>
         </motion.div>
 
-        <motion.div initial={reducedMotion ? false : { opacity: 0, x: 25 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.75, delay: 0.12 }} className="relative">
-          <div aria-hidden="true" className="pointer-events-none absolute -inset-4 rounded-[2rem] bg-gradient-to-br from-cyan-500/15 via-blue-700/5 to-transparent blur-2xl" />
-          <div className="relative overflow-hidden rounded-[1.75rem] border border-cyan-300/25 bg-gradient-to-b from-[#081a33] via-slate-950 to-[#030915] p-5 shadow-[0_35px_100px_rgba(0,0,0,.45),0_0_65px_rgba(34,211,238,.07)] sm:p-7">
-            <div className="mb-7 flex items-center justify-between border-b border-slate-800 pb-5">
-              <div>
-                <p className="text-[11px] font-semibold uppercase tracking-[.22em] text-cyan-400">Aura Nexus / Ecosystem</p>
-                <h2 className="mt-2 text-xl font-semibold text-white">Explora nuestras soluciones</h2>
+        <motion.div initial={reducedMotion ? false : { opacity: 0, x: 25 }} animate={{ opacity: 1, x: 0 }} transition={{ duration: 0.75, delay: 0.12 }} className="relative min-w-0">
+          <div aria-hidden="true" className="pointer-events-none absolute -inset-4 rounded-[2.5rem] bg-gradient-to-br from-blue-500/20 via-violet-500/10 to-cyan-500/15 blur-3xl" />
+          <div className="relative overflow-hidden rounded-[2rem] border border-cyan-300/30 bg-[#06132b] p-4 shadow-[0_35px_100px_rgba(0,0,0,.45)] sm:p-6">
+            <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(103,232,249,.065)_1px,transparent_1px),linear-gradient(to_bottom,rgba(103,232,249,.065)_1px,transparent_1px)] bg-[size:30px_30px]" />
+            <div className="relative mb-5 flex items-center justify-between gap-3 border-b border-cyan-300/20 pb-4">
+              <div><p className="text-[10px] font-semibold uppercase tracking-[.24em] text-cyan-300">Aura Nexus / Ecosystem</p><h2 className="mt-2 text-lg font-semibold text-white sm:text-xl">Un ecosistema. Múltiples posibilidades.</h2></div>
+              <span className="shrink-0 rounded-full border border-cyan-400/30 bg-cyan-400/10 px-3 py-1 text-[10px] font-semibold text-cyan-200">Visión conceptual</span>
+            </div>
+            <div className="relative mx-auto mb-5 aspect-square w-full max-w-[470px] overflow-hidden rounded-full">
+              <div aria-hidden="true" className="absolute inset-[6%] rounded-full border border-cyan-400/25 shadow-[inset_0_0_55px_rgba(34,211,238,.08)]" />
+              <div aria-hidden="true" className="absolute inset-[18%] rounded-full border border-dashed border-violet-300/30" />
+              <div aria-hidden="true" className="absolute inset-[31%] rounded-full border border-cyan-300/30 bg-cyan-300/[.03]" />
+              <div aria-hidden="true" className="absolute inset-x-[8%] top-1/2 h-px bg-gradient-to-r from-transparent via-cyan-400/60 to-transparent" />
+              <div aria-hidden="true" className="absolute inset-y-[8%] left-1/2 w-px bg-gradient-to-b from-transparent via-violet-400/50 to-transparent" />
+              <div className="absolute inset-[34%] z-10 flex items-center justify-center rounded-full border border-cyan-200/50 bg-[#06152b] p-2 shadow-[0_0_42px_rgba(34,211,238,.22)]">
+                <motion.img src="/aura-logo-oficial.png" alt="Aura Nexus: núcleo del ecosistema" className="max-h-full max-w-full object-contain" animate={reducedMotion ? undefined : { scale: [1, 1.05, 1] }} transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }} />
               </div>
-              <div className="rounded-lg border border-cyan-500/20 bg-cyan-500/5 p-2 text-cyan-300"><Layers3 size={22} aria-hidden="true" /></div>
-            </div>
-            <div className="relative mb-6 flex min-h-44 items-center justify-center overflow-hidden rounded-2xl border border-cyan-400/25 bg-[#020817] px-8 py-7 shadow-[0_0_45px_rgba(34,211,238,.10)] sm:min-h-52">
-              <motion.div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(34,211,238,.18),transparent_65%)]" animate={reducedMotion ? undefined : { opacity: [0.35, 0.85, 0.35], scale: [0.95, 1.12, 0.95] }} transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }} />
-              <motion.img
-                src="/aura-logo-oficial.png"
-                alt="Aura Nexus"
-                className="relative z-10 max-h-32 w-full max-w-sm object-contain drop-shadow-[0_0_20px_rgba(34,211,238,.18)]"
-                animate={reducedMotion ? undefined : { y: [0, -6, 0] }}
-                transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-              />
-              <motion.div aria-hidden="true" className="pointer-events-none absolute inset-x-12 bottom-4 h-px bg-gradient-to-r from-transparent via-cyan-400/80 to-transparent" animate={reducedMotion ? undefined : { opacity: [0.3, 1, 0.3], scaleX: [0.5, 1, 0.5] }} transition={{ duration: 3, repeat: Infinity }} />
-            </div>
-            <div className="mb-5 flex items-center gap-2 text-xs font-semibold text-cyan-300"><span className="relative flex h-2.5 w-2.5"><span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyan-400 opacity-70 motion-reduce:animate-none" /><span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-cyan-300" /></span> Ecosistema Aura · Visión conceptual <span className="ml-auto text-slate-500">Vista conceptual</span></div>
-            <div aria-label="Representación abstracta animada del ecosistema Aura" className="relative mb-6 flex h-44 items-center justify-around overflow-hidden rounded-2xl border border-cyan-400/20 bg-[#030b1d] px-3 sm:h-52 sm:px-6">
-              <div aria-hidden="true" className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(34,211,238,.16),transparent_60%)]" />
-              <motion.div aria-hidden="true" className="absolute left-[10%] right-[10%] top-1/2 h-px origin-center bg-gradient-to-r from-transparent via-cyan-400 to-transparent" animate={reducedMotion ? undefined : { scaleX: [0.4, 1, 0.4], opacity: [0.3, 1, 0.3] }} transition={{ duration: 3.5, ease: 'easeInOut', repeat: Infinity }} />
               {[
-                { src: '/aura-hcm.png', label: 'HCM' },
-                { src: '/aura-maintenance.png', label: 'Maintenance' },
-                { src: '/aura-signature.png', label: 'Signature' }
-              ].map((visual, index) => (
-                <motion.div key={visual.label} className="relative z-10 flex w-[27%] flex-col items-center gap-3" animate={reducedMotion ? undefined : { y: [0, index === 1 ? -13 : 10, 0] }} transition={{ duration: 3.5 + index * 0.6, ease: 'easeInOut', repeat: Infinity }}>
-                  <div className="flex h-16 w-16 items-center justify-center rounded-2xl border border-cyan-400/40 bg-slate-950/95 p-2 shadow-[0_0_28px_rgba(34,211,238,.23)] sm:h-20 sm:w-20"><img src={visual.src} alt="" className="max-h-full max-w-full object-contain" /></div>
-                  <span className="text-[10px] font-semibold tracking-wide text-slate-300 sm:text-xs">{visual.label}</span>
-                </motion.div>
-              ))}
-              <motion.div aria-hidden="true" className="absolute bottom-3 left-4 h-1 rounded-full bg-gradient-to-r from-cyan-400 to-blue-500" animate={reducedMotion ? undefined : { width: ['12%', '80%', '12%'] }} transition={{ duration: 5, ease: 'easeInOut', repeat: Infinity }} style={reducedMotion ? { width: '80%' } : undefined} />
-            </div>
-            <div className="space-y-3">
-              {solutions.map((item, index) => (
-                <motion.div key={item.path} initial={reducedMotion ? false : { opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.25 + index * 0.15, duration: 0.55 }} whileHover={reducedMotion ? undefined : { x: 5 }}>
-                <Link to={item.path} className="group flex items-center gap-4 rounded-xl border border-slate-800 bg-white/[.025] p-4 transition-all hover:border-cyan-400/40 hover:bg-white/[.05] focus-visible:outline-2 focus-visible:outline-cyan-400">
-                  <span className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br ${item.accent} text-sm font-bold text-slate-950`}>{item.code}</span>
-                  <span className="min-w-0 flex-1"><span className="block text-sm font-semibold text-white">{item.name}</span><span className="mt-1 block text-xs text-slate-400">{item.category}</span></span>
-                  <ArrowUpRight size={18} className="text-slate-500 transition-colors group-hover:text-cyan-300" aria-hidden="true" />
+                { label: 'HCM', src: '/aura-hcm.png', href: '/aura-hcm', pos: 'left-[5%] top-[37%]', tone: 'border-cyan-300/50' },
+                { label: 'Maintenance', src: '/aura-maintenance.png', href: '/aura-maintenance-os', pos: 'right-[5%] top-[37%]', tone: 'border-blue-300/50' },
+                { label: 'Signature', src: '/aura-signature.png', href: '/aura-signature', pos: 'left-[20%] bottom-[8%]', tone: 'border-teal-300/50' },
+                { label: 'Intelligence', src: '/aura-intelligence.png', href: '/aura-intelligence', pos: 'right-[20%] bottom-[8%]', tone: 'border-violet-300/50' },
+                { label: 'Control', src: '/aura-control-center.png', href: '/aura-control-center', pos: 'left-1/2 top-[2%] -translate-x-1/2', tone: 'border-emerald-300/50' },
+              ].map((node) => (
+                <Link key={node.href} to={node.href} aria-label={`Explorar Aura ${node.label}`} className={`group absolute z-20 flex w-[25%] max-w-28 flex-col items-center gap-1.5 ${node.pos} focus-visible:rounded-xl focus-visible:outline focus-visible:outline-2 focus-visible:outline-cyan-300`}>
+                  <span className={`flex aspect-square w-[65%] items-center justify-center rounded-2xl border ${node.tone} bg-[#071329]/95 p-1.5 shadow-[0_0_20px_rgba(34,211,238,.12)] transition-transform duration-200 group-hover:scale-110 sm:p-2`}>
+                    <img src={node.src} alt="" loading="lazy" decoding="async" className="max-h-full max-w-full object-contain" />
+                  </span>
+                  <span className="rounded-md bg-slate-950/80 px-1.5 py-0.5 text-center text-[9px] font-semibold text-slate-200 sm:text-[11px]">{node.label}</span>
                 </Link>
-              </motion.div>
               ))}
             </div>
-            <div className="mt-6 flex items-start gap-2 border-t border-slate-800 pt-5 text-xs leading-5 text-slate-400">
-              <CheckCircle2 size={16} className="mt-0.5 shrink-0 text-cyan-400" aria-hidden="true" />
-              El alcance y la disponibilidad se confirman de forma individual para cada solución.
+            <div className="relative grid grid-cols-2 gap-2 sm:grid-cols-3">
+              <a href="#modulos" className="col-span-1 inline-flex min-h-11 items-center justify-center rounded-xl border border-cyan-400/30 bg-cyan-400/10 px-2 text-center text-xs font-semibold text-cyan-100 hover:bg-cyan-400/20">Explorar módulos</a>
+              <a href="#proximamente" className="col-span-1 inline-flex min-h-11 items-center justify-center rounded-xl border border-violet-400/30 bg-violet-400/10 px-2 text-center text-xs font-semibold text-violet-100 hover:bg-violet-400/20">Próximamente</a>
+              <a href="#contacto" className="col-span-2 inline-flex min-h-11 items-center justify-center rounded-xl border border-slate-600 bg-slate-900 px-2 text-center text-xs font-semibold text-white hover:border-cyan-400/50 sm:col-span-1">Contacto</a>
             </div>
+            <p className="relative mt-4 text-center text-[11px] leading-5 text-slate-400">Representación conceptual. La disponibilidad de cada solución se confirma individualmente.</p>
           </div>
         </motion.div>
       </div>
