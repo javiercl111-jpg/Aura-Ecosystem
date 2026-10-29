@@ -56,8 +56,8 @@ const HeroSection = () => {
               </div>
               <div className="rounded-lg border border-cyan-500/20 bg-cyan-500/5 p-2 text-cyan-300"><Layers3 size={22} aria-hidden="true" /></div>
             </div>
-            <div className="mb-5 flex items-center gap-2 text-xs font-semibold text-cyan-300"><span className="relative flex h-2.5 w-2.5"><span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyan-400 opacity-70 motion-reduce:animate-none" /><span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-cyan-300" /></span> Ecosistema en movimiento <span className="ml-auto text-slate-500">Vista conceptual</span></div>
-            <div aria-label="Animación conceptual de conexión entre productos" className="relative mb-6 flex h-44 items-center justify-around overflow-hidden rounded-2xl border border-cyan-400/20 bg-[#030b1d] px-3 sm:h-52 sm:px-6">
+            <div className="mb-5 flex items-center gap-2 text-xs font-semibold text-cyan-300"><span className="relative flex h-2.5 w-2.5"><span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyan-400 opacity-70 motion-reduce:animate-none" /><span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-cyan-300" /></span> Ecosistema Aura · Visión conceptual <span className="ml-auto text-slate-500">Vista conceptual</span></div>
+            <div aria-label="Representación abstracta animada del ecosistema Aura" className="relative mb-6 flex h-44 items-center justify-around overflow-hidden rounded-2xl border border-cyan-400/20 bg-[#030b1d] px-3 sm:h-52 sm:px-6">
               <div aria-hidden="true" className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(34,211,238,.16),transparent_60%)]" />
               <motion.div aria-hidden="true" className="absolute left-[10%] right-[10%] top-1/2 h-px origin-center bg-gradient-to-r from-transparent via-cyan-400 to-transparent" animate={reducedMotion ? undefined : { scaleX: [0.4, 1, 0.4], opacity: [0.3, 1, 0.3] }} transition={{ duration: 3.5, ease: 'easeInOut', repeat: Infinity }} />
               {[
@@ -88,7 +88,7 @@ const HeroSection = () => {
               El alcance y la disponibilidad se confirman de forma individual para cada solución.
             </div>
           </div>
-          <p className="mt-4 text-center text-xs text-slate-500">Vista conceptual de navegación · No representa una aplicación en producción</p>
+          <p className="mt-4 text-center text-xs text-slate-500">Visualización conceptual · Sin capturas ni información interna de los sistemas</p>
         </motion.div>
       </div>
     </section>
