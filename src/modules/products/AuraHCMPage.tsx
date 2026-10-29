@@ -20,14 +20,11 @@ const AuraHCMPage = () => {
         {/* Hero editorial: identidad HCM, fotografía humana y tecnología abstracta. */}
         <div className="relative isolate overflow-hidden rounded-[2rem] border border-cyan-400/25 bg-[#06122b] shadow-[0_30px_95px_rgba(0,0,0,.48)]">
           <div className="absolute inset-0">
-            <motion.img
+            <img
               src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1600&q=82"
               alt="Equipo de profesionales colaborando en una oficina"
               className="h-full w-full object-cover object-center"
-              decoding="async"
-              animate={reducedMotion ? undefined : { scale: [1, 1.065, 1], x: [0, -10, 0] }}
-              transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
-            />
+              decoding="async" loading="eager" />
             <div className="absolute inset-0 bg-gradient-to-r from-[#031022]/95 via-[#031022]/88 to-[#031022]/35 md:to-[#031022]/10" />
             <div className="absolute inset-0 bg-gradient-to-t from-[#031022]/65 via-transparent to-transparent" />
           </div>
