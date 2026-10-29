@@ -1,7 +1,9 @@
+import { motion, useReducedMotion } from 'framer-motion';
 import { ArrowLeft, Wrench, Package, Calendar } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const AuraMaintenancePage = () => {
+  const reducedMotion = useReducedMotion();
   return (
     <section className="relative min-h-screen pt-12 pb-24 px-4 md:px-8 bg-slate-950 overflow-hidden flex flex-col justify-center">
       {/* Decorative radial glows */}
@@ -17,15 +19,6 @@ const AuraMaintenancePage = () => {
 
         {/* Hero Section */}
         <div className="flex flex-col md:flex-row items-center gap-8 border-b border-slate-900 pb-12">
-          {/* Logo container */}
-          <div className="flex items-center justify-center p-4 rounded-3xl bg-slate-900 border-2 border-slate-800 w-36 h-36 md:w-44 md:h-44 overflow-hidden shadow-2xl relative">
-            <div className="absolute inset-1 rounded-3xl border border-blue-500/10 animate-pulse" />
-            <img 
-              src="/aura-maintenance.png" 
-              alt="Aura Maintenance OS Logo" 
-              className="max-h-full max-w-full object-contain"
-            />
-          </div>
           <div className="space-y-3 text-center md:text-left">
             <span className="px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-semibold uppercase tracking-wider">
               Operaciones & Activos
@@ -42,29 +35,24 @@ const AuraMaintenancePage = () => {
         {/* Visual de identidad de producto; no es una captura de software. */}
         <div className="relative isolate overflow-hidden rounded-3xl border border-cyan-500/20 bg-[#06122b] p-6 shadow-[0_26px_80px_rgba(0,0,0,.35)] md:p-10">
           <div aria-hidden="true" className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,.04)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,.04)_1px,transparent_1px)] bg-[size:36px_36px]" />
-          <div aria-hidden="true" className="absolute -right-24 -top-20 h-72 w-72 rounded-full bg-blue-500/20 blur-[75px]" />
+          <motion.div aria-hidden="true" className="absolute -right-24 -top-20 h-72 w-72 rounded-full bg-blue-500/20 blur-[75px]" animate={reducedMotion ? undefined : { opacity: [0.35, 0.85, 0.35], scale: [1, 1.18, 1], x: [0, -18, 0] }} transition={{ duration: 7, ease: "easeInOut", repeat: Infinity }} />
           <div className="relative flex min-h-[270px] flex-col items-center justify-center gap-6 md:min-h-[360px] md:flex-row md:gap-14">
-            <img src="/aura-maintenance.png" alt="Identidad visual de Aura Maintenance OS" loading="lazy" className="h-40 w-40 object-contain drop-shadow-[0_20px_30px_rgba(0,0,0,.5)] md:h-56 md:w-56" />
+            <motion.img src="/aura-maintenance.png" alt="Identidad visual de Aura Maintenance OS" className="h-40 w-40 object-contain drop-shadow-[0_20px_30px_rgba(0,0,0,.5)] md:h-56 md:w-56" animate={reducedMotion ? undefined : { y: [0, -9, 0], scale: [1, 1.035, 1] }} transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }} />
             <div className="max-w-md text-center md:text-left">
-              <p className="text-xs font-semibold uppercase tracking-[.2em] text-cyan-300">Aura Nexus · Soluciones empresariales</p>
+              <p className="text-xs font-semibold uppercase tracking-[.2em] text-blue-300">Operación conectada</p>
               <h2 className="mt-3 text-3xl font-semibold tracking-tight text-white md:text-4xl">Aura Maintenance OS</h2>
-              <p className="mt-4 text-sm leading-7 text-slate-300">Conoce la visión del producto y solicita información sobre sus capacidades verificadas y su estado de desarrollo.</p>
+              <p className="mt-4 text-sm leading-7 text-slate-300">Una visión integral para organizar activos, mantenimiento preventivo y atención de incidencias.</p>
               <Link to="/#contacto" className="mt-6 inline-flex min-h-11 items-center justify-center rounded-xl border border-cyan-500/40 px-5 py-2 text-sm font-semibold text-cyan-200 hover:bg-cyan-500/10">Solicitar información</Link>
             </div>
           </div>
-          <p className="relative mt-3 text-right text-[11px] text-slate-400">Imagen de identidad corporativa, no captura funcional.</p>
         </div>
 
         {/* Details & Highlights */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12">
           {/* Left Column: Description */}
-          <div className="md:col-span-7 space-y-6 text-slate-400 leading-relaxed font-light text-sm md:text-base">
-            <p>
-              Aura Maintenance OS es la plataforma de nivel empresarial para la gestión integral de activos fijos e infraestructuras físicas. Facilita la planificación, ejecución y control de mantenimientos tanto preventivos como correctivos.
-            </p>
-            <p>
-              Diseñado para optimizar los tiempos de respuesta y asegurar la continuidad de negocio, permite centralizar órdenes de trabajo, controlar inventarios de refacciones y auditar el cumplimiento de acuerdos de nivel de servicio (SLAs) con proveedores externos.
-            </p>
+          <div className="md:col-span-7 space-y-6 text-slate-300 leading-relaxed text-sm md:text-base">
+            <p>Una visión integral para organizar activos, mantenimiento preventivo y atención de incidencias.</p>
+            <p>Las funcionalidades específicas y su disponibilidad se confirman individualmente conforme avance su validación.</p>
           </div>
 
           {/* Right Column: Highlights List */}
@@ -103,19 +91,19 @@ const AuraMaintenancePage = () => {
 
         {/* CTA Demo Banner */}
         <div className="p-8 rounded-2xl border border-slate-800 bg-gradient-to-r from-slate-950 to-slate-900/40 text-center space-y-6 shadow-xl relative overflow-hidden">
-          <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-amber-500/20 to-transparent" />
+          <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-blue-500/20 to-transparent" />
           <h2 className="text-2xl font-bold text-white tracking-tight">
             ¿Listo para asegurar la continuidad operativa de tus instalaciones?
           </h2>
           <p className="max-w-md mx-auto text-xs md:text-sm text-slate-400 font-light leading-relaxed">
-            Solicita una presentación interactiva de Aura Maintenance OS y descubre cómo optimizar el valor de tus activos físicos.
+            Conoce el alcance y el estado de desarrollo de Maintenance OS antes de solicitar una demostración.
           </p>
           <div>
             <a 
               href="/#contacto"
-              className="inline-flex px-8 py-3.5 rounded-xl font-semibold text-slate-950 bg-gradient-to-r from-amber-400 to-orange-500 hover:from-amber-300 hover:to-orange-400 active:scale-95 transition-all shadow-[0_4px_20px_rgba(245,158,11,0.15)] text-sm"
+              className="inline-flex px-8 py-3.5 rounded-xl font-semibold text-slate-950 bg-gradient-to-r from-blue-400 to-cyan-500 hover:from-blue-300 hover:to-cyan-400 active:scale-95 transition-all shadow-[0_4px_20px_rgba(37,99,235,0.18)] text-sm"
             >
-              Solicitar Demo
+              Solicitar información
             </a>
           </div>
         </div>
