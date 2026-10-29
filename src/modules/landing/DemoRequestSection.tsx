@@ -9,7 +9,10 @@ const modulesList = [
   { id: "Personas", name: "Personas / Aura HCM" },
   { id: "Operaciones", name: "Operaciones / Aura Maintenance OS" },
   { id: "Documentos", name: "Documentos / Aura Signature" },
-  { id: "Dirección", name: "Dirección / Aura Intelligence" },
+  { id: "Dirección", name: "Aura Intelligence (en desarrollo)" },
+  { id: "Discovery", name: "Aura Discovery (en desarrollo)" },
+  { id: "Growth", name: "Aura Growth (en desarrollo)" },
+  { id: "Consultor", name: "Aura Consultor (en desarrollo)" },
   { id: "Ecosistema completo", name: "Ecosistema completo" },
 ];
 
@@ -26,22 +29,22 @@ const getRecommendedNextStep = (
   const normalized = `${mainChallenge} ${interestAreas.join(" ")}`.toLowerCase();
 
   if (normalized.includes("operaciones") || normalized.includes("mantenimiento")) {
-    return "Iniciar diagnóstico con Aura Maintenance OS.";
+    return "Contactar para conocer el alcance de Aura Maintenance OS.";
   }
 
   if (normalized.includes("documentos") || normalized.includes("firma")) {
-    return "Iniciar diagnóstico con Aura Signature.";
+    return "Contactar para conocer el alcance de Aura Signature.";
   }
 
   if (normalized.includes("personas") || normalized.includes("rh")) {
-    return "Iniciar diagnóstico con Aura HCM.";
+    return "Contactar para conocer el alcance de Aura HCM.";
   }
 
-  if (normalized.includes("dirección") || normalized.includes("decisiones")) {
-    return "Solicitar demostración de Aura Intelligence.";
+  if (normalized.includes("dirección") || normalized.includes("decisiones") || normalized.includes("discovery") || normalized.includes("growth") || normalized.includes("consultor")) {
+    return "Compartir información sobre la evolución de las soluciones de interés y confirmar su disponibilidad.";
   }
 
-  return "Iniciar con video institucional y llamada de descubrimiento.";
+  return "Contactar para conocer las necesidades de la organización.";
 };
 
 const DemoRequestSection = () => {
@@ -174,15 +177,15 @@ const DemoRequestSection = () => {
       <div className="relative z-10 mx-auto grid max-w-6xl grid-cols-1 items-center gap-12 lg:grid-cols-12">
         <div className="space-y-6 lg:col-span-5">
           <span className="inline-flex items-center gap-2 rounded-full border border-cyan-500/20 bg-cyan-950/50 px-3 py-1 text-xs font-semibold uppercase tracking-wider text-cyan-400">
-            Próximamente disponible
+            Conoce las soluciones Aura
           </span>
 
           <h3 className="text-3xl font-extrabold leading-tight tracking-tight text-slate-100 md:text-5xl mt-4">
-            Diagnóstico Ejecutivo Aura™
+            Hablemos de tu empresa
           </h3>
 
           <p className="text-base font-light leading-relaxed text-slate-400 mt-6">
-            Estamos preparando una nueva experiencia de diagnóstico empresarial impulsada por Aura Intelligence™. Mientras tanto, nuestro equipo puede conocer las necesidades de tu organización y presentarte las soluciones de Aura en una demostración personalizada.
+            Cuéntanos qué necesita tu organización y qué soluciones de Aura Nexus te interesan. Te compartiremos información sobre su desarrollo, disponibilidad y posibilidades de presentación según las capacidades verificadas.
           </p>
         </div>
 
@@ -262,6 +265,7 @@ const DemoRequestSection = () => {
                       key={item.id}
                       type="button"
                       onClick={() => toggleArea(item.id)}
+                      aria-pressed={isSelected}
                       className={[
                         "flex items-center gap-2 rounded-xl border p-2.5 text-left transition-all",
                         isSelected
@@ -340,7 +344,7 @@ const DemoRequestSection = () => {
                       <span>Solicitud recibida.</span>
                     </div>
                     <p className="mt-1 pl-5 font-light">
-                      Un consultor Aura revisará tu diagnóstico y te contactará.
+                      Nuestro equipo revisará tu solicitud y podrá ponerse en contacto contigo.
                     </p>
                   </motion.div>
                 )}
@@ -351,7 +355,7 @@ const DemoRequestSection = () => {
                 disabled={isSubmitting}
                 className="flex w-full cursor-pointer items-center justify-center gap-2 rounded-xl bg-gradient-to-r from-cyan-400 to-blue-500 px-6 py-3.5 text-sm font-semibold text-slate-950 transition-all disabled:cursor-not-allowed disabled:opacity-60"
               >
-                {isSubmitting ? "Enviando..." : "Solicitar una demostración"}
+                {isSubmitting ? "Enviando..." : "Solicitar información"}
               </button>
             </form>
           </div>
