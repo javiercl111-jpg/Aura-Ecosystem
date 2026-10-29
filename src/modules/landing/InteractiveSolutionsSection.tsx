@@ -102,7 +102,7 @@ const InteractiveSolutionsSection = () => {
             </ul>
             <div className="mt-8 flex flex-wrap gap-3">
               <Link to={current.path} className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl bg-cyan-400 px-5 py-3 font-semibold text-slate-950 transition-colors hover:bg-cyan-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">Conocer la solución <ArrowRight size={18} aria-hidden="true" /></Link>
-              <a href="/#contacto" className="inline-flex min-h-12 items-center justify-center rounded-xl border border-slate-500 px-5 py-3 font-semibold text-white transition-colors hover:border-cyan-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">Solicitar información</a>
+              <a href={current.title === "Aura HCM" ? "/?interes=Personas#contacto" : "/?interes=Operaciones#contacto"} className="inline-flex min-h-12 items-center justify-center rounded-xl border border-slate-500 px-5 py-3 font-semibold text-white transition-colors hover:border-cyan-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">Solicitar información</a>
             </div>
           </article>
         </div>
