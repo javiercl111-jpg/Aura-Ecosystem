@@ -99,7 +99,6 @@ const HeroSection = () => {
               El alcance y la disponibilidad se confirman de forma individual para cada solución.
             </div>
           </div>
-          <p className="mt-4 text-center text-xs text-slate-500">Visualización conceptual · Sin capturas ni información interna de los sistemas</p>
         </motion.div>
       </div>
     </section>
