@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import { Compass, TrendingUp, MessagesSquare, ArrowUpRight } from 'lucide-react';
 
 type Product = {
@@ -45,10 +45,13 @@ const palette = {
 
 const ProductVisual = ({ product, index }: { product: Product; index: number }) => {
   const p = palette[product.accent];
+  const reducedMotion = useReducedMotion();
   const id = `upcoming-${index}`;
   return (
-    <div className="relative w-full min-h-[245px] md:min-h-[320px] overflow-hidden rounded-2xl border border-white/10 bg-[#080e20]" role="img" aria-label={`Ilustración conceptual tecnológica de ${product.name}`}>
+    <div className="relative w-full min-h-[245px] md:min-h-[320px] overflow-hidden rounded-2xl border border-white/15 bg-gradient-to-br from-[#0c1a33] via-[#080e20] to-[#040916] shadow-[inset_0_1px_0_rgba(255,255,255,.08)]" role="img" aria-label={`Ilustración conceptual tecnológica de ${product.name}`}>
       <div className={`absolute inset-0 bg-gradient-radial bg-gradient-to-br ${p.halo}`} />
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 opacity-30 bg-[linear-gradient(to_right,rgba(255,255,255,.06)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,.06)_1px,transparent_1px)] bg-[size:32px_32px]" />
+      <motion.div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(255,255,255,.09),transparent_65%)]" animate={reducedMotion ? undefined : { opacity: [0.25, 0.6, 0.25] }} transition={{ duration: 8, ease: "easeInOut", repeat: Infinity }} />
       <svg viewBox="0 0 560 330" className="relative w-full h-full min-h-[245px] md:min-h-[320px]" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
         <defs>
           <radialGradient id={`${id}-glow`}>
@@ -98,7 +101,7 @@ const UpcomingSection = () => (
       <div className="space-y-10">
         {products.map((product, index) => (
           <motion.article id={['aura-discovery', 'aura-growth', 'aura-consultor'][index]} key={product.name} initial={{ opacity: 0, y: 26 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: '-80px' }} transition={{ duration: .55 }}
-            className={`scroll-mt-56 grid grid-cols-1 lg:grid-cols-2 gap-7 lg:gap-12 items-center rounded-3xl border border-white/10 bg-white/[0.025] p-5 md:p-8 transition-colors ${palette[product.accent].border}`}>
+            className={`scroll-mt-72 md:scroll-mt-40 grid grid-cols-1 lg:grid-cols-2 gap-7 lg:gap-12 items-center rounded-3xl border border-white/10 bg-white/[0.025] p-5 md:p-8 transition-colors ${palette[product.accent].border}`}>
             <div className={index % 2 ? 'lg:order-2' : ''}><ProductVisual product={product} index={index}/></div>
             <div className={index % 2 ? 'lg:order-1' : ''}>
               <div className="flex flex-wrap items-center gap-3 mb-5">
