@@ -47,6 +47,33 @@ const AuraHCMPage = () => {
           </div>
         </div>
 
+        {/* Fotografía corporativa ilustrativa: personas, no pantallas del producto. */}
+        <div className="relative isolate overflow-hidden rounded-3xl border border-cyan-400/20 bg-[#06122b] shadow-[0_26px_70px_rgba(0,0,0,.3)]">
+          <div className="grid md:grid-cols-2">
+            <div className="relative min-h-[290px] overflow-hidden md:min-h-[400px]">
+              <img
+                src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1100&q=78"
+                alt="Profesionales colaborando en un entorno de trabajo"
+                className="absolute inset-0 h-full w-full object-cover"
+                loading="lazy"
+                decoding="async"
+              />
+              <div aria-hidden="true" className="absolute inset-0 bg-gradient-to-t from-[#06122b]/65 via-transparent to-transparent" />
+            </div>
+            <div className="relative flex flex-col justify-center p-8 md:p-12">
+              <motion.div aria-hidden="true" className="pointer-events-none absolute -right-14 top-0 h-48 w-48 rounded-full bg-cyan-400/10 blur-3xl" animate={reducedMotion ? undefined : { opacity: [0.4, 0.85, 0.4] }} transition={{ duration: 5, repeat: Infinity }} />
+              <p className="relative text-xs font-semibold uppercase tracking-[.22em] text-cyan-300">Personas al centro</p>
+              <h2 className="relative mt-4 text-3xl font-semibold leading-tight text-white md:text-4xl">La tecnología empieza por las personas.</h2>
+              <p className="relative mt-5 max-w-md leading-7 text-slate-300">Una visión de Recursos Humanos que conecta equipos, jornadas y operaciones con procesos más claros.</p>
+              <div className="relative mt-8 flex flex-wrap gap-3 text-sm text-cyan-100">
+                {['Talento humano', 'Asistencia', 'Jornadas'].map((label) => (
+                  <span key={label} className="rounded-full border border-cyan-400/20 bg-cyan-400/5 px-4 py-2">{label}</span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
         {/* Details & Highlights */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12">
           {/* Left Column: Description */}
