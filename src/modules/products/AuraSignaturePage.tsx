@@ -1,7 +1,9 @@
+import { motion, useReducedMotion } from 'framer-motion';
 import { ArrowLeft, PenTool, ShieldCheck, History } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const AuraSignaturePage = () => {
+  const reducedMotion = useReducedMotion();
   return (
     <section className="relative min-h-screen pt-12 pb-24 px-4 md:px-8 bg-slate-950 overflow-hidden flex flex-col justify-center">
       {/* Decorative radial glows */}
@@ -17,15 +19,6 @@ const AuraSignaturePage = () => {
 
         {/* Hero Section */}
         <div className="flex flex-col md:flex-row items-center gap-8 border-b border-slate-900 pb-12">
-          {/* Logo container */}
-          <div className="flex items-center justify-center p-4 rounded-3xl bg-slate-900 border-2 border-slate-800 w-36 h-36 md:w-44 md:h-44 overflow-hidden shadow-2xl relative">
-            <div className="absolute inset-1 rounded-3xl border border-teal-500/10 animate-pulse" />
-            <img 
-              src="/aura-signature.png" 
-              alt="Aura Signature Logo" 
-              className="max-h-full max-w-full object-contain"
-            />
-          </div>
           <div className="space-y-3 text-center md:text-left">
             <span className="px-3 py-1 rounded-full bg-teal-500/10 border border-teal-500/20 text-teal-400 text-xs font-semibold uppercase tracking-wider">
               Legal & Documental
@@ -42,29 +35,24 @@ const AuraSignaturePage = () => {
         {/* Visual de identidad de producto; no es una captura de software. */}
         <div className="relative isolate overflow-hidden rounded-3xl border border-cyan-500/20 bg-[#06122b] p-6 shadow-[0_26px_80px_rgba(0,0,0,.35)] md:p-10">
           <div aria-hidden="true" className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,.04)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,.04)_1px,transparent_1px)] bg-[size:36px_36px]" />
-          <div aria-hidden="true" className="absolute -right-24 -top-20 h-72 w-72 rounded-full bg-blue-500/20 blur-[75px]" />
+          <motion.div aria-hidden="true" className="absolute -right-24 -top-20 h-72 w-72 rounded-full bg-teal-500/20 blur-[75px]" animate={reducedMotion ? undefined : { opacity: [0.35, 0.85, 0.35], scale: [1, 1.18, 1], x: [0, -18, 0] }} transition={{ duration: 7, ease: "easeInOut", repeat: Infinity }} />
           <div className="relative flex min-h-[270px] flex-col items-center justify-center gap-6 md:min-h-[360px] md:flex-row md:gap-14">
-            <img src="/aura-signature.png" alt="Identidad visual de Aura Signature" loading="lazy" className="h-40 w-40 object-contain drop-shadow-[0_20px_30px_rgba(0,0,0,.5)] md:h-56 md:w-56" />
+            <motion.img src="/aura-signature.png" alt="Identidad visual de Aura Signature" className="h-40 w-40 object-contain drop-shadow-[0_20px_30px_rgba(0,0,0,.5)] md:h-56 md:w-56" animate={reducedMotion ? undefined : { y: [0, -9, 0], scale: [1, 1.035, 1] }} transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }} />
             <div className="max-w-md text-center md:text-left">
-              <p className="text-xs font-semibold uppercase tracking-[.2em] text-cyan-300">Aura Nexus · Soluciones empresariales</p>
+              <p className="text-xs font-semibold uppercase tracking-[.2em] text-teal-300">Flujos documentales</p>
               <h2 className="mt-3 text-3xl font-semibold tracking-tight text-white md:text-4xl">Aura Signature</h2>
-              <p className="mt-4 text-sm leading-7 text-slate-300">Conoce la visión del producto y solicita información sobre sus capacidades verificadas y su estado de desarrollo.</p>
+              <p className="mt-4 text-sm leading-7 text-slate-300">Una experiencia documental diseñada para coordinar acuerdos, firmas y trazabilidad.</p>
               <Link to="/#contacto" className="mt-6 inline-flex min-h-11 items-center justify-center rounded-xl border border-cyan-500/40 px-5 py-2 text-sm font-semibold text-cyan-200 hover:bg-cyan-500/10">Solicitar información</Link>
             </div>
           </div>
-          <p className="relative mt-3 text-right text-[11px] text-slate-400">Imagen de identidad corporativa, no captura funcional.</p>
         </div>
 
         {/* Details & Highlights */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12">
           {/* Left Column: Description */}
-          <div className="md:col-span-7 space-y-6 text-slate-400 leading-relaxed font-light text-sm md:text-base">
-            <p>
-              Aura Signature es la solución corporativa que revoluciona la gestión de acuerdos y la firma de documentos contractuales. A través de flujos automatizados y robustos estándares criptográficos, permite digitalizar de punta a punta los procesos de consentimiento con plena validez legal.
-            </p>
-            <p>
-              Integrado nativamente con Aura HCM y el resto del ecosistema, facilita el envío masivo de contratos de trabajo, addendas, políticas internas y acuerdos comerciales con un seguimiento detallado en tiempo real de cada interviniente.
-            </p>
+          <div className="md:col-span-7 space-y-6 text-slate-300 leading-relaxed text-sm md:text-base">
+            <p>Una experiencia documental diseñada para coordinar acuerdos, firmas y trazabilidad.</p>
+            <p>Las funcionalidades específicas y su disponibilidad se confirman individualmente conforme avance su validación.</p>
           </div>
 
           {/* Right Column: Highlights List */}
@@ -108,14 +96,14 @@ const AuraSignaturePage = () => {
             ¿Listo para digitalizar tus contratos y firmas legales?
           </h2>
           <p className="max-w-md mx-auto text-xs md:text-sm text-slate-400 font-light leading-relaxed">
-            Solicita una presentación interactiva de Aura Signature y agiliza los acuerdos comerciales e internos de tu organización de forma segura.
+            Conoce las capacidades verificadas y el estado de desarrollo de Aura Signature.
           </p>
           <div>
             <a 
               href="/#contacto"
               className="inline-flex px-8 py-3.5 rounded-xl font-semibold text-slate-950 bg-gradient-to-r from-teal-400 to-cyan-500 hover:from-teal-300 hover:to-cyan-400 active:scale-95 transition-all shadow-[0_4px_20px_rgba(20,184,166,0.15)] text-sm"
             >
-              Solicitar Demo
+              Solicitar información
             </a>
           </div>
         </div>
