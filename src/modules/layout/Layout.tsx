@@ -62,7 +62,7 @@ const Layout = () => {
           </div>
         </div>
         <nav aria-label="Navegación móvil" className="md:hidden mt-2 -mx-1 flex gap-2 overflow-x-auto px-1 pb-1 text-xs text-slate-200 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-          {[["Inicio", "/#inicio"], ["Soluciones", "/#modulos"], ["Beneficios", "/#beneficios"], ["Arquitectura", "/#arquitectura"], ["Contacto", "/#contacto"]].map(([label, href]) => (
+          {[["Inicio", "/#inicio"], ["Soluciones", "/#modulos"], ["Beneficios", "/#beneficios"], ["Arquitectura", "/#arquitectura"], ["Próximamente", "/#proximamente"], ["Contacto", "/#contacto"]].map(([label, href]) => (
             <a key={label} href={href} className="shrink-0 rounded-full border border-slate-700/70 bg-slate-900/70 px-4 py-2.5 transition-colors hover:border-cyan-400/60 hover:text-cyan-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-cyan-400">{label}</a>
           ))}
         </nav>
