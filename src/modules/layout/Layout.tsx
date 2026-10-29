@@ -1,10 +1,19 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { ArrowUp } from 'lucide-react';
 import { Outlet, Link, useLocation } from 'react-router-dom';
 import Footer from '../landing/Footer';
 
 const Layout = () => {
   const { hash, pathname } = useLocation();
   const isHCM = pathname === '/aura-hcm';
+  const [showBackToTop, setShowBackToTop] = useState(false);
+
+  useEffect(() => {
+    const checkScroll = () => setShowBackToTop(window.scrollY > 450);
+    checkScroll();
+    window.addEventListener('scroll', checkScroll, { passive: true });
+    return () => window.removeEventListener('scroll', checkScroll);
+  }, []);
 
   useEffect(() => {
     if (hash) {
@@ -82,6 +91,11 @@ const Layout = () => {
       </main>
 
       <Footer />
+      {showBackToTop && (
+        <button type="button" onClick={() => window.scrollTo({ top: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' })} aria-label="Volver al inicio" title="Volver al inicio" className="fixed bottom-6 right-5 z-50 flex h-12 w-12 items-center justify-center rounded-full border border-cyan-300/40 bg-cyan-400 text-slate-950 shadow-lg shadow-cyan-950/40 transition-colors hover:bg-cyan-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-300 md:bottom-8 md:right-8">
+          <ArrowUp size={22} aria-hidden="true" />
+        </button>
+      )}
     </div>
   );
 };
