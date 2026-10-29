@@ -56,6 +56,22 @@ const HeroSection = () => {
               </div>
               <div className="rounded-lg border border-cyan-500/20 bg-cyan-500/5 p-2 text-cyan-300"><Layers3 size={22} aria-hidden="true" /></div>
             </div>
+            <div className="mb-5 flex items-center gap-2 text-xs font-semibold text-cyan-300"><span className="relative flex h-2.5 w-2.5"><span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyan-400 opacity-70 motion-reduce:animate-none" /><span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-cyan-300" /></span> Ecosistema en movimiento <span className="ml-auto text-slate-500">Vista conceptual</span></div>
+            <div aria-label="Animación conceptual de conexión entre productos" className="relative mb-6 flex h-44 items-center justify-around overflow-hidden rounded-2xl border border-cyan-400/20 bg-[#030b1d] px-3 sm:h-52 sm:px-6">
+              <div aria-hidden="true" className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(34,211,238,.16),transparent_60%)]" />
+              <motion.div aria-hidden="true" className="absolute left-[10%] right-[10%] top-1/2 h-px origin-center bg-gradient-to-r from-transparent via-cyan-400 to-transparent" animate={reducedMotion ? undefined : { scaleX: [0.4, 1, 0.4], opacity: [0.3, 1, 0.3] }} transition={{ duration: 3.5, ease: 'easeInOut', repeat: Infinity }} />
+              {[
+                { src: '/aura-hcm.png', label: 'HCM' },
+                { src: '/aura-maintenance.png', label: 'Maintenance' },
+                { src: '/aura-signature.png', label: 'Signature' }
+              ].map((visual, index) => (
+                <motion.div key={visual.label} className="relative z-10 flex w-[27%] flex-col items-center gap-3" animate={reducedMotion ? undefined : { y: [0, index === 1 ? -13 : 10, 0] }} transition={{ duration: 3.5 + index * 0.6, ease: 'easeInOut', repeat: Infinity }}>
+                  <div className="flex h-16 w-16 items-center justify-center rounded-2xl border border-cyan-400/40 bg-slate-950/95 p-2 shadow-[0_0_28px_rgba(34,211,238,.23)] sm:h-20 sm:w-20"><img src={visual.src} alt="" className="max-h-full max-w-full object-contain" /></div>
+                  <span className="text-[10px] font-semibold tracking-wide text-slate-300 sm:text-xs">{visual.label}</span>
+                </motion.div>
+              ))}
+              <motion.div aria-hidden="true" className="absolute bottom-3 left-4 h-1 rounded-full bg-gradient-to-r from-cyan-400 to-blue-500" animate={reducedMotion ? undefined : { width: ['12%', '80%', '12%'] }} transition={{ duration: 5, ease: 'easeInOut', repeat: Infinity }} style={reducedMotion ? { width: '80%' } : undefined} />
+            </div>
             <div className="space-y-3">
               {solutions.map((item, index) => (
                 <motion.div key={item.path} initial={reducedMotion ? false : { opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.25 + index * 0.15, duration: 0.55 }} whileHover={reducedMotion ? undefined : { x: 5 }}>
