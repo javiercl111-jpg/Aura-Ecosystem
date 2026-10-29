@@ -17,38 +17,46 @@ const AuraMaintenancePage = () => {
           Volver al Ecosistema
         </Link>
 
-        {/* Hero Section */}
-        <div className="flex flex-col md:flex-row items-center gap-8 border-b border-slate-900 pb-12">
-          <div className="space-y-3 text-center md:text-left">
-            <span className="px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-semibold uppercase tracking-wider">
-              Operaciones & Activos
-            </span>
-            <h1 className="text-4xl md:text-6xl font-extrabold text-white tracking-tight">
-              Aura Maintenance OS
-            </h1>
-            <p className="text-lg md:text-xl text-cyan-400 font-light leading-relaxed">
-              Gestión inteligente de mantenimiento y operaciones físicas.
-            </p>
+        {/* Industrial conceptual hero: no private product interfaces. */}
+        <div className="relative isolate overflow-hidden rounded-[2rem] border border-blue-400/35 bg-[#061331] shadow-[0_32px_100px_rgba(2,25,90,.45)]">
+          <div className="absolute inset-0">
+            <motion.img
+              src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=1600&q=80"
+              alt="Entorno industrial con equipos de mantenimiento"
+              className="h-full w-full object-cover"
+              decoding="async"
+              animate={reducedMotion ? undefined : { scale: [1, 1.055, 1] }}
+              transition={{ duration: 18, ease: 'easeInOut', repeat: Infinity }}
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#03112f]/95 via-[#03112f]/87 to-[#03112f]/30" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#03112f]/75 via-transparent to-transparent" />
           </div>
-        </div>
-
-        {/* Visual de identidad de producto; no es una captura de software. */}
-        <div className="relative isolate overflow-hidden rounded-3xl border border-cyan-500/20 bg-[#06122b] p-6 shadow-[0_26px_80px_rgba(0,0,0,.35)] md:p-10">
-          <div aria-hidden="true" className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,.04)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,.04)_1px,transparent_1px)] bg-[size:36px_36px]" />
-          <motion.div aria-hidden="true" className="absolute -right-24 -top-20 h-72 w-72 rounded-full bg-blue-500/20 blur-[75px]" animate={reducedMotion ? undefined : { opacity: [0.35, 0.85, 0.35], scale: [1, 1.18, 1], x: [0, -18, 0] }} transition={{ duration: 7, ease: "easeInOut", repeat: Infinity }} />
-          <div className="relative flex min-h-[270px] flex-col items-center justify-center gap-6 md:min-h-[360px] md:flex-row md:gap-14">
-            <motion.img src="/aura-maintenance.png" alt="Identidad visual de Aura Maintenance OS" className="h-40 w-40 object-contain drop-shadow-[0_20px_30px_rgba(0,0,0,.5)] md:h-56 md:w-56" animate={reducedMotion ? undefined : { y: [0, -9, 0], scale: [1, 1.035, 1] }} transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }} />
-            <div className="max-w-md text-center md:text-left">
-              <p className="text-xs font-semibold uppercase tracking-[.2em] text-blue-300">Operación conectada</p>
-              <h2 className="mt-3 text-3xl font-semibold tracking-tight text-white md:text-4xl">Aura Maintenance OS</h2>
-              <p className="mt-4 text-sm leading-7 text-slate-300">Una visión integral para organizar activos, mantenimiento preventivo y atención de incidencias.</p>
-              <Link to="/#contacto" className="mt-6 inline-flex min-h-11 items-center justify-center rounded-xl border border-cyan-500/40 px-5 py-2 text-sm font-semibold text-cyan-200 hover:bg-cyan-500/10">Solicitar información</Link>
+          <motion.div aria-hidden="true" className="pointer-events-none absolute -left-20 top-5 h-80 w-80 rounded-full bg-blue-500/30 blur-[85px]" animate={reducedMotion ? undefined : { x: [0, 60, 0], opacity: [.45, .9, .45] }} transition={{ duration: 8, repeat: Infinity }} />
+          <motion.div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-blue-300 to-transparent" animate={reducedMotion ? undefined : { opacity: [.25, 1, .25] }} transition={{ duration: 3.5, repeat: Infinity }} />
+          <div className="relative grid min-h-[500px] items-center gap-10 px-7 py-14 md:grid-cols-[1.2fr_.8fr] md:px-14">
+            <motion.div initial={reducedMotion ? false : { opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .7 }} className="max-w-2xl">
+              <span className="inline-flex rounded-full border border-blue-300/35 bg-blue-400/15 px-4 py-2 text-xs font-semibold uppercase tracking-[.2em] text-blue-200">Aura Maintenance OS · Activos y operaciones</span>
+              <h1 className="mt-6 text-4xl font-bold leading-[1.07] tracking-tight text-white sm:text-5xl lg:text-6xl">La operación no se detiene. <span className="bg-gradient-to-r from-blue-200 via-blue-400 to-cyan-300 bg-clip-text text-transparent">La innovación tampoco.</span></h1>
+              <p className="mt-6 max-w-xl text-base leading-8 text-slate-200 md:text-lg">Una visión para conectar activos, equipos de mantenimiento y procesos operativos con mayor claridad.</p>
+              <div className="mt-9 flex flex-wrap gap-3">
+                <Link to="/#contacto" className="inline-flex min-h-12 items-center justify-center rounded-xl bg-blue-500 px-6 py-3 font-semibold text-white transition-colors hover:bg-blue-400">Solicitar información</Link>
+                <a href="#capacidades-maintenance" className="inline-flex min-h-12 items-center justify-center rounded-xl border border-blue-300/45 bg-slate-950/40 px-6 py-3 font-semibold text-white hover:bg-slate-900/60">Explorar soluciones</a>
+              </div>
+            </motion.div>
+            <div className="relative flex justify-center md:justify-end">
+              <motion.div aria-hidden="true" className="absolute h-64 w-64 rounded-full border border-blue-400/35 shadow-[0_0_75px_rgba(59,130,246,.2)]" animate={reducedMotion ? undefined : { scale: [1, 1.1, 1], opacity: [.45, .9, .45] }} transition={{ duration: 5, repeat: Infinity }} />
+              <motion.img src="/aura-maintenance.png" alt="Identidad visual de Aura Maintenance OS" className="relative z-10 max-h-56 w-full max-w-[280px] object-contain drop-shadow-[0_20px_35px_rgba(0,0,0,.5)]" animate={reducedMotion ? undefined : { y: [0, -8, 0] }} transition={{ duration: 4.5, repeat: Infinity, ease: 'easeInOut' }} />
             </div>
+          </div>
+          <div className="relative flex flex-wrap gap-2 border-t border-blue-300/20 bg-[#03112f]/70 px-7 py-5 text-xs font-semibold text-blue-100 md:px-14">
+            {['Activos e instalaciones', 'Equipos de mantenimiento', 'Continuidad operativa'].map(label => (
+              <motion.span key={label} whileHover={reducedMotion ? undefined : { y: -3 }} className="rounded-full border border-blue-300/25 bg-blue-400/10 px-4 py-2">{label}</motion.span>
+            ))}
           </div>
         </div>
 
         {/* Details & Highlights */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12">
+        <div id="capacidades-maintenance" className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12">
           {/* Left Column: Description */}
           <div className="md:col-span-7 space-y-6 text-slate-300 leading-relaxed text-sm md:text-base">
             <p>Una visión integral para organizar activos, mantenimiento preventivo y atención de incidencias.</p>
