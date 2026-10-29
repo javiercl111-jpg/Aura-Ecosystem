@@ -56,22 +56,16 @@ const HeroSection = () => {
               </div>
               <div className="rounded-lg border border-cyan-500/20 bg-cyan-500/5 p-2 text-cyan-300"><Layers3 size={22} aria-hidden="true" /></div>
             </div>
-            <div className="relative mb-6 overflow-hidden rounded-2xl border border-cyan-400/25 bg-[#020817] shadow-[0_0_45px_rgba(34,211,238,.10)]">
-              <video
-                aria-label="Animación del logotipo de Aura Nexus"
-                className="block aspect-video w-full object-contain motion-reduce:hidden"
-                src="/aura-logo-loop.mp4"
-                autoPlay
-                muted
-                loop
-                playsInline
-                preload="metadata"
-                poster="/aura-logo-oficial.png"
+            <div className="relative mb-6 flex min-h-44 items-center justify-center overflow-hidden rounded-2xl border border-cyan-400/25 bg-[#020817] px-8 py-7 shadow-[0_0_45px_rgba(34,211,238,.10)] sm:min-h-52">
+              <motion.div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(34,211,238,.18),transparent_65%)]" animate={reducedMotion ? undefined : { opacity: [0.35, 0.85, 0.35], scale: [0.95, 1.12, 0.95] }} transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }} />
+              <motion.img
+                src="/aura-logo-oficial.png"
+                alt="Aura Nexus"
+                className="relative z-10 max-h-32 w-full max-w-sm object-contain drop-shadow-[0_0_20px_rgba(34,211,238,.18)]"
+                animate={reducedMotion ? undefined : { y: [0, -6, 0] }}
+                transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
               />
-              <div className="hidden aspect-video items-center justify-center p-10 motion-reduce:flex">
-                <img src="/aura-logo-oficial.png" alt="Logotipo de Aura Nexus" className="max-h-full max-w-full object-contain" />
-              </div>
-              <div aria-hidden="true" className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-cyan-400/70 to-transparent" />
+              <motion.div aria-hidden="true" className="pointer-events-none absolute inset-x-12 bottom-4 h-px bg-gradient-to-r from-transparent via-cyan-400/80 to-transparent" animate={reducedMotion ? undefined : { opacity: [0.3, 1, 0.3], scaleX: [0.5, 1, 0.5] }} transition={{ duration: 3, repeat: Infinity }} />
             </div>
             <div className="mb-5 flex items-center gap-2 text-xs font-semibold text-cyan-300"><span className="relative flex h-2.5 w-2.5"><span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-cyan-400 opacity-70 motion-reduce:animate-none" /><span className="relative inline-flex h-2.5 w-2.5 rounded-full bg-cyan-300" /></span> Ecosistema Aura · Visión conceptual <span className="ml-auto text-slate-500">Vista conceptual</span></div>
             <div aria-label="Representación abstracta animada del ecosistema Aura" className="relative mb-6 flex h-44 items-center justify-around overflow-hidden rounded-2xl border border-cyan-400/20 bg-[#030b1d] px-3 sm:h-52 sm:px-6">
