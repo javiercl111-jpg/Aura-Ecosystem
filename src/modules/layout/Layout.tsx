@@ -61,10 +61,16 @@ const Layout = () => {
             </a>
           </div>
         </div>
-        <nav aria-label="Navegación móvil" className="md:hidden mt-2 -mx-1 flex gap-2 overflow-x-auto px-1 pb-1 text-xs text-slate-200 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
-          {[["Inicio", "/#inicio"], ["Soluciones", "/#modulos"], ["Beneficios", "/#beneficios"], ["Arquitectura", "/#arquitectura"], ["Próximamente", "/#proximamente"], ["Contacto", "/#contacto"]].map(([label, href]) => (
-            <a key={label} href={href} className="shrink-0 rounded-full border border-slate-700/70 bg-slate-900/70 px-4 py-2.5 transition-colors hover:border-cyan-400/60 hover:text-cyan-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-cyan-400">{label}</a>
-          ))}
+        <nav aria-label="Navegación móvil" className="md:hidden mt-2 space-y-2">
+          <div className="grid grid-cols-2 gap-2">
+            <a href="/#proximamente" className="flex min-h-11 items-center justify-center rounded-xl border border-violet-400/50 bg-violet-500/15 px-2 py-2.5 text-sm font-semibold text-violet-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-cyan-400">Próximamente</a>
+            <a href="/#contacto" className="flex min-h-11 items-center justify-center rounded-xl border border-cyan-400/50 bg-cyan-500/15 px-2 py-2.5 text-sm font-semibold text-cyan-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-cyan-400">Contacto</a>
+          </div>
+          <div className="flex gap-2 overflow-x-auto pb-1 text-xs text-slate-200 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+            {[["Inicio", "/#inicio"], ["Soluciones", "/#modulos"], ["Beneficios", "/#beneficios"], ["Arquitectura", "/#arquitectura"]].map(([label, href]) => (
+              <a key={label} href={href} className="shrink-0 rounded-full border border-slate-700/70 bg-slate-900/70 px-4 py-2.5 transition-colors hover:border-cyan-400/60 hover:text-cyan-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-cyan-400">{label}</a>
+            ))}
+          </div>
         </nav>
         <details className="group relative mt-2 md:hidden">
           <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between rounded-xl border border-cyan-400/40 bg-cyan-400/10 px-4 py-2 text-sm font-semibold text-cyan-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-cyan-300 [&::-webkit-details-marker]:hidden">
@@ -89,7 +95,7 @@ const Layout = () => {
       </header>
 
       {/* Main Content Render */}
-      <main className="flex-grow pt-52 md:pt-32">
+      <main className="flex-grow pt-64 md:pt-32">
         <Outlet />
       </main>
 
