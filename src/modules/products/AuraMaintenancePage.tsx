@@ -36,7 +36,7 @@ const AuraMaintenancePage = () => {
               <h1 className="mt-6 text-4xl font-bold leading-[1.07] tracking-tight text-white sm:text-5xl lg:text-6xl">La operación no se detiene. <span className="bg-gradient-to-r from-blue-200 via-blue-400 to-cyan-300 bg-clip-text text-transparent">La innovación tampoco.</span></h1>
               <p className="mt-6 max-w-xl text-base leading-8 text-slate-200 md:text-lg">Una propuesta para organizar activos, planear mantenimiento y dar seguimiento a incidencias en instalaciones y operaciones. Capacidades sujetas a validación.</p>
               <div className="mt-9 flex flex-wrap gap-3">
-                <Link to="/#contacto" className="inline-flex min-h-12 items-center justify-center rounded-xl bg-blue-500 px-6 py-3 font-semibold text-white transition-colors hover:bg-blue-400">Solicitar información</Link>
+                <Link to="/?interes=Operaciones#contacto" className="inline-flex min-h-12 items-center justify-center rounded-xl bg-blue-500 px-6 py-3 font-semibold text-white transition-colors hover:bg-blue-400">Solicitar información</Link>
                 <a href="#capacidades-maintenance" className="inline-flex min-h-12 items-center justify-center rounded-xl border border-blue-300/45 bg-slate-950/40 px-6 py-3 font-semibold text-white hover:bg-slate-900/60">Explorar soluciones</a>
               </div>
             </motion.div>
@@ -112,7 +112,7 @@ const AuraMaintenancePage = () => {
           </p>
           <div>
             <a 
-              href="/#contacto"
+              href="/?interes=Operaciones#contacto"
               className="inline-flex px-8 py-3.5 rounded-xl font-semibold text-slate-950 bg-gradient-to-r from-blue-400 to-cyan-500 hover:from-blue-300 hover:to-cyan-400 active:scale-95 transition-all shadow-[0_4px_20px_rgba(37,99,235,0.18)] text-sm"
             >
               Solicitar información
