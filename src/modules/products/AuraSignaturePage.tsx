@@ -18,7 +18,11 @@ const AuraSignaturePage = () => {
         </Link>
 
         <div className="relative isolate overflow-hidden rounded-[2rem] border border-teal-400/30 bg-[#051b29] shadow-[0_30px_90px_rgba(0,0,0,.38)]">
-          <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(45,212,191,.07)_1px,transparent_1px),linear-gradient(to_bottom,rgba(45,212,191,.07)_1px,transparent_1px)] bg-[size:54px_54px]" />
+          <div className="absolute inset-0">
+            <motion.img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&w=1600&q=78" alt="Mesa de trabajo con documentos profesionales" className="h-full w-full object-cover" decoding="async" animate={reducedMotion ? undefined : { scale: [1, 1.055, 1] }} transition={{ duration: 17, repeat: Infinity, ease: "easeInOut" }} />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#041824]/95 via-[#041824]/88 to-[#041824]/40" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#041824]/70 to-transparent" />
+          </div>
           <motion.div aria-hidden="true" className="pointer-events-none absolute -right-20 -top-28 h-96 w-96 rounded-full bg-teal-400/20 blur-[95px]" animate={reducedMotion ? undefined : { scale: [1, 1.18, 1], opacity: [.35, .8, .35] }} transition={{ duration: 7, repeat: Infinity }} />
           <div className="relative grid min-h-[470px] items-center gap-10 p-8 md:grid-cols-[1.15fr_.85fr] md:p-14">
             <motion.div initial={reducedMotion ? false : { opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .7 }}>
