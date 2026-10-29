@@ -18,7 +18,7 @@ const AuraControlCenterPage = () => {
         </Link>
 
         <div className="relative isolate overflow-hidden rounded-[2rem] border border-emerald-400/30 bg-[#041c24] shadow-[0_30px_90px_rgba(0,0,0,.4)]">
-          <div className="absolute inset-0" aria-hidden="true"><motion.img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1600&q=78" alt="" className="h-full w-full object-cover" animate={reducedMotion ? undefined : {scale:[1,1.055,1]}} transition={{duration:18,repeat:Infinity,ease:"easeInOut"}}/><div className="absolute inset-0 bg-gradient-to-r from-[#041820]/95 via-[#041820]/88 to-[#041820]/35"/><div className="absolute inset-0 bg-gradient-to-t from-[#041820]/70 to-transparent"/></div>
+          <div className="absolute inset-0" aria-hidden="true"><img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&w=1600&q=78" alt="" className="h-full w-full object-cover" loading="eager" decoding="async" /><div className="absolute inset-0 bg-gradient-to-r from-[#041820]/95 via-[#041820]/88 to-[#041820]/35"/><div className="absolute inset-0 bg-gradient-to-t from-[#041820]/70 to-transparent"/></div>
           <motion.div aria-hidden="true" className="pointer-events-none absolute -right-24 -top-16 h-96 w-96 rounded-full bg-emerald-400/20 blur-[95px]" animate={reducedMotion ? undefined : { x:[0,-35,0], opacity:[.3,.85,.3] }} transition={{duration:8,repeat:Infinity}} />
           <div className="relative grid min-h-[480px] items-center gap-10 p-8 md:grid-cols-[1.2fr_.8fr] md:p-14">
             <motion.div initial={reducedMotion ? false : {opacity:0,y:18}} animate={{opacity:1,y:0}} transition={{duration:.7}}>
