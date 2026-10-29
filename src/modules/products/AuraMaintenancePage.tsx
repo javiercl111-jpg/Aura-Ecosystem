@@ -34,7 +34,7 @@ const AuraMaintenancePage = () => {
             <motion.div initial={reducedMotion ? false : { opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: .7 }} className="max-w-2xl">
               <span className="inline-flex rounded-full border border-blue-300/35 bg-blue-400/15 px-4 py-2 text-xs font-semibold uppercase tracking-[.2em] text-blue-200">Aura Maintenance OS · Activos y operaciones</span>
               <h1 className="mt-6 text-4xl font-bold leading-[1.07] tracking-tight text-white sm:text-5xl lg:text-6xl">La operación no se detiene. <span className="bg-gradient-to-r from-blue-200 via-blue-400 to-cyan-300 bg-clip-text text-transparent">La innovación tampoco.</span></h1>
-              <p className="mt-6 max-w-xl text-base leading-8 text-slate-200 md:text-lg">Una visión para conectar activos, equipos de mantenimiento y procesos operativos con mayor claridad.</p>
+              <p className="mt-6 max-w-xl text-base leading-8 text-slate-200 md:text-lg">Una propuesta para organizar activos, planear mantenimiento y dar seguimiento a incidencias en instalaciones y operaciones. Capacidades sujetas a validación.</p>
               <div className="mt-9 flex flex-wrap gap-3">
                 <Link to="/#contacto" className="inline-flex min-h-12 items-center justify-center rounded-xl bg-blue-500 px-6 py-3 font-semibold text-white transition-colors hover:bg-blue-400">Solicitar información</Link>
                 <a href="#capacidades-maintenance" className="inline-flex min-h-12 items-center justify-center rounded-xl border border-blue-300/45 bg-slate-950/40 px-6 py-3 font-semibold text-white hover:bg-slate-900/60">Explorar soluciones</a>
@@ -71,7 +71,7 @@ const AuraMaintenancePage = () => {
                 <Wrench size={16} className="text-blue-400 mt-0.5 flex-shrink-0" />
                 <div>
                   <h4 className="text-xs font-bold text-slate-200">Órdenes de Trabajo Inteligentes</h4>
-                  <p className="text-[11px] text-slate-500 font-light mt-0.5">Creación, asignación y seguimiento móvil de tareas correctivas en tiempo real.</p>
+                  <p className="text-[11px] text-slate-500 font-light mt-0.5">Flujo previsto para registrar, asignar y consultar tareas. Disponibilidad y alcance por validar.</p>
                 </div>
               </div>
 
@@ -79,7 +79,7 @@ const AuraMaintenancePage = () => {
                 <Package size={16} className="text-blue-400 mt-0.5 flex-shrink-0" />
                 <div>
                   <h4 className="text-xs font-bold text-slate-200">Inventario y SLAs de Activos</h4>
-                  <p className="text-[11px] text-slate-500 font-light mt-0.5">Control de refacciones, stock crítico y tracking de garantías de maquinaria y facilidades.</p>
+                  <p className="text-[11px] text-slate-500 font-light mt-0.5">Gestión de activos, refacciones y garantías contemplada en el desarrollo; funciones por validar.</p>
                 </div>
               </div>
 
@@ -87,7 +87,7 @@ const AuraMaintenancePage = () => {
                 <Calendar size={16} className="text-blue-400 mt-0.5 flex-shrink-0" />
                 <div>
                   <h4 className="text-xs font-bold text-slate-200">Mantenimiento Preventivo</h4>
-                  <p className="text-[11px] text-slate-500 font-light mt-0.5">Programación y calendarios de revisiones recurrentes automatizadas por el sistema.</p>
+                  <p className="text-[11px] text-slate-500 font-light mt-0.5">Planeación de revisiones recurrentes contemplada en el producto; automatización por validar.</p>
                 </div>
               </div>
             </div>
@@ -96,7 +96,7 @@ const AuraMaintenancePage = () => {
 
         {/* Contexto comercial: sin promesas de disponibilidad ni métricas sin verificar. */}
         <section aria-labelledby="valor-maintenance" className="space-y-6">
-          <div className="max-w-3xl"><p className="text-xs font-bold uppercase tracking-[.22em] text-blue-300">Soluciones para retos reales</p><h2 id="valor-maintenance" className="mt-3 text-3xl font-semibold text-white md:text-4xl">Conoce lo que buscamos resolver</h2><p className="mt-4 leading-7 text-slate-300">Aura Maintenance OS está orientado a organizar activos, instalaciones y actividades de mantenimiento. Las capacidades descritas representan el enfoque del producto y deben verificarse individualmente antes de cualquier compromiso comercial.</p></div>
+          <div className="max-w-3xl"><p className="text-xs font-bold uppercase tracking-[.22em] text-blue-300">Soluciones para retos reales</p><h2 id="valor-maintenance" className="mt-3 text-3xl font-semibold text-white md:text-4xl">Del mantenimiento reactivo a una operación mejor organizada</h2><p className="mt-4 leading-7 text-slate-300">Aura Maintenance OS está orientado a organizar activos, instalaciones y actividades de mantenimiento. Las capacidades descritas representan el enfoque del producto y deben verificarse individualmente antes de cualquier compromiso comercial.</p></div>
           <div className="grid gap-5 md:grid-cols-3"><div className="rounded-2xl border border-blue-400/20 bg-slate-900/50 p-6"><h3 className="mb-4 text-lg font-semibold text-white">Retos de las empresas</h3><ul className="space-y-3 text-sm leading-6 text-slate-300"><li className="flex gap-3"><span aria-hidden="true" className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-400" />Mantenimiento reactivo y poca planificación preventiva</li><li className="flex gap-3"><span aria-hidden="true" className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-400" />Información de equipos e instalaciones repartida en distintos registros</li><li className="flex gap-3"><span aria-hidden="true" className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-400" />Dificultad para dar seguimiento a solicitudes y trabajos</li></ul></div><div className="rounded-2xl border border-blue-400/20 bg-slate-900/50 p-6"><h3 className="mb-4 text-lg font-semibold text-white">Áreas de la solución</h3><ul className="space-y-3 text-sm leading-6 text-slate-300"><li className="flex gap-3"><span aria-hidden="true" className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-400" />Inventario y organización de activos</li><li className="flex gap-3"><span aria-hidden="true" className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-400" />Planeación del mantenimiento preventivo</li><li className="flex gap-3"><span aria-hidden="true" className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-400" />Órdenes de trabajo, seguimiento e incidencias</li></ul></div><div className="rounded-2xl border border-blue-400/20 bg-slate-900/50 p-6"><h3 className="mb-4 text-lg font-semibold text-white">¿Para quién está pensado?</h3><ul className="space-y-3 text-sm leading-6 text-slate-300"><li className="flex gap-3"><span aria-hidden="true" className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-400" />Hoteles, resorts y complejos turísticos</li><li className="flex gap-3"><span aria-hidden="true" className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-400" />Industria manufacturera, grupos automotrices y centros logísticos</li><li className="flex gap-3"><span aria-hidden="true" className="mt-2 h-1.5 w-1.5 shrink-0 rounded-full bg-blue-400" />Condominios, centros comerciales, hospitales y edificios con instalaciones que requieren mantenimiento</li></ul></div></div>
           <p className="text-sm leading-6 text-slate-400">El producto continúa evolucionando. Las funciones específicas, disponibilidad, integraciones y condiciones de uso requieren confirmación antes de contratar.</p>
         </section>
@@ -105,7 +105,7 @@ const AuraMaintenancePage = () => {
         <div className="p-8 rounded-2xl border border-slate-800 bg-gradient-to-r from-slate-950 to-slate-900/40 text-center space-y-6 shadow-xl relative overflow-hidden">
           <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-blue-500/20 to-transparent" />
           <h2 className="text-2xl font-bold text-white tracking-tight">
-            ¿Listo para asegurar la continuidad operativa de tus instalaciones?
+            ¿Buscas organizar mejor el mantenimiento de tus instalaciones?
           </h2>
           <p className="max-w-md mx-auto text-xs md:text-sm text-slate-400 font-light leading-relaxed">
             Conoce el alcance y el estado de desarrollo de Maintenance OS antes de solicitar una demostración.
