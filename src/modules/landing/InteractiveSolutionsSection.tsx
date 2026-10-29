@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Building2, CalendarClock, Wrench, Users } from 'lucide-react';
 
@@ -51,6 +51,17 @@ const solutions = [
 
 const InteractiveSolutionsSection = () => {
   const [activeId, setActiveId] = useState<(typeof solutions)[number]['id']>('personas');
+  const resultRef = useRef<HTMLElement>(null);
+
+  const selectSolution = (id: (typeof solutions)[number]['id']) => {
+    setActiveId(id);
+    if (typeof window !== 'undefined' && window.matchMedia('(max-width: 1023px)').matches) {
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      window.requestAnimationFrame(() => {
+        resultRef.current?.scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth', block: 'start' });
+      });
+    }
+  };
   const current = solutions.find((solution) => solution.id === activeId) ?? solutions[0];
 
   return (
@@ -67,7 +78,7 @@ const InteractiveSolutionsSection = () => {
             {solutions.map(({ id, icon: Icon, label }) => {
               const selected = id === activeId;
               return (
-                <button key={id} type="button" aria-pressed={selected} onClick={() => setActiveId(id)}
+                <button key={id} type="button" aria-pressed={selected} onClick={() => selectSolution(id)}
                   className={`flex min-h-16 items-center gap-4 rounded-2xl border px-5 py-4 text-left transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-300 ${selected ? 'border-cyan-400/70 bg-cyan-400/10 text-white' : 'border-slate-700 bg-slate-900/70 text-slate-300 hover:border-cyan-400/40 hover:text-white'}`}>
                   <Icon aria-hidden="true" size={24} className={selected ? 'shrink-0 text-cyan-300' : 'shrink-0 text-slate-400'} />
                   <span className="flex-1 font-semibold">{label}</span>
@@ -76,7 +87,7 @@ const InteractiveSolutionsSection = () => {
               );
             })}
           </div>
-          <article aria-live="polite" aria-atomic="true" className="relative overflow-hidden rounded-3xl border border-cyan-300/20 bg-gradient-to-br from-[#0d2440] via-[#0b1930] to-[#07101f] p-6 md:p-10">
+          <article ref={resultRef} aria-live="polite" aria-atomic="true" className="scroll-mt-24 relative overflow-hidden rounded-3xl border border-cyan-300/20 bg-gradient-to-br from-[#0d2440] via-[#0b1930] to-[#07101f] p-6 md:p-10">
             <div className="grid items-center gap-6 sm:grid-cols-[minmax(0,1fr)_150px]">
               <div>
                 <p className="text-xs font-semibold uppercase tracking-widest text-cyan-300">Solución relacionada · En desarrollo</p>
