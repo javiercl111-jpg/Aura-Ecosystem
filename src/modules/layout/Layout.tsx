@@ -46,7 +46,7 @@ const Layout = () => {
               href="/#contacto"
               className="px-5 py-2 rounded-xl font-medium text-slate-900 bg-cyan-400 hover:bg-cyan-300 transition-colors"
             >
-              Solicitar una demostración
+              Solicitar información
             </a>
           </div>
         </div>
