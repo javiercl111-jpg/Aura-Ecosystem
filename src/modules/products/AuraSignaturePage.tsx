@@ -83,6 +83,30 @@ const AuraSignaturePage = () => {
           </div>
         </div>
 
+        {/* Alcance comercial informativo: no supone certificación jurídica o disponibilidad. */}
+        <section aria-labelledby="signature-valor" className="space-y-6">
+          <div className="max-w-3xl">
+            <p className="text-xs font-semibold uppercase tracking-[.2em] text-teal-300">Documentos y procesos empresariales</p>
+            <h2 id="signature-valor" className="mt-3 text-3xl font-semibold text-white md:text-4xl">¿Cómo puede ayudar Aura Signature?</h2>
+            <p className="mt-4 leading-7 text-slate-300">Una propuesta para organizar acuerdos y procesos documentales en equipos de distintos tamaños y sectores. Las funciones concretas, los tipos de firma y su alcance jurídico están sujetos a validación.</p>
+          </div>
+          <div className="grid gap-5 md:grid-cols-3">
+            <div className="rounded-2xl border border-teal-400/20 bg-slate-900/50 p-6">
+              <h3 className="mb-4 text-lg font-semibold text-white">Retos de las organizaciones</h3>
+              <p className="text-sm leading-7 text-slate-300">Documentos dispersos, múltiples participantes en revisiones y dificultades para dar seguimiento a acuerdos y versiones.</p>
+            </div>
+            <div className="rounded-2xl border border-teal-400/20 bg-slate-900/50 p-6">
+              <h3 className="mb-4 text-lg font-semibold text-white">Áreas de la solución</h3>
+              <p className="text-sm leading-7 text-slate-300">Organización documental, coordinación de aprobaciones, procesos de firma y consulta de trazabilidad, conforme a las capacidades que se verifiquen.</p>
+            </div>
+            <div className="rounded-2xl border border-teal-400/20 bg-slate-900/50 p-6">
+              <h3 className="mb-4 text-lg font-semibold text-white">¿A quién puede servir?</h3>
+              <p className="text-sm leading-7 text-slate-300">Equipos de RRHH, áreas legales, administración, compras y dirección; empresas de servicios, industria, hotelería, comercio y grupos con múltiples sedes.</p>
+            </div>
+          </div>
+          <p className="text-sm leading-6 text-slate-400">Aura Signature continúa en evolución. La disponibilidad, integraciones, mecanismos de firma y efectos legales se revisan caso por caso antes de ofrecerlos comercialmente.</p>
+        </section>
+
         {/* CTA Demo Banner */}
         <div className="p-8 rounded-2xl border border-slate-800 bg-gradient-to-r from-slate-950 to-slate-900/40 text-center space-y-6 shadow-xl relative overflow-hidden">
           <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-teal-500/20 to-transparent" />
