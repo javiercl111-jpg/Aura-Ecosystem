@@ -1,7 +1,9 @@
+import { motion, useReducedMotion } from 'framer-motion';
 import { ArrowLeft, Users, Shield, Sparkles } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const AuraHCMPage = () => {
+  const reducedMotion = useReducedMotion();
   return (
     <section className="relative min-h-screen pt-12 pb-24 px-4 md:px-8 bg-slate-950 overflow-hidden flex flex-col justify-center">
       {/* Decorative radial glows */}
@@ -42,9 +44,9 @@ const AuraHCMPage = () => {
         {/* Visual de identidad de producto; no es una captura de software. */}
         <div className="relative isolate overflow-hidden rounded-3xl border border-cyan-500/20 bg-[#06122b] p-6 shadow-[0_26px_80px_rgba(0,0,0,.35)] md:p-10">
           <div aria-hidden="true" className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,.04)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,.04)_1px,transparent_1px)] bg-[size:36px_36px]" />
-          <div aria-hidden="true" className="absolute -right-24 -top-20 h-72 w-72 rounded-full bg-blue-500/20 blur-[75px]" />
+          <motion.div aria-hidden="true" className="absolute -right-24 -top-20 h-72 w-72 rounded-full bg-blue-500/20 blur-[75px]" animate={reducedMotion ? undefined : { x: [0, -25, 0], scale: [1, 1.18, 1], opacity: [0.5, 1, 0.5] }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }} />
           <div className="relative flex min-h-[270px] flex-col items-center justify-center gap-6 md:min-h-[360px] md:flex-row md:gap-14">
-            <img src="/aura-hcm.png" alt="Identidad visual de Aura HCM" loading="lazy" className="h-40 w-40 object-contain drop-shadow-[0_20px_30px_rgba(0,0,0,.5)] md:h-56 md:w-56" />
+            <motion.img src="/aura-hcm.png" alt="Identidad visual de Aura HCM" className="h-40 w-40 object-contain drop-shadow-[0_20px_30px_rgba(0,0,0,.5)] md:h-56 md:w-56" animate={reducedMotion ? undefined : { y: [0, -10, 0], scale: [1, 1.035, 1] }} transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }} />
             <div className="max-w-md text-center md:text-left">
               <p className="text-xs font-semibold uppercase tracking-[.2em] text-cyan-300">Aura Nexus · Soluciones empresariales</p>
               <h2 className="mt-3 text-3xl font-semibold tracking-tight text-white md:text-4xl">Aura HCM</h2>
@@ -60,10 +62,10 @@ const AuraHCMPage = () => {
           {/* Left Column: Description */}
           <div className="md:col-span-7 space-y-6 text-slate-400 leading-relaxed font-light text-sm md:text-base">
             <p>
-              Aura HCM es la solución definitiva para medianas y grandes empresas que buscan unificar la administración de personal, el control horario y la gestión de nóminas en un único portal corporativo de alto rendimiento.
+              Aura HCM es una plataforma empresarial en desarrollo, orientada a integrar la administración de personal, el control de asistencia y los procesos de Recursos Humanos.
             </p>
             <p>
-              Diseñado con una arquitectura modular y segura, permite automatizar los flujos de contratación, evaluar el desempeño laboral y brindar beneficios financieros seguros a tus empleados, fomentando una cultura de transparencia y eficiencia operativa.
+              Su visión modular contempla una operación más conectada, con funciones cuya disponibilidad y alcance se validan de forma individual antes de cualquier contratación.
             </p>
           </div>
 
@@ -78,7 +80,7 @@ const AuraHCMPage = () => {
                 <Users size={16} className="text-cyan-400 mt-0.5 flex-shrink-0" />
                 <div>
                   <h4 className="text-xs font-bold text-slate-200">Nóminas y Beneficios</h4>
-                  <p className="text-[11px] text-slate-500 font-light mt-0.5">Administración automatizada de compensaciones y salarios.</p>
+                  <p className="text-[11px] text-slate-500 font-light mt-0.5">Área contemplada en la evolución del producto; disponibilidad por confirmar.</p>
                 </div>
               </div>
 
@@ -86,7 +88,7 @@ const AuraHCMPage = () => {
                 <Shield size={16} className="text-cyan-400 mt-0.5 flex-shrink-0" />
                 <div>
                   <h4 className="text-xs font-bold text-slate-200">Control Horario</h4>
-                  <p className="text-[11px] text-slate-500 font-light mt-0.5">Registro de asistencia, turnos y jornadas con cumplimiento normativo.</p>
+                  <p className="text-[11px] text-slate-500 font-light mt-0.5">Funciones de asistencia y jornadas en desarrollo y validación.</p>
                 </div>
               </div>
 
@@ -94,7 +96,7 @@ const AuraHCMPage = () => {
                 <Sparkles size={16} className="text-cyan-400 mt-0.5 flex-shrink-0" />
                 <div>
                   <h4 className="text-xs font-bold text-slate-200">Clima y Desempeño</h4>
-                  <p className="text-[11px] text-slate-500 font-light mt-0.5">Evaluación de objetivos de negocio y encuestas en tiempo real.</p>
+                  <p className="text-[11px] text-slate-500 font-light mt-0.5">Capacidades previstas; todavía no acreditadas para comercialización.</p>
                 </div>
               </div>
             </div>
@@ -108,14 +110,14 @@ const AuraHCMPage = () => {
             ¿Listo para transformar la gestión de personas en tu empresa?
           </h2>
           <p className="max-w-md mx-auto text-xs md:text-sm text-slate-400 font-light leading-relaxed">
-            Solicita una presentación interactiva de Aura HCM y descubre cómo integrarlo de forma nativa con los demás módulos del ecosistema.
+            Solicita información sobre la evolución de Aura HCM y las capacidades que se encuentren verificadas.
           </p>
           <div>
             <a 
               href="/#contacto"
               className="inline-flex px-8 py-3.5 rounded-xl font-semibold text-slate-950 bg-gradient-to-r from-cyan-400 to-blue-500 hover:from-cyan-300 hover:to-blue-400 active:scale-95 transition-all shadow-[0_4px_20px_rgba(6,182,212,0.15)] text-sm"
             >
-              Solicitar Demo
+              Solicitar información
             </a>
           </div>
         </div>
