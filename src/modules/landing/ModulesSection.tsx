@@ -1,4 +1,4 @@
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
@@ -13,10 +13,12 @@ interface ModuleCardProps {
 }
 
 const ModuleCard = ({ logoUrl, title, shortDescription, description, features, color, path }: ModuleCardProps) => {
+  const reducedMotion = useReducedMotion();
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
+      whileHover={reducedMotion ? undefined : { y: -8, scale: 1.012 }}
       viewport={{ once: true, margin: '-100px' }}
       transition={{ duration: 0.5 }}
       className="glass-panel glass-panel-hover flex flex-col justify-between p-6 md:p-8 rounded-2xl relative overflow-hidden group min-h-[540px]"
@@ -28,10 +30,10 @@ const ModuleCard = ({ logoUrl, title, shortDescription, description, features, c
       <div>
         {/* Editorial product artwork: uses genuine brand assets, not fabricated screenshots. */}
         <Link to={path} aria-label={`Conocer ${title}`} className="relative mb-7 block aspect-[16/10] overflow-hidden rounded-2xl border border-slate-700/60 bg-[#050e22] focus-visible:outline-2 focus-visible:outline-cyan-300">
-          <div aria-hidden="true" className={`absolute -right-12 -top-20 h-56 w-56 rounded-full bg-gradient-to-br ${color} opacity-20 blur-3xl`} />
+          <motion.div aria-hidden="true" className={`absolute -right-12 -top-20 h-56 w-56 rounded-full bg-gradient-to-br ${color} opacity-20 blur-3xl`} animate={reducedMotion ? undefined : { x: [0, -24, 0], y: [0, 18, 0], opacity: [0.2, 0.35, 0.2] }} transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }} />
           <div aria-hidden="true" className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,.05)_1px,transparent_1px)] bg-[size:28px_28px] opacity-40" />
           <div className="absolute inset-0 flex items-center justify-center p-8">
-            <img src={logoUrl} alt={`Identidad visual de ${title}`} loading="lazy" decoding="async" className="relative z-10 max-h-[78%] max-w-[78%] object-contain drop-shadow-[0_18px_30px_rgba(0,0,0,.5)] transition-transform duration-500 group-hover:scale-110" />
+            <motion.img src={logoUrl} alt={`Identidad visual de ${title}`} loading="lazy" decoding="async" className="relative z-10 max-h-[78%] max-w-[78%] object-contain drop-shadow-[0_18px_30px_rgba(0,0,0,.5)]" animate={reducedMotion ? undefined : { y: [0, -7, 0] }} whileHover={reducedMotion ? undefined : { scale: 1.07, rotate: -1 }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }} />
           </div>
           <div className="absolute bottom-3 left-3 rounded-full border border-white/10 bg-slate-950/75 px-3 py-1 text-[10px] font-medium text-slate-300 backdrop-blur">Solución Aura Nexus</div>
           <ArrowUpRight size={18} aria-hidden="true" className="absolute right-4 top-4 text-cyan-300" />
