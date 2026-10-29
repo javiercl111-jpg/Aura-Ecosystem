@@ -20,14 +20,11 @@ const AuraMaintenancePage = () => {
         {/* Industrial conceptual hero: no private product interfaces. */}
         <div className="relative isolate overflow-hidden rounded-[2rem] border border-blue-400/35 bg-[#061331] shadow-[0_32px_100px_rgba(2,25,90,.45)]">
           <div className="absolute inset-0">
-            <motion.img
+            <img
               src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?auto=format&fit=crop&w=1600&q=80"
               alt="Entorno industrial con equipos de mantenimiento"
               className="h-full w-full object-cover"
-              decoding="async"
-              animate={reducedMotion ? undefined : { scale: [1, 1.055, 1] }}
-              transition={{ duration: 18, ease: 'easeInOut', repeat: Infinity }}
-            />
+              decoding="async" loading="eager" />
             <div className="absolute inset-0 bg-gradient-to-r from-[#03112f]/95 via-[#03112f]/87 to-[#03112f]/30" />
             <div className="absolute inset-0 bg-gradient-to-t from-[#03112f]/75 via-transparent to-transparent" />
           </div>
