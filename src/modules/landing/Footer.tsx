@@ -13,7 +13,7 @@ const Footer = () => {
             <img 
               src="/aura-logo-oficial.png" 
               alt="Aura Ecosystem" 
-              className="h-[32px] md:h-[36px] w-auto object-contain" 
+              className="h-[56px] md:h-[68px] w-auto object-contain" 
             />
           </div>
           <div className="space-y-1">
