@@ -68,7 +68,7 @@ const ModuleCard = ({ logoUrl, title, shortDescription, description, features, c
         {/* Status and CTA */}
         <div className="flex items-center justify-between pt-4 border-t border-slate-900/50">
           <span className="px-2.5 py-1 text-[10px] font-mono tracking-wider uppercase rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 font-semibold shadow-[0_0_10px_rgba(16,185,129,0.05)]">
-            Disponible
+            En desarrollo
           </span>
           <Link to={path} className="flex items-center gap-1.5 text-xs font-semibold text-cyan-400 group-hover:text-cyan-300 transition-colors">
             Conocer más
@@ -86,7 +86,7 @@ const ModulesSection = () => {
       logoUrl: '/aura-hcm.png',
       title: 'Aura HCM',
       shortDescription: 'Gestión integral de talento humano.',
-      description: 'Gestión integral del capital humano. Centraliza nóminas, control de asistencia, evaluación del desempeño y beneficios financieros en un entorno seguro.',
+      description: 'Gestión integral del capital humano. El desarrollo contempla RRHH y control de asistencia, con funcionalidades sujetas a validación antes de su comercialización.',
       features: ['Gestión de Nóminas y Beneficios', 'Control Horario Integrado', 'Desempeño y Clima Laboral'],
       color: 'from-blue-500 to-cyan-500',
       path: '/aura-hcm',
@@ -95,7 +95,7 @@ const ModulesSection = () => {
       logoUrl: '/aura-signature.png',
       title: 'Aura Signature',
       shortDescription: 'Firma electrónica y gestión documental.',
-      description: 'Solución de firma electrónica avanzada y gestión de contratos con validez legal. Optimiza el ciclo de vida de los documentos sin salir de tu flujo de trabajo.',
+      description: 'Solución en desarrollo para firma electrónica y gestión documental. Su alcance jurídico y funcional requiere validación.',
       features: ['Firma Avanzada y Biométrica', 'Flujos de Firma Multi-rol', 'Auditoría Criptográfica Completa'],
       color: 'from-cyan-500 to-teal-500',
       path: '/aura-signature',
@@ -104,7 +104,7 @@ const ModulesSection = () => {
       logoUrl: '/aura-intelligence.png',
       title: 'Aura Intelligence',
       shortDescription: 'Asistente empresarial impulsado por IA.',
-      description: 'IA corporativa para análisis financiero predictivo, automatización de procesos operativos y soporte inteligente basado en datos del negocio.',
+      description: 'Iniciativa en desarrollo de asistencia, búsqueda contextual y automatización empresarial con controles de seguridad y consumo.',
       features: ['Soporte inteligente', 'Búsqueda contextual', 'Automatización operativa'],
       color: 'from-violet-500 to-blue-500',
       path: '/aura-intelligence',
@@ -113,7 +113,7 @@ const ModulesSection = () => {
       logoUrl: '/aura-maintenance.png',
       title: 'Aura Maintenance OS',
       shortDescription: 'Gestión inteligente de mantenimiento y operaciones.',
-      description: 'Plataforma para el mantenimiento preventivo y correctivo de activos y facilidades físicas. Asegura la continuidad operativa de tus instalaciones.',
+      description: 'Plataforma para el mantenimiento preventivo y correctivo de activos y facilidades físicas. Su alcance comercial está sujeto a validación.',
       features: ['Órdenes de Trabajo Inteligentes', 'Inventario de Activos y SLAs', 'Mantenimiento Preventivo Planificado'],
       color: 'from-amber-500 to-orange-500',
       path: '/aura-maintenance-os',
@@ -122,7 +122,7 @@ const ModulesSection = () => {
       logoUrl: '/aura-control-center.png',
       title: 'Aura Control Center',
       shortDescription: 'Administración centralizada del ecosistema Aura.',
-      description: 'La consola de administración global para supervisar métricas de rendimiento, controlar el tenant corporativo y auditar accesos en tiempo real.',
+      description: 'Consola en desarrollo para gestionar y supervisar componentes del ecosistema Aura.',
       features: ['Monitoreo Multi-tenant y Finanzas', 'Gestión de Permisos y Roles', 'Logs de Auditoría Corporativos'],
       color: 'from-emerald-500 to-teal-500',
       path: '/aura-control-center',
