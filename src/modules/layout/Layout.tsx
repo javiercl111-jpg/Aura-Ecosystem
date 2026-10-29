@@ -23,13 +23,13 @@ const Layout = () => {
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 flex flex-col selection:bg-cyan-500 selection:text-slate-950">
       {/* Navigation Header */}
-      <header className="fixed top-0 left-0 right-0 z-50 bg-slate-950/80 backdrop-blur-md border-b border-slate-900 px-4 md:px-8 py-4">
+      <header className="fixed top-0 left-0 right-0 z-50 bg-slate-950/80 backdrop-blur-md border-b border-slate-900 px-4 md:px-8 py-3">
         <div className="max-w-7xl mx-auto flex items-center justify-between">
           <Link to="/" className="flex items-center gap-3 hover:opacity-90 transition-opacity">
             <img 
               src="/aura-logo-oficial.png" 
               alt="Aura Ecosystem" 
-              className="h-[32px] md:h-[38px] lg:h-[44px] w-auto object-contain"
+              className="h-[52px] md:h-[62px] lg:h-[72px] w-auto object-contain"
             />
           </Link>
           
@@ -52,7 +52,7 @@ const Layout = () => {
       </header>
 
       {/* Main Content Render */}
-      <main className="flex-grow pt-24">
+      <main className="flex-grow pt-28 md:pt-32">
         <Outlet />
       </main>
 
