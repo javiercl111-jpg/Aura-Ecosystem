@@ -20,11 +20,13 @@ const AuraHCMPage = () => {
         {/* Hero editorial: identidad HCM, fotografía humana y tecnología abstracta. */}
         <div className="relative isolate overflow-hidden rounded-[2rem] border border-cyan-400/25 bg-[#06122b] shadow-[0_30px_95px_rgba(0,0,0,.48)]">
           <div className="absolute inset-0">
-            <img
+            <motion.img
               src="https://images.unsplash.com/photo-1521737711867-e3b97375f902?auto=format&fit=crop&w=1600&q=82"
               alt="Equipo de profesionales colaborando en una oficina"
               className="h-full w-full object-cover object-center"
               decoding="async"
+              animate={reducedMotion ? undefined : { scale: [1, 1.065, 1], x: [0, -10, 0] }}
+              transition={{ duration: 16, repeat: Infinity, ease: "easeInOut" }}
             />
             <div className="absolute inset-0 bg-gradient-to-r from-[#031022]/95 via-[#031022]/88 to-[#031022]/35 md:to-[#031022]/10" />
             <div className="absolute inset-0 bg-gradient-to-t from-[#031022]/65 via-transparent to-transparent" />
@@ -43,12 +45,12 @@ const AuraHCMPage = () => {
             </motion.div>
             <div className="relative flex items-center justify-center md:justify-end">
               <motion.div aria-hidden="true" className="absolute h-64 w-64 rounded-full border border-cyan-400/30 shadow-[0_0_80px_rgba(34,211,238,.15)]" animate={reducedMotion ? undefined : { scale: [1, 1.1, 1], opacity: [.4, .85, .4] }} transition={{ duration: 5.5, repeat: Infinity }} />
-              <img src="/Logo%20Aura%20HCM%20oficial.png" alt="Logotipo oficial Aura HCM" className="relative z-10 max-h-56 w-full max-w-[280px] object-contain drop-shadow-[0_15px_40px_rgba(0,0,0,.55)]" />
+              <motion.img src="/Logo%20Aura%20HCM%20oficial.png" alt="Logotipo oficial Aura HCM" className="relative z-10 max-h-56 w-full max-w-[280px] object-contain drop-shadow-[0_15px_40px_rgba(0,0,0,.55)]" animate={reducedMotion ? undefined : { y: [0, -9, 0] }} transition={{ duration: 4.5, repeat: Infinity, ease: "easeInOut" }} />
             </div>
           </div>
           <div className="relative flex flex-wrap gap-2 border-t border-cyan-300/20 bg-[#031022]/65 px-7 py-5 text-xs font-semibold text-cyan-100 backdrop-blur-sm md:px-14">
             {['Personas y organización', 'Cultura y colaboración', 'Gestión de RRHH'].map(label => (
-              <span key={label} className="rounded-full border border-cyan-300/25 bg-cyan-300/5 px-4 py-2">{label}</span>
+              <motion.span key={label} whileHover={reducedMotion ? undefined : { y: -4, scale: 1.04 }} transition={{ duration: .22 }} className="rounded-full border border-cyan-300/25 bg-cyan-300/5 px-4 py-2">{label}</motion.span>
             ))}
           </div>
         </div>
