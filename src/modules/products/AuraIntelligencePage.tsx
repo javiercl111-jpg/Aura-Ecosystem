@@ -18,13 +18,16 @@ const AuraIntelligencePage = () => {
         </Link>
 
         <div className="relative isolate overflow-hidden rounded-[2rem] border border-violet-400/30 bg-[#0c1030] shadow-[0_30px_90px_rgba(0,0,0,.4)]">
-          <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_75%_40%,rgba(139,92,246,.23),transparent_55%),linear-gradient(to_right,rgba(139,92,246,.08)_1px,transparent_1px),linear-gradient(to_bottom,rgba(139,92,246,.08)_1px,transparent_1px)] bg-[size:auto,54px_54px,54px_54px]" />
+          <div className="absolute inset-0" aria-hidden="true">
+            <motion.img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=1600&q=78" alt="" className="h-full w-full object-cover" animate={reducedMotion ? undefined : { scale: [1, 1.055, 1] }} transition={{ duration: 18, repeat: Infinity, ease: 'easeInOut' }} />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#080b24]/95 via-[#080b24]/88 to-[#080b24]/40" />
+          </div>
           <motion.div aria-hidden="true" className="pointer-events-none absolute -right-20 top-0 h-80 w-80 rounded-full bg-violet-500/20 blur-[90px]" animate={reducedMotion ? undefined : { x: [0,-35,0], opacity: [.3,.85,.3] }} transition={{ duration: 8, repeat: Infinity }} />
           <div className="relative grid min-h-[470px] items-center gap-8 p-8 md:grid-cols-[1.15fr_.85fr] md:p-14">
             <motion.div initial={reducedMotion ? false : {opacity:0,y:16}} animate={{opacity:1,y:0}} transition={{duration:.7}}>
-              <span className="inline-flex rounded-full border border-violet-300/30 bg-violet-400/10 px-4 py-2 text-xs font-semibold uppercase tracking-[.18em] text-violet-200">Aura Intelligence · Visión de inteligencia empresarial</span>
-              <h1 className="mt-6 text-4xl font-bold leading-[1.08] tracking-tight text-white sm:text-5xl lg:text-6xl">Conocimiento conectado. <span className="bg-gradient-to-r from-violet-200 via-fuchsia-300 to-cyan-300 bg-clip-text text-transparent">Decisiones mejor informadas.</span></h1>
-              <p className="mt-6 max-w-xl text-lg leading-8 text-slate-200">Explora nuestra visión de herramientas de asistencia y análisis para procesos empresariales.</p>
+              <span className="inline-flex rounded-full border border-violet-300/30 bg-violet-400/10 px-4 py-2 text-xs font-semibold uppercase tracking-[.18em] text-violet-200">Aura Intelligence · Capa transversal en desarrollo</span>
+              <h1 className="mt-6 text-4xl font-bold leading-[1.08] tracking-tight text-white sm:text-5xl lg:text-6xl">Inteligencia para todo el ecosistema. <span className="bg-gradient-to-r from-violet-200 via-fuchsia-300 to-cyan-300 bg-clip-text text-transparent">Conexiones más inteligentes.</span></h1>
+              <p className="mt-6 max-w-xl text-lg leading-8 text-slate-200">Diseñada para complementar las soluciones Aura mediante conocimiento, análisis y asistencia contextual, conforme se validen sus integraciones.</p>
               <div className="mt-8 flex flex-wrap gap-3"><Link to="/#contacto" className="inline-flex min-h-12 items-center rounded-xl bg-violet-400 px-6 py-3 font-semibold text-slate-950 hover:bg-violet-300">Solicitar información</Link><a href="#intelligence-detalles" className="inline-flex min-h-12 items-center rounded-xl border border-violet-300/40 px-6 py-3 font-semibold text-white hover:bg-white/5">Conocer la visión</a></div>
             </motion.div>
             <div className="relative flex items-center justify-center">
@@ -33,13 +36,13 @@ const AuraIntelligencePage = () => {
             </div>
           </div>
           <div className="relative flex flex-wrap gap-2 border-t border-violet-300/20 bg-[#080e24]/70 px-8 py-5 text-xs font-semibold text-violet-100 md:px-14">
-            {['Conocimiento', 'Análisis', 'Asistencia'].map(x => <span key={x} className="rounded-full border border-violet-300/25 bg-violet-300/5 px-4 py-2">{x}</span>)}
+            {['HCM', 'Maintenance OS', 'Signature', 'Control Center'].map(x => <span key={x} className="rounded-full border border-violet-300/25 bg-violet-300/5 px-4 py-2">{x}</span>)}
           </div>
         </div>
 
         {/* Details & Highlights */}
         <div id="intelligence-detalles" className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12">
-          <div className="md:col-span-7 space-y-6 text-slate-300 leading-relaxed text-sm md:text-base"><p>Aura Intelligence es una iniciativa en desarrollo enfocada en explorar asistencia, organización del conocimiento y análisis para entornos empresariales.</p><p>Las capacidades de inteligencia artificial, automatización e integraciones requieren validación y autorización antes de su oferta comercial o uso real.</p></div>
+          <div className="md:col-span-7 space-y-6 text-slate-300 leading-relaxed text-sm md:text-base"><p>Aura Intelligence se plantea como una capa de inteligencia transversal del ecosistema Aura, no como un módulo operativo independiente. Su propósito es complementar gradualmente otros productos mediante asistencia y análisis.</p><p>Las capacidades de inteligencia artificial, automatización e integraciones requieren validación y autorización antes de su oferta comercial o uso real.</p></div>
           {/* Right Column: Highlights List */}
           <div className="md:col-span-5 space-y-4">
             <h3 className="text-sm font-bold text-slate-200 uppercase tracking-widest mb-3">
@@ -51,7 +54,7 @@ const AuraIntelligencePage = () => {
                 <Brain size={16} className="text-violet-400 mt-0.5 flex-shrink-0" />
                 <div>
                   <h4 className="text-xs font-bold text-slate-200">Soporte Inteligente</h4>
-                  <p className="text-[11px] text-slate-500 font-light mt-0.5">Respuestas interactivas basadas en manuales, contratos y normativas de la organización.</p>
+                  <p className="text-[11px] text-slate-500 font-light mt-0.5">Asistencia contextual prevista para las soluciones Aura; su alcance aún requiere validación.</p>
                 </div>
               </div>
 
@@ -59,7 +62,7 @@ const AuraIntelligencePage = () => {
                 <Search size={16} className="text-violet-400 mt-0.5 flex-shrink-0" />
                 <div>
                   <h4 className="text-xs font-bold text-slate-200">Búsqueda Contextual</h4>
-                  <p className="text-[11px] text-slate-500 font-light mt-0.5">Indexación semántica e inteligente de todos los documentos y bases de conocimiento del inquilino.</p>
+                  <p className="text-[11px] text-slate-500 font-light mt-0.5">Exploración de búsqueda contextual sobre fuentes autorizadas, sujeta a permisos y validación.</p>
                 </div>
               </div>
 
@@ -67,7 +70,7 @@ const AuraIntelligencePage = () => {
                 <Cpu size={16} className="text-violet-400 mt-0.5 flex-shrink-0" />
                 <div>
                   <h4 className="text-xs font-bold text-slate-200">Automatización Operativa</h4>
-                  <p className="text-[11px] text-slate-500 font-light mt-0.5">Ejecución automática de flujos de trabajo basados en detonantes de texto o voz.</p>
+                  <p className="text-[11px] text-slate-500 font-light mt-0.5">Posibles automatizaciones bajo autorización, límites de consumo y controles de seguridad.</p>
                 </div>
               </div>
             </div>
@@ -87,7 +90,7 @@ const AuraIntelligencePage = () => {
         <div className="p-8 rounded-2xl border border-slate-800 bg-gradient-to-r from-slate-950 to-slate-900/40 text-center space-y-6 shadow-xl relative overflow-hidden">
           <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-violet-500/20 to-transparent" />
           <h2 className="text-2xl font-bold text-white tracking-tight">
-            ¿Listo para llevar la Inteligencia Artificial a tus procesos de negocio?
+            Conoce la visión de inteligencia integrada al ecosistema Aura
           </h2>
           <p className="max-w-md mx-auto text-xs md:text-sm text-slate-400 font-light leading-relaxed">
             Solicita información sobre el desarrollo de Aura Intelligence y las capacidades que hayan sido verificadas.
