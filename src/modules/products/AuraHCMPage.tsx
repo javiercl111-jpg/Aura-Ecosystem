@@ -36,7 +36,7 @@ const AuraHCMPage = () => {
               <h1 className="mt-6 text-4xl font-bold leading-[1.08] tracking-tight text-white sm:text-5xl lg:text-6xl">El talento impulsa <span className="bg-gradient-to-r from-cyan-200 via-cyan-400 to-sky-500 bg-clip-text text-transparent">grandes resultados.</span></h1>
               <p className="mt-6 max-w-xl text-base leading-8 text-slate-200 md:text-lg">Una visión para simplificar la administración de personal, organizar jornadas y dar visibilidad al trabajo de RRHH en empresas mexicanas. Solución en desarrollo.</p>
               <div className="mt-8 flex flex-wrap gap-3">
-                <Link to="/#contacto" className="inline-flex min-h-12 items-center justify-center rounded-xl bg-cyan-400 px-6 py-3 font-semibold text-slate-950 transition-colors hover:bg-cyan-300">Solicitar información</Link>
+                <Link to="/?interes=Personas#contacto" className="inline-flex min-h-12 items-center justify-center rounded-xl bg-cyan-400 px-6 py-3 font-semibold text-slate-950 transition-colors hover:bg-cyan-300">Solicitar información</Link>
                 <a href="#capacidades-hcm" className="inline-flex min-h-12 items-center justify-center rounded-xl border border-cyan-300/45 bg-slate-950/30 px-6 py-3 font-semibold text-white transition-colors hover:bg-slate-900/60">Explorar HCM</a>
               </div>
             </motion.div>
@@ -116,7 +116,7 @@ const AuraHCMPage = () => {
           </p>
           <div>
             <a 
-              href="/#contacto"
+              href="/?interes=Personas#contacto"
               className="inline-flex px-8 py-3.5 rounded-xl font-semibold text-slate-950 bg-gradient-to-r from-cyan-400 to-blue-500 hover:from-cyan-300 hover:to-blue-400 active:scale-95 transition-all shadow-[0_4px_20px_rgba(6,182,212,0.15)] text-sm"
             >
               Solicitar información
