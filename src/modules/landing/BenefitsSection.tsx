@@ -39,7 +39,7 @@ const BenefitsSection = () => {
     {
       icon: <Eye size={20} />,
       title: 'Más trazabilidad',
-      description: 'Auditorías criptográficas integradas y trazabilidad completa de cada acción y documento firmado dentro del ecosistema.',
+      description: 'La trazabilidad y las funciones de auditoría se encuentran sujetas a validación por producto.',
     },
     {
       icon: <Zap size={20} />,
@@ -49,7 +49,7 @@ const BenefitsSection = () => {
     {
       icon: <ShieldCheck size={20} />,
       title: 'Seguridad y auditoría',
-      description: 'Seguridad de grado enterprise con logs inmutables, encriptación en tránsito y reposo, y estricto cumplimiento normativo.',
+      description: 'Diseño orientado a controles de acceso, auditoría y protección de datos, sujetos a validación técnica.',
     },
     {
       icon: <Layers size={20} />,
@@ -82,17 +82,7 @@ const BenefitsSection = () => {
             <p className="text-base text-slate-400 font-light leading-relaxed">
               Diseñado para resolver las ineficiencias de operar con sistemas desconectados. Proporcionamos una arquitectura integrada que impulsa el control de nóminas, recursos operativos y auditorías contractuales en un solo portal.
             </p>
-            <div className="pt-4 border-t border-slate-900 flex items-center gap-4">
-              <div className="text-left">
-                <span className="block text-3xl font-bold text-cyan-400">99.9%</span>
-                <span className="text-xs text-slate-500 uppercase tracking-wider">Uptime Garantizado</span>
-              </div>
-              <div className="h-8 w-[1px] bg-slate-800" />
-              <div className="text-left">
-                <span className="block text-3xl font-bold text-cyan-400">40%</span>
-                <span className="text-xs text-slate-500 uppercase tracking-wider">Eficiencia Operativa</span>
-              </div>
-            </div>
+            <p className="pt-4 border-t border-slate-900 text-sm text-slate-400 leading-relaxed">Consulta la disponibilidad y las capacidades verificadas de cada producto antes de contratar.</p>
           </div>
 
           {/* Grid layout of benefits */}
