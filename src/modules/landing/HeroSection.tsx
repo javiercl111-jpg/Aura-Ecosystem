@@ -14,8 +14,10 @@ const HeroSection = () => {
   return (
     <section id="inicio" aria-labelledby="hero-title" className="relative isolate overflow-hidden bg-[#030915] px-4 pb-24 pt-16 md:px-8 md:pb-28 md:pt-24">
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 bg-[linear-gradient(to_right,rgba(34,211,238,.055)_1px,transparent_1px),linear-gradient(to_bottom,rgba(34,211,238,.055)_1px,transparent_1px)] bg-[size:64px_64px] [mask-image:linear-gradient(to_bottom,black,transparent_90%)]" />
-      <div aria-hidden="true" className="pointer-events-none absolute -right-40 -top-48 h-[520px] w-[520px] rounded-full bg-blue-600/15 blur-[110px]" />
-      <div aria-hidden="true" className="pointer-events-none absolute -left-52 top-48 h-[480px] w-[480px] rounded-full bg-cyan-500/10 blur-[120px]" />
+      <motion.div aria-hidden="true" className="pointer-events-none absolute -right-40 -top-48 h-[520px] w-[520px] rounded-full bg-blue-600/15 blur-[110px]" animate={reducedMotion ? undefined : { x: [0, -45, 0], y: [0, 28, 0], scale: [1, 1.12, 1] }} transition={{ duration: 16, repeat: Infinity, ease: 'easeInOut' }} />
+      <motion.div aria-hidden="true" className="pointer-events-none absolute -left-52 top-48 h-[480px] w-[480px] rounded-full bg-cyan-500/10 blur-[120px]" animate={reducedMotion ? undefined : { x: [0, 40, 0], y: [0, -30, 0], scale: [1, 1.08, 1] }} transition={{ duration: 18, repeat: Infinity, ease: 'easeInOut' }} />
+
+      <motion.div aria-hidden="true" className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-cyan-400/60 to-transparent" animate={reducedMotion ? undefined : { opacity: [0.3, 1, 0.3] }} transition={{ duration: 5, repeat: Infinity, ease: 'easeInOut' }} />
 
       <div className="relative mx-auto grid max-w-7xl gap-14 lg:grid-cols-[1.05fr_.95fr] lg:items-center">
         <motion.div initial={reducedMotion ? false : { opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.65 }} className="max-w-3xl">
@@ -55,12 +57,14 @@ const HeroSection = () => {
               <div className="rounded-lg border border-cyan-500/20 bg-cyan-500/5 p-2 text-cyan-300"><Layers3 size={22} aria-hidden="true" /></div>
             </div>
             <div className="space-y-3">
-              {solutions.map((item) => (
-                <Link key={item.path} to={item.path} className="group flex items-center gap-4 rounded-xl border border-slate-800 bg-white/[.025] p-4 transition-all hover:border-cyan-400/40 hover:bg-white/[.05] focus-visible:outline-2 focus-visible:outline-cyan-400">
+              {solutions.map((item, index) => (
+                <motion.div key={item.path} initial={reducedMotion ? false : { opacity: 0, x: 20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.25 + index * 0.15, duration: 0.55 }} whileHover={reducedMotion ? undefined : { x: 5 }}>
+                <Link to={item.path} className="group flex items-center gap-4 rounded-xl border border-slate-800 bg-white/[.025] p-4 transition-all hover:border-cyan-400/40 hover:bg-white/[.05] focus-visible:outline-2 focus-visible:outline-cyan-400">
                   <span className={`flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-gradient-to-br ${item.accent} text-sm font-bold text-slate-950`}>{item.code}</span>
                   <span className="min-w-0 flex-1"><span className="block text-sm font-semibold text-white">{item.name}</span><span className="mt-1 block text-xs text-slate-400">{item.category}</span></span>
                   <ArrowUpRight size={18} className="text-slate-500 transition-colors group-hover:text-cyan-300" aria-hidden="true" />
                 </Link>
+              </motion.div>
               ))}
             </div>
             <div className="mt-6 flex items-start gap-2 border-t border-slate-800 pt-5 text-xs leading-5 text-slate-400">
