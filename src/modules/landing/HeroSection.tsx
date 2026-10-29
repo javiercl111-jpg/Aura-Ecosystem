@@ -23,7 +23,7 @@ const HeroSection = () => {
             <span aria-hidden="true" className="h-1.5 w-1.5 rounded-full bg-cyan-400" />
             Tecnología empresarial · México
           </div>
-          <img src="/aura-logo-oficial.png" alt="Aura Nexus" className="mb-7 h-12 w-auto object-contain md:h-14" />
+          <img src="/aura-logo-oficial.png" alt="Aura Nexus" className="mb-8 h-20 w-auto object-contain sm:h-24 lg:h-28" />
           <h1 id="hero-title" className="max-w-3xl text-5xl font-semibold leading-[1.05] tracking-tight text-white sm:text-6xl lg:text-7xl">
             El siguiente nivel de <span className="bg-gradient-to-r from-cyan-300 via-sky-400 to-blue-500 bg-clip-text text-transparent">gestión empresarial.</span>
           </h1>
