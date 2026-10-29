@@ -74,6 +74,15 @@ const AuraIntelligencePage = () => {
           </div>
         </div>
 
+        <section aria-labelledby="intelligence-valor" className="space-y-6">
+          <div className="max-w-3xl"><p className="text-xs font-semibold uppercase tracking-[.2em] text-violet-300">Aplicaciones empresariales previstas</p><h2 id="intelligence-valor" className="mt-3 text-3xl font-semibold text-white md:text-4xl">Inteligencia orientada a las personas y los procesos</h2><p className="mt-4 leading-7 text-slate-300">Una propuesta para facilitar el acceso a información y apoyar el análisis empresarial. No implica que existan asistentes o automatizaciones certificados o disponibles.</p></div>
+          <div className="grid gap-5 md:grid-cols-3">
+            <div className="rounded-2xl border border-violet-400/20 bg-slate-900/50 p-6"><h3 className="mb-3 text-lg font-semibold text-white">Retos por abordar</h3><p className="text-sm leading-7 text-slate-300">Información dispersa, consultas repetitivas y dificultad para localizar conocimiento útil entre áreas.</p></div>
+            <div className="rounded-2xl border border-violet-400/20 bg-slate-900/50 p-6"><h3 className="mb-3 text-lg font-semibold text-white">Áreas de exploración</h3><p className="text-sm leading-7 text-slate-300">Búsqueda contextual, asistencia informativa y análisis de procesos, sujetos a pruebas y controles de seguridad y costos.</p></div>
+            <div className="rounded-2xl border border-violet-400/20 bg-slate-900/50 p-6"><h3 className="mb-3 text-lg font-semibold text-white">¿A quién podría servir?</h3><p className="text-sm leading-7 text-slate-300">Dirección, operaciones, RRHH y equipos de soporte de organizaciones industriales, hoteleras, comerciales y de servicios.</p></div>
+          </div>
+        </section>
+
         {/* CTA Demo Banner */}
         <div className="p-8 rounded-2xl border border-slate-800 bg-gradient-to-r from-slate-950 to-slate-900/40 text-center space-y-6 shadow-xl relative overflow-hidden">
           <div className="absolute top-0 left-0 right-0 h-[1px] bg-gradient-to-r from-transparent via-violet-500/20 to-transparent" />
@@ -81,14 +90,14 @@ const AuraIntelligencePage = () => {
             ¿Listo para llevar la Inteligencia Artificial a tus procesos de negocio?
           </h2>
           <p className="max-w-md mx-auto text-xs md:text-sm text-slate-400 font-light leading-relaxed">
-            Solicita una presentación interactiva de Aura Intelligence y experimenta el poder de la toma de decisiones basada en datos contextuales.
+            Solicita información sobre el desarrollo de Aura Intelligence y las capacidades que hayan sido verificadas.
           </p>
           <div>
             <a 
               href="/#contacto"
               className="inline-flex px-8 py-3.5 rounded-xl font-semibold text-slate-950 bg-gradient-to-r from-violet-400 to-blue-500 hover:from-violet-300 hover:to-blue-400 active:scale-95 transition-all shadow-[0_4px_20px_rgba(139,92,246,0.15)] text-sm"
             >
-              Solicitar Demo
+              Solicitar información
             </a>
           </div>
         </div>
