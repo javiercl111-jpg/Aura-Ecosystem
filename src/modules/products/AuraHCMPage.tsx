@@ -64,9 +64,9 @@ const AuraHCMPage = () => {
               <motion.div aria-hidden="true" className="pointer-events-none absolute -right-14 top-0 h-48 w-48 rounded-full bg-cyan-400/10 blur-3xl" animate={reducedMotion ? undefined : { opacity: [0.4, 0.85, 0.4] }} transition={{ duration: 5, repeat: Infinity }} />
               <p className="relative text-xs font-semibold uppercase tracking-[.22em] text-cyan-300">Personas al centro</p>
               <h2 className="relative mt-4 text-3xl font-semibold leading-tight text-white md:text-4xl">La tecnología empieza por las personas.</h2>
-              <p className="relative mt-5 max-w-md leading-7 text-slate-300">Una visión de Recursos Humanos que conecta equipos, jornadas y operaciones con procesos más claros.</p>
+              <p className="relative mt-5 max-w-md leading-7 text-slate-300">Una visión de Recursos Humanos centrada en las personas, la colaboración y una organización más conectada.</p>
               <div className="relative mt-8 flex flex-wrap gap-3 text-sm text-cyan-100">
-                {['Talento humano', 'Asistencia', 'Jornadas'].map((label) => (
+                {['Personas y organización', 'Cultura y colaboración', 'Gestión de RRHH'].map((label) => (
                   <span key={label} className="rounded-full border border-cyan-400/20 bg-cyan-400/5 px-4 py-2">{label}</span>
                 ))}
               </div>
