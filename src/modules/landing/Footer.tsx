@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const products = [
   { label: 'Aura HCM', href: '/aura-hcm' },
-  { label: 'Aura Maintenance OS', href: '/aura-maintenance' },
+  { label: 'Aura Maintenance OS', href: '/aura-maintenance-os' },
   { label: 'Aura Signature', href: '/aura-signature' },
   { label: 'Aura Intelligence', href: '/aura-intelligence' },
   { label: 'Aura Control Center', href: '/aura-control-center' },
