@@ -1,12 +1,6 @@
 import { motion, useReducedMotion } from 'framer-motion';
-import { ArrowRight, ArrowUpRight, CheckCircle2, Layers3, ShieldCheck } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, Layers3, ShieldCheck } from 'lucide-react';
 import { Link } from 'react-router-dom';
-
-const solutions = [
-  { name: 'Aura HCM', category: 'Personas y asistencia', path: '/aura-hcm', accent: 'from-cyan-400 to-blue-500', code: '01' },
-  { name: 'Maintenance OS', category: 'Activos y operaciones', path: '/aura-maintenance-os', accent: 'from-blue-400 to-indigo-500', code: '02' },
-  { name: 'Aura Signature', category: 'Documentos y firmas', path: '/aura-signature', accent: 'from-teal-400 to-cyan-500', code: '03' },
-];
 
 const HeroSection = () => {
   const reducedMotion = useReducedMotion();
