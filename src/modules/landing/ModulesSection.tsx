@@ -30,12 +30,12 @@ const ModuleCard = ({ logoUrl, title, shortDescription, description, features, c
       <div>
         {/* Editorial product artwork: uses genuine brand assets, not fabricated screenshots. */}
         <Link to={path} aria-label={`Conocer ${title}`} className="relative mb-7 block aspect-[16/10] overflow-hidden rounded-2xl border border-slate-700/60 bg-gradient-to-br from-[#0a1b33] via-[#050e22] to-[#020614] focus-visible:outline-2 focus-visible:outline-cyan-300">
-          <motion.div aria-hidden="true" className={`absolute -right-12 -top-20 h-56 w-56 rounded-full bg-gradient-to-br ${color} opacity-20 blur-3xl`} animate={reducedMotion ? undefined : { x: [0, -24, 0], y: [0, 18, 0], opacity: [0.2, 0.35, 0.2] }} transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }} />
+          <motion.div aria-hidden="true" className={`absolute -right-12 -top-20 h-56 w-56 rounded-full bg-gradient-to-br ${color} opacity-20 blur-3xl`}  />
           <div aria-hidden="true" className="absolute inset-0 bg-[linear-gradient(to_right,rgba(255,255,255,.05)_1px,transparent_1px),linear-gradient(to_bottom,rgba(255,255,255,.05)_1px,transparent_1px)] bg-[size:28px_28px] opacity-40" />
           <div aria-hidden="true" className="pointer-events-none absolute inset-5 rounded-2xl border border-white/[.06]" />
           <div aria-hidden="true" className="pointer-events-none absolute inset-x-10 top-1/2 h-px bg-gradient-to-r from-transparent via-cyan-200/25 to-transparent" />
           <div className="absolute inset-0 flex items-center justify-center p-8">
-            <motion.img src={logoUrl} alt={`Identidad visual de ${title}`} loading="lazy" decoding="async" className="relative z-10 max-h-[78%] max-w-[78%] object-contain drop-shadow-[0_18px_30px_rgba(0,0,0,.5)]" animate={reducedMotion ? undefined : { y: [0, -7, 0] }} whileHover={reducedMotion ? undefined : { scale: 1.07, rotate: -1 }} transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }} />
+            <motion.img src={logoUrl} alt={`Identidad visual de ${title}`} loading="lazy" decoding="async" className="relative z-10 max-h-[78%] max-w-[78%] object-contain drop-shadow-[0_18px_30px_rgba(0,0,0,.5)]" whileHover={reducedMotion ? undefined : { scale: 1.04 }} transition={{ duration: 0.25 }} />
           </div>
           <div className="absolute bottom-3 left-3 rounded-full border border-white/10 bg-slate-950/75 px-3 py-1 text-[10px] font-medium text-slate-300 backdrop-blur">Solución Aura Nexus</div>
           <ArrowUpRight size={18} aria-hidden="true" className="absolute right-4 top-4 text-cyan-300" />
